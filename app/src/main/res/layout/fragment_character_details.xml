@@ -32,8 +32,8 @@
         android:id="@+id/guidelineVerticalMidline"
         android:orientation="vertical"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="451dp"
-        app:layout_constraintGuide_end="450dp" />
+        tools:layout_editor_absoluteX="450dp"
+        app:layout_constraintGuide_percent="0.5" />
 
     <!-- Begin Stats Block -->
     <TextView
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewAbilityScoreHeading"
         app:layout_constraintTop_toBottomOf="@id/viewStatsHeadingSeparator"
-        app:layout_constraintLeft_toLeftOf="@id/textViewStrengthScore"
+        app:layout_constraintLeft_toLeftOf="@+id/textViewStrengthScore"
         android:layout_marginTop="8dp" />
     <TextView
         android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
         android:id="@+id/textViewAbilityBonusHeading"
         android:text="@string/heading_bonus"
         app:layout_constraintTop_toBottomOf="@id/viewStatsHeadingSeparator"
-        app:layout_constraintLeft_toLeftOf="@id/textViewStrengthBonus"
+        app:layout_constraintLeft_toLeftOf="@+id/textViewStrengthBonus"
         android:layout_marginTop="8dp" />
     <TextView
         android:text="@string/heading_save"
@@ -415,7 +415,7 @@
         app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
         app:layout_constraintTop_toBottomOf="@id/textViewHistoryBonus"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginTop="8dp" />
 
     <TextView
         style="@style/AppTheme.CharSheet.ValueView"
@@ -604,7 +604,24 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonMenu"
+        style="@style/Theme.AppCompat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        app:backgroundTint="@color/primary_color"
+        app:elevation="1dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:rippleColor="@color/primary_color_dark"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp" />
+
     <!-- End Skills Block -->
+
 
 
 
