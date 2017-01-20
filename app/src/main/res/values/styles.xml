@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/primary_color</item>
+        <item name="android:colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="android:colorAccent">@color/accent_material_light</item>
+        <item name="android:colorBackground">@color/background</item>
+    </style>
+
+    <style name="AppTheme.CharSheet" parent="AppTheme">
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="AppTheme.CharSheet.ValueView" parent="AppTheme.CharSheet">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+    <style name="AppTheme.CharSheet.ValueLabel" parent="AppTheme.CharSheet">
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textAppearance">@android:style/Theme.Material</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="AppTheme.CharSheet.PrimaryHeading" parent="@android:style/TextAppearance.Material.Display1">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="AppTheme.CharSheet.SecondaryHeading" parent="@android:style/TextAppearance.Material.Headline">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="AppTheme.CharSheet.Subheading" parent="@android:style/TextAppearance.Material.Title">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="AppTheme.CharSheet.FreeLabel" parent="@android:style/TextAppearance.Material.Small">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>
