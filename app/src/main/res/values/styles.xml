@@ -26,7 +26,7 @@
     </style>
     <style name="AppTheme.CharSheet.ValueLabel" parent="AppTheme.CharSheet">
         <item name="android:layout_height">36dp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:textAppearance">@android:style/Theme.Material</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">8dp</item>
