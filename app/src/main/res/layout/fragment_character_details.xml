@@ -34,6 +34,8 @@
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="451dp"
         app:layout_constraintGuide_end="450dp" />
+
+    <!-- Begin Stats Block -->
     <TextView
         android:text="@string/heading_stats"
         android:layout_width="wrap_content"
@@ -127,7 +129,6 @@
         app:layout_constraintTop_toBottomOf="@id/textViewAbilityBonusHeading"
         app:layout_constraintLeft_toRightOf="@id/guidelineVerticalMidline"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp" />
     <TextView
         android:text="@string/placeholder_zero"
@@ -270,16 +271,19 @@
         app:layout_constraintRight_toRightOf="@id/textViewWisdomLabel"
         app:layout_constraintTop_toBottomOf="@id/textViewWisdomLabel"/>
 
+    <!-- End Stats Block -->
+
+    <!-- Begin Skills Block -->
+
     <TextView
         android:id="@+id/textViewHeadingSkills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
+        android:layout_marginStart="8dp"
         android:text="@string/heading_skills"
         android:textAppearance="@android:style/TextAppearance.Material.Title"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         app:layout_constraintTop_toBottomOf="@+id/textViewCharismaBonus" />
     <View
@@ -291,7 +295,316 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        android:id="@+id/viewSkillsHeadingSeparator"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewAcrobaticsBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/viewSkillsHeadingSeparator"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewAcrobaticsLabel"
+        android:text="@string/label_bonus_acrobatics"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/viewSkillsHeadingSeparator"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewAnimalHandlingBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewAcrobaticsBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewAnimalHandlingLabel"
+        android:text="@string/label_bonus_animal_handling"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewAcrobaticsBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewArcanaBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewAnimalHandlingBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewArcanaLabel"
+        android:text="@string/label_bonus_arcana"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewAnimalHandlingBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewAthleticsBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewArcanaBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewAthleticsLabel"
+        android:text="@string/label_bonus_athletics"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewArcanaBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewDeceptionBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewAthleticsBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewDeceptionLabel"
+        android:text="@string/label_bonus_deception"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewAthleticsBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewHistoryBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewDeceptionBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewHistoryLabel"
+        android:text="@string/label_bonus_history"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewDeceptionBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewInsightBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewHistoryBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewInsightLabel"
+        android:text="@string/label_bonus_insight"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewHistoryBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewIntimidationBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewInsightBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewIntimidationLabel"
+        android:text="@string/label_bonus_intimidation"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewInsightBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewInvestigationBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewIntimidationBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewInvestigationLabel"
+        android:text="@string/label_bonus_investigation"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewIntimidationBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewMedicineBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewInvestigationBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewMedicineLabel"
+        android:text="@string/label_bonus_medicine"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewInvestigationBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewNatureBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewMedicineBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewNatureLabel"
+        android:text="@string/label_bonus_nature"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewMedicineBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewPerceptionBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewNatureBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewPerceptionLabel"
+        android:text="@string/label_bonus_perception"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewNatureBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewPerformanceBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewPerceptionBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewPerformanceLabel"
+        android:text="@string/label_bonus_performance"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewPerceptionBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewPersuasionBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewPerformanceBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewPersuasionLabel"
+        android:text="@string/label_bonus_persuasion"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewPerformanceBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewReligionBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewPersuasionBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewReligionLabel"
+        android:text="@string/label_bonus_religion"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewPersuasionBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewSleightOfHandBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewReligionBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewSleightOfHandLabel"
+        android:text="@string/label_bonus_sleight_of_hand"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewReligionBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewStealthBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewSleightOfHandBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewStealthLabel"
+        android:text="@string/label_bonus_stealth"
+        android:background="@color/material_grey_400"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewSleightOfHandBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueView"
+        android:id="@+id/textViewSurvivalBonus"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineVerticalMidline"
+        app:layout_constraintTop_toBottomOf="@id/textViewStealthBonus"/>
+
+    <TextView
+        style="@style/AppTheme.CharSheet.ValueLabel"
+        android:id="@+id/textViewSurvivalLabel"
+        android:text="@string/label_bonus_survival"
+        android:background="@color/material_grey_500"
+        app:layout_constraintLeft_toRightOf="@id/textViewAcrobaticsBonus"
+        app:layout_constraintTop_toBottomOf="@id/textViewStealthBonus"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <!-- End Skills Block -->
 
 
 
