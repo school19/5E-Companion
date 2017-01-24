@@ -24,6 +24,11 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@android:color/white</item>
     </style>
+
+    <style name="AppTheme.CharSheet.WeaponDamageView" parent="AppTheme.CharSheet.ValueView">
+        <item name="android:layout_width">96dp</item>
+    </style>
+
     <style name="AppTheme.CharSheet.ValueLabel" parent="AppTheme.CharSheet">
         <item name="android:layout_height">36dp</item>
         <item name="android:layout_width">0dp</item>
