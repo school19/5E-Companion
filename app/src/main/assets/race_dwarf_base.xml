@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<race name="Dwarf">
+    <ability-score-increase score="Constitution">+2</ability-score-increase>
+    <speed>25</speed>
+    <darkvision>60</darkvision>
+    <trait>
+        <description>Dwarven Combat Training</description>
+        <weapon-proficiency>battleaxe</weapon-proficiency>
+        <weapon-proficiency>handaxe</weapon-proficiency>
+        <weapon-proficiency>light hammer</weapon-proficiency>
+        <weapon-proficiency>warhammer</weapon-proficiency>
+    </trait>
+    <trait>
+        <description>Dwarven Resilience</description>
+        <advantage><saving-throw>poison</saving-throw></advantage>
+        <resistance><damage>poison</damage></resistance>
+    </trait>
+    <trait>
+        <description>Stonecunning</description>
+        <skill-proficiency double="yes" restriction="stonework">History</skill-proficiency>
+    </trait>
+    <trait>
+        <description>Tool Proficiency</description>
+        <choose quantity="1">
+            <tool-proficiency>Smith's Tools</tool-proficiency>
+            <tool-proficiency>Brewer's Supplies</tool-proficiency>
+            <tool-proficiency>Mason's Tools</tool-proficiency>
+        </choose>
+    </trait>
+
+    <language>Common, Dwarvish</language>
+
+    <subrace name="Hill">
+        <ability-score-increase score="Wisdom">+1</ability-score-increase>
+        <trait>
+            <description>Dwarven Toughness</description>
+            <modifier target="hit-points" operator="+"><variable>CHAR_LVL</variable></modifier>
+        </trait>
+    </subrace>
+</race>

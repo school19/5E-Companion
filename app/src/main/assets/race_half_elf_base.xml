@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<race name="Half-Elf">
+    <ability-score-increase score="Charisma">+2</ability-score-increase>
+    <ability-score-increase score="-Charisma">+1</ability-score-increase>
+    <ability-score-increase score="-Charisma">+1</ability-score-increase>
+    <speed>30</speed>
+    <darkvision>60</darkvision>
+    <trait>
+        <description>Fey Ancestry</description>
+        <advantage><saving-throw>Charm</saving-throw></advantage>
+        <immunity><condition>Sleep</condition></immunity>
+    </trait>
+    <trait>
+        <description>Skill Versatility</description>
+        <proficiency><skill>ANY</skill></proficiency>
+        <proficiency><skill>ANY</skill></proficiency>
+    </trait>
+    <language>Common, Elvish, ANY</language>
+</race>
