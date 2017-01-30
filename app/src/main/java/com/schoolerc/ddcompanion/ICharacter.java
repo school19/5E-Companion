@@ -63,4 +63,10 @@ public interface ICharacter {
     int getMovementSpeed();
 
     int getArmorClass();
+
+    void enableDecorator();
+    void disableDecorator();
+    boolean isEnabled();
+
+    ICharacter removeDecorator(String name);
 }
