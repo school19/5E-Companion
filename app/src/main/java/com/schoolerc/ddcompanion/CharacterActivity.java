@@ -4,15 +4,21 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class CharacterActivity extends Activity{
+import java.util.List;
 
-    private static final int LOADER_ID_CHAR_LIST = 0;
-    private static final int LOADER_ID_CHAR_DETAILS = 1;
-    private static final String KEY_CHARACTER_NAME = "key_character_name";
+public class CharacterActivity extends Activity {
+
+    private static final int LOADER_ID_CHARACTERS = 0;
+    private static final String KEY_CHARACTER_LIST = "key_character_list";
+    private static final String KEY_ACTIVE_CHARACTER = "key_active_character";
     private static final String TAG = "CharacterActivity";
+
+    private int activeIndex = 0;
     private ICharacter activeCharacter = null;
+    private List<ICharacter> characterList = null;
     private CharacterListFragment listFragment = null;
     private CharacterDetailsFragment detailsFragment = null;
+    private CharacterLoaderCallbacks characterLoaderCallbacks = new CharacterLoaderCallbacks(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,32 +28,24 @@ public class CharacterActivity extends Activity{
 
         try {
             listFragment = (CharacterListFragment) getFragmentManager().findFragmentById(R.id.fragmentCharacterList);
-            detailsFragment  = (CharacterDetailsFragment)getFragmentManager().findFragmentById(R.id.fragmentCharacterDetails);
+            detailsFragment = (CharacterDetailsFragment) getFragmentManager().findFragmentById(R.id.fragmentCharacterDetails);
+        } catch (ClassCastException ex) {
+            Log.e(TAG, "fragment loading failed", ex);
         }
-        catch(ClassCastException ex)
-        {
-            ex.printStackTrace();
+        if (savedInstanceState != null) {
+            try {
+                characterList = (List<ICharacter>) savedInstanceState.getSerializable(KEY_CHARACTER_LIST);
+            } catch (ClassCastException ex) {
+                Log.e(TAG, "savedInstanceState corrupted", ex);
+            }
+
+            int activeIndex = savedInstanceState.getInt(KEY_ACTIVE_CHARACTER);
+            activeCharacter = characterList != null ? characterList.get(activeIndex): null;
+
         }
-
-        if(listFragment != null)
-        {
-            loadCharacterList();
+        if (characterList == null) {
+            Log.i(TAG, "Loading characters");
+            getLoaderManager().initLoader(LOADER_ID_CHARACTERS, null, characterLoaderCallbacks);
         }
-
-        if(detailsFragment != null)
-        {
-            String characterName = savedInstanceState.getString(KEY_CHARACTER_NAME);
-            loadCharacterDetails(characterName);
-        }
-    }
-
-    private void loadCharacterList()
-    {
-        
-    }
-
-    private void loadCharacterDetails(String name)
-    {
-
     }
 }
