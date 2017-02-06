@@ -15,5 +15,7 @@
         <proficiency><skill>ANY</skill></proficiency>
         <proficiency><skill>ANY</skill></proficiency>
     </trait>
-    <language>Common, Elvish, ANY</language>
+    <language>Common</language>
+    <language>Elvish</language>
+    <language>ANY</language>
 </race>

@@ -12,16 +12,17 @@
         <advantage><saving-throw>Charm</saving-throw></advantage>
         <immunity><condition>Sleep</condition></immunity>
     </trait>
-    <language>Common, Elvish</language>
+    <language>Common</language>
+    <language>Elvish</language>
 
     <subrace name="High">
         <ability-score-increase score="Intelligence">+1</ability-score-increase>
         <trait>
             <description>Elf Weapon Training</description>
-            <weapon-proficiency>longsword</weapon-proficiency>
-            <weapon-proficiency>shortsword</weapon-proficiency>
-            <weapon-proficiency>shortbow</weapon-proficiency>
-            <weapon-proficiency>longbow</weapon-proficiency>
+            <proficiency>Longsword</proficiency>
+            <proficiency>Shortsword</proficiency>
+            <proficiency>Shortbow</proficiency>
+            <proficiency>Longbow</proficiency>
         </trait>
         <trait>
             <description>Cantrip</description>

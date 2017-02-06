@@ -1,13 +1,12 @@
 package com.schoolerc.ddcompanion;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Chaz Schooler on 12/30/2016.
  */
 
-public class CharacterBase implements Serializable, ICharacter {
+public class Character implements Serializable, CharacterComponent {
 
     private String mName;
     private int mStrengthScore;
@@ -17,25 +16,11 @@ public class CharacterBase implements Serializable, ICharacter {
     private int mWisdomScore;
     private int mCharismaScore;
 
-    public CharacterBase() {
+    public Character() {
     }
 
-    public void enableDecorator() throws UnsupportedOperationException
-    {
-        throw new UnsupportedOperationException("CharacterBase is not a decorator");
-    }
 
-    public void disableDecorator() throws UnsupportedOperationException
-    {
-        throw new UnsupportedOperationException("CharacterBase is not a decorator");
-    }
-
-    public boolean isEnabled()
-    {
-        return true;
-    }
-
-    public ICharacter removeDecorator(String name)
+    public CharacterComponent removeDecorator(String name)
     {
         return this;
     }

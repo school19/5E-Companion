@@ -5,10 +5,10 @@
     <darkvision>60</darkvision>
     <trait>
         <description>Dwarven Combat Training</description>
-        <weapon-proficiency>battleaxe</weapon-proficiency>
-        <weapon-proficiency>handaxe</weapon-proficiency>
-        <weapon-proficiency>light hammer</weapon-proficiency>
-        <weapon-proficiency>warhammer</weapon-proficiency>
+        <proficiency>battleaxe</proficiency>
+        <proficiency>handaxe</proficiency>
+        <proficiency>light hammer</proficiency>
+        <proficiency>warhammer</proficiency>
     </trait>
     <trait>
         <description>Dwarven Resilience</description>
@@ -22,13 +22,14 @@
     <trait>
         <description>Tool Proficiency</description>
         <choose quantity="1">
-            <tool-proficiency>Smith's Tools</tool-proficiency>
-            <tool-proficiency>Brewer's Supplies</tool-proficiency>
-            <tool-proficiency>Mason's Tools</tool-proficiency>
+            <proficiency>Smith's Tools</proficiency>
+            <proficiency>Brewer's Supplies</proficiency>
+            <proficiency>Mason's Tools</proficiency>
         </choose>
     </trait>
 
-    <language>Common, Dwarvish</language>
+    <language>Common</language>
+    <language>Dwarvish</language>
 
     <subrace name="Hill">
         <ability-score-increase score="Wisdom">+1</ability-score-increase>
