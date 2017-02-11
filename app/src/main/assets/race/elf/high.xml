@@ -1,0 +1,15 @@
+<race name="High">
+    <ability-score-increase score="Intelligence">1</ability-score-increase>
+    <trait>
+        <description>Elf Weapon Training</description>
+        <proficiency>Longsword</proficiency>
+        <proficiency>Shortsword</proficiency>
+        <proficiency>Shortbow</proficiency>
+        <proficiency>Longbow</proficiency>
+    </trait>
+    <trait>
+        <description>Cantrip</description>
+        <spell-usage lvl="0" source="Wizard"/>
+    </trait>
+    <choose quantity="1" source="langauge"/>
+</race>

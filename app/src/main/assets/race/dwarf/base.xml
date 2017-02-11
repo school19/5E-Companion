@@ -30,12 +30,4 @@
 
     <language>Common</language>
     <language>Dwarvish</language>
-
-    <subrace name="Hill">
-        <ability-score-increase score="Wisdom">1</ability-score-increase>
-        <trait>
-            <description>Dwarven Toughness</description>
-            <modifier target="hit-points" operator="+"><variable>CHAR_LVL</variable></modifier>
-        </trait>
-    </subrace>
 </race>
