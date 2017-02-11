@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <race name="Dwarf">
-    <ability-score-increase score="Constitution">+2</ability-score-increase>
+    <ability-score-increase score="Constitution">2</ability-score-increase>
     <speed>25</speed>
-    <darkvision>60</darkvision>
+    <vision type="darkvision">60</vision>
     <trait>
         <description>Dwarven Combat Training</description>
         <proficiency>battleaxe</proficiency>
@@ -12,7 +12,7 @@
     </trait>
     <trait>
         <description>Dwarven Resilience</description>
-        <advantage><saving-throw>poison</saving-throw></advantage>
+        <advantage on="saving-throw" with="poison"/>
         <resistance><damage>poison</damage></resistance>
     </trait>
     <trait>
@@ -32,7 +32,7 @@
     <language>Dwarvish</language>
 
     <subrace name="Hill">
-        <ability-score-increase score="Wisdom">+1</ability-score-increase>
+        <ability-score-increase score="Wisdom">1</ability-score-increase>
         <trait>
             <description>Dwarven Toughness</description>
             <modifier target="hit-points" operator="+"><variable>CHAR_LVL</variable></modifier>

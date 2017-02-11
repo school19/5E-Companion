@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <race name="elf">
-    <ability-score-increase score="Dexterity">+2</ability-score-increase>
+    <ability-score-increase score="Dexterity">2</ability-score-increase>
     <speed>30</speed>
     <darkvision>60</darkvision>
     <trait>
@@ -16,7 +16,7 @@
     <language>Elvish</language>
 
     <subrace name="High">
-        <ability-score-increase score="Intelligence">+1</ability-score-increase>
+        <ability-score-increase score="Intelligence">1</ability-score-increase>
         <trait>
             <description>Elf Weapon Training</description>
             <proficiency>Longsword</proficiency>
@@ -26,8 +26,8 @@
         </trait>
         <trait>
             <description>Cantrip</description>
-            <spell-usage lvl="0" source="Wizard" recharge="no"/>
+            <spell-usage lvl="0" source="Wizard"/>
         </trait>
-        <language>ANY</language>
+        <choose quantity="1" source="langauge"/>
     </subrace>
 </race>

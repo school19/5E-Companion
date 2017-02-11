@@ -1,5 +1,7 @@
 package com.schoolerc.ddcompanion;
 
+import org.w3c.dom.Element;
+
 import java.io.Serializable;
 
 /**
@@ -19,10 +21,9 @@ public class Character implements Serializable, CharacterComponent {
     public Character() {
     }
 
-
-    public CharacterComponent removeDecorator(String name)
+    public void Load(Element element)
     {
-        return this;
+
     }
 
     public String getName(){return mName;}
