@@ -50,7 +50,7 @@ public class AbilityScoreIncrease extends CharacterComponent {
         }
         else
         {
-            throw new RuntimeException("Ability score increase is malformed");
+            throw new RuntimeException("Malformed ability score increase");
         }
 
         try {
@@ -58,7 +58,7 @@ public class AbilityScoreIncrease extends CharacterComponent {
         }
         catch(NumberFormatException ex)
         {
-            throw new RuntimeException("Ability score increase is malformed");
+            throw new RuntimeException("Malformed ability score increase");
         }
     }
 }
