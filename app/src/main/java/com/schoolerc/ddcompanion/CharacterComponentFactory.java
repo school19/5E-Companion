@@ -26,11 +26,11 @@ public class CharacterComponentFactory {
         }
         else if(tagName.equals(STR_RACE))
         {
-            component = new CharacterRace();
+            component = new CharacterRaceComponent();
         }
         else if(tagName.equals(STR_CLASS))
         {
-            component = new CharacterClass();
+            component = new CharacterClassComponent();
         }
         else
         {

@@ -7,7 +7,7 @@ package com.schoolerc.ddcompanion;
 public enum Vision {
     Normal,
     Darkvision,
-    Truesight,
     Tremorsense,
     Blindsight,
+    Truesight
 }

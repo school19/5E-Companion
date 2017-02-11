@@ -1,16 +1,16 @@
 package com.schoolerc.ddcompanion;
 
-import java.util.HashMap;
 import org.w3c.dom.Element;
+
+import java.util.HashMap;
 
 /**
  * Created by Chaz Schooler on 2/5/2017.
  */
 
-public class CharacterRace extends CharacterComponent {
+public class CharacterClassComponent extends CharacterComponent{
     @Override
-    public void load(Element element)
-    {
+    public void load(Element element) {
 
     }
 }

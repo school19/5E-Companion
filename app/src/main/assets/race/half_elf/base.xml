@@ -12,14 +12,48 @@
     <vision type="darkvision">60</vision>
     <trait>
         <description>Fey Ancestry</description>
-        <advantage on="saving-throw" with="charm"/>
-        <immunity to="sleep"/>
+        <advantage><saving-throw>Charm</saving-throw></advantage>
+        <immunity><condition>Sleep</condition></immunity>
     </trait>
     <trait>
         <description>Skill Versatility</description>
-        <choose quantity="2" source="skill"/>
+        <choose quantity="2">
+            <proficiency category="skill">Acrobatics</proficiency>
+            <proficiency category="skill">Animal Handling</proficiency>
+            <proficiency category="skill">Arcana</proficiency>
+            <proficiency category="skill">Athletics</proficiency>
+            <proficiency category="skill">Deception</proficiency>
+            <proficiency category="skill">History</proficiency>
+            <proficiency category="skill">Insight</proficiency>
+            <proficiency category="skill">Intimidation</proficiency>
+            <proficiency category="skill">Investigation</proficiency>
+            <proficiency category="skill">Medicine</proficiency>
+            <proficiency category="skill">Nature</proficiency>
+            <proficiency category="skill">Perception</proficiency>
+            <proficiency category="skill">Performance</proficiency>
+            <proficiency category="skill">Persuasion</proficiency>
+            <proficiency category="skill">Religion</proficiency>
+            <proficiency category="skill">Sleight of Hand</proficiency>
+            <proficiency category="skill">Stealth</proficiency>
+            <proficiency category="skill">Survival</proficiency>
+        </choose>
     </trait>
     <language>Common</language>
     <language>Elvish</language>
-    <choose quantity="1" source="language"/>
+    <choose quantity="1">
+        <language>Dwarvish</language>
+        <language>Giant</language>
+        <language>Gnomish</language>
+        <language>Goblin</language>
+        <language>Halfling</language>
+        <language>Orc</language>
+        <language>Abyssal</language>
+        <language>Celestial</language>
+        <language>Draconic</language>
+        <language>Deep Speech</language>
+        <language>Infernal</language>
+        <language>Primordial</language>
+        <language>Sylvan</language>
+        <language>Undercommon</language>
+    </choose>
 </race>

@@ -5,13 +5,13 @@
     <darkvision>60</darkvision>
     <trait>
         <description>Keen Senses</description>
-        <skill-proficiency>Perception</skill-proficiency>
+        <proficiency category="skill">Perception</proficiency>
     </trait>
     <trait>
         <description>Fey Ancestry</description>
         <advantage><saving-throw>Charm</saving-throw></advantage>
         <immunity><condition>Sleep</condition></immunity>
     </trait>
-    <language>Common</language>
-    <language>Elvish</language>
+    <language name="Common"/>
+    <language name="Elvish"/>
 </race>

@@ -5,26 +5,26 @@
     <vision type="darkvision">60</vision>
     <trait>
         <description>Dwarven Combat Training</description>
-        <proficiency>battleaxe</proficiency>
-        <proficiency>handaxe</proficiency>
-        <proficiency>light hammer</proficiency>
-        <proficiency>warhammer</proficiency>
+        <proficiency category="weapon">Battleaxe</proficiency>
+        <proficiency category="weapon">Handaxe</proficiency>
+        <proficiency category="weapon">Light Hammer</proficiency>
+        <proficiency category="weapon">Warhammer</proficiency>
     </trait>
     <trait>
         <description>Dwarven Resilience</description>
-        <advantage on="saving-throw" with="poison"/>
+        <advantage><saving-throw>poison</saving-throw></advantage>
         <resistance><damage>poison</damage></resistance>
     </trait>
     <trait>
         <description>Stonecunning</description>
-        <skill-proficiency double="yes" restriction="stonework">History</skill-proficiency>
+        <proficiency double="yes" restriction="stonework" category="skill">History</proficiency>
     </trait>
     <trait>
         <description>Tool Proficiency</description>
         <choose quantity="1">
-            <proficiency>Smith's Tools</proficiency>
-            <proficiency>Brewer's Supplies</proficiency>
-            <proficiency>Mason's Tools</proficiency>
+            <proficiency category="tool">Smith's Tools</proficiency>
+            <proficiency category="tool">Brewer's Supplies</proficiency>
+            <proficiency category="tool">Mason's Tools</proficiency>
         </choose>
     </trait>
 
