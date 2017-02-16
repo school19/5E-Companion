@@ -6,6 +6,9 @@ import android.content.Loader;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.schoolerc.ddcompanion.character.CharacterComponent;
+import com.schoolerc.ddcompanion.character.CharacterLoader;
+
 import java.io.File;
 import java.util.List;
 

@@ -1,14 +1,12 @@
-package com.schoolerc.ddcompanion;
+package com.schoolerc.ddcompanion.character;
 
 import org.w3c.dom.Element;
-
-import java.util.HashMap;
 
 /**
  * Created by Chaz Schooler on 2/5/2017.
  */
 
-public class CharacterClassComponent extends CharacterComponent{
+public class ClassComponent extends CharacterComponent{
     @Override
     public void load(Element element) {
 

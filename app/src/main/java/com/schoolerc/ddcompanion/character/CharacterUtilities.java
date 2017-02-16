@@ -1,4 +1,4 @@
-package com.schoolerc.ddcompanion;
+package com.schoolerc.ddcompanion.character;
 
 /**
  * Created by Chaz Schooler on 1/28/2017.

@@ -1,4 +1,4 @@
-package com.schoolerc.ddcompanion;
+package com.schoolerc.ddcompanion.character;
 
 import java.util.HashMap;
 import org.w3c.dom.Element;

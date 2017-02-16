@@ -1,4 +1,4 @@
-package com.schoolerc.ddcompanion;
+package com.schoolerc.ddcompanion.character;
 
 import org.w3c.dom.Element;
 
@@ -18,7 +18,7 @@ public class CharacterComponentFactory {
 
         if(tagName.equals(STR_ABILITY_SCORE_INCREASE))
         {
-            component = new AbilityScoreIncrease();
+            component = new AbilityScoreIncreaseComponent();
         }
         else if(tagName.equals(STR_CHOOSE))
         {
@@ -26,11 +26,11 @@ public class CharacterComponentFactory {
         }
         else if(tagName.equals(STR_RACE))
         {
-            component = new CharacterRaceComponent();
+            component = new RaceComponent();
         }
         else if(tagName.equals(STR_CLASS))
         {
-            component = new CharacterClassComponent();
+            component = new ClassComponent();
         }
         else
         {
