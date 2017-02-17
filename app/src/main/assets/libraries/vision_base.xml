@@ -1,0 +1,17 @@
+<library>
+    <vision>
+        <name>Normal</name>
+    </vision>
+    <vision>
+        <name>Darkvision</name>
+    </vision>
+    <vision>
+        <name>Tremorsense</name>
+    </vision>
+    <vision>
+        <name>Blindsight</name>
+    </vision>
+    <vision>
+        <name>Truesight</name>
+    </vision>
+</library>

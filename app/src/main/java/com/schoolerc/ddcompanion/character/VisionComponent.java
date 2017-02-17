@@ -1,7 +1,5 @@
 package com.schoolerc.ddcompanion.character;
 
-import com.schoolerc.ddcompanion.Vision;
-
 import org.w3c.dom.Element;
 
 /**

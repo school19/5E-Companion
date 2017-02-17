@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<condition-library>
+<library>
     <condition>
         <name>Blinded</name>
     </condition>
@@ -42,4 +42,4 @@
     <condition>
         <name>Unconscious</name>
     </condition>
-</condition-library>
+</library>
