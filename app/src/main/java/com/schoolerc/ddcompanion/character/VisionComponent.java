@@ -6,7 +6,7 @@ import org.w3c.dom.Element;
  * Created by Chaz Schooler on 2/11/2017.
  */
 
-public class VisionComponent extends CharacterComponent{
+public class VisionComponent extends Component {
     private static final String KEY_TYPE = "type";
     private static final String STR_NORMAL = "normal";
     private static final String STR_DARKVISION = "darkvision";

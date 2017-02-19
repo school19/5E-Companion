@@ -10,11 +10,11 @@ import java.util.List;
  * Created by Chaz Schooler on 2/11/2017.
  */
 
-public class ChooseComponent extends CharacterComponent {
+public class ChooseComponent extends Component {
     private static final String KEY_QUANTITY = "quantity";
 
     private int quantity;
-    private List<CharacterComponent> components;
+    private List<Component> components;
 
     @Override
     public void load(Element element) {
@@ -24,7 +24,7 @@ public class ChooseComponent extends CharacterComponent {
             throw new RuntimeException("Malformed choose component");
         }
 
-        CharacterComponentFactory factory = new CharacterComponentFactory();
+        ComponentFactory factory = new ComponentFactory();
         components = new ArrayList<>(element.getChildNodes().getLength());
         for (int i = 0; i < element.getChildNodes().getLength(); i++)
         {

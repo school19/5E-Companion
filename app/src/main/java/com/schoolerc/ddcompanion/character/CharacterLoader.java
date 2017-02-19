@@ -17,10 +17,10 @@ import java.util.List;
  * Created by Chaz Schooler on 1/30/2017.
  */
 
-public class CharacterLoader extends AsyncTaskLoader<List<CharacterComponent>> {
+public class CharacterLoader extends AsyncTaskLoader<List<Component>> {
     private static final String TAG = "CharacterLoader";
     private final File directory;
-    private List<CharacterComponent> characters;
+    private List<Component> characters;
 
     public CharacterLoader(Context context, File directory) {
         super(context);
@@ -28,7 +28,7 @@ public class CharacterLoader extends AsyncTaskLoader<List<CharacterComponent>> {
     }
 
     @Override
-    public List<CharacterComponent> loadInBackground() {
+    public List<Component> loadInBackground() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder;
         try {

@@ -6,7 +6,7 @@ import org.w3c.dom.Element;
  * Created by Chaz Schooler on 2/11/2017.
  */
 
-public class SpeedComponent extends CharacterComponent {
+public class SpeedComponent extends Component {
     private int speed;
 
     @Override

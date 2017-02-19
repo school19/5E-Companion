@@ -6,15 +6,15 @@ import org.w3c.dom.Element;
  * Created by Chaz Schooler on 2/7/2017.
  */
 
-public class CharacterComponentFactory {
+public class ComponentFactory {
     private static final String STR_ABILITY_SCORE_INCREASE = "ability-score-increase";
     private static final String STR_CHOOSE = "choose";
-    private static final String STR_RACE = "race";
+    private static final String STR_RACE = "libraries/race";
     private static final String STR_CLASS = "class";
-     CharacterComponent componentFromElement(Element element)
+     Component componentFromElement(Element element)
     {
         String tagName = element.getTagName().toLowerCase();
-        CharacterComponent component = null;
+        Component component = null;
 
         if(tagName.equals(STR_ABILITY_SCORE_INCREASE))
         {
@@ -22,7 +22,7 @@ public class CharacterComponentFactory {
         }
         else if(tagName.equals(STR_CHOOSE))
         {
-            component = new Choose();
+            component = new ChooseComponent();
         }
         else if(tagName.equals(STR_RACE))
         {

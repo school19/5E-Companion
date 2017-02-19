@@ -1,14 +1,12 @@
 package com.schoolerc.ddcompanion.character;
 
-import com.schoolerc.ddcompanion.AbilityScore;
-
 import org.w3c.dom.Element;
 
 /**
  * Created by Chaz Schooler on 2/7/2017.
  */
 
-public class AbilityScoreIncreaseComponent extends CharacterComponent {
+public class AbilityScoreIncreaseComponent extends Component {
     private final static String STR_STRENGTH = "strength";
     private final static String STR_DEXTERITY = "dexterity";
     private final static String STR_CONSTITUTION = "constitution";

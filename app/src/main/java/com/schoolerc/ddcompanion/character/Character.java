@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by Chaz Schooler on 12/30/2016.
  */
 
-public class Character implements Serializable, CharacterComponent {
+public class Character implements Serializable, Component {
 
     private String mName;
     private int mStrengthScore;

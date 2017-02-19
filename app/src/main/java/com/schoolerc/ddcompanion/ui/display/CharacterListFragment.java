@@ -1,4 +1,4 @@
-package com.schoolerc.ddcompanion;
+package com.schoolerc.ddcompanion.ui.display;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.schoolerc.ddcompanion.R;
 
 
 /**

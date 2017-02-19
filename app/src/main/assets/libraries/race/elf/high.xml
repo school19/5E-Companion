@@ -1,4 +1,5 @@
-<race name="High">
+<race>
+    <name>High</name>
     <ability-score-increase score="Intelligence">1</ability-score-increase>
     <trait>
         <description>Elf Weapon Training</description>

@@ -1,19 +1,21 @@
-package com.schoolerc.ddcompanion;
+package com.schoolerc.ddcompanion.ui;
 
-
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.schoolerc.ddcompanion.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link InventoryItemFragment#newInstance} factory method to
+ * Use the {@link MoneyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InventoryItemFragment extends Fragment {
+public class MoneyFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -24,7 +26,7 @@ public class InventoryItemFragment extends Fragment {
     private String mParam2;
 
 
-    public InventoryItemFragment() {
+    public MoneyFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class InventoryItemFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment InventoryItemFragment.
+     * @return A new instance of fragment MoneyFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static InventoryItemFragment newInstance(String param1, String param2) {
-        InventoryItemFragment fragment = new InventoryItemFragment();
+    public static MoneyFragment newInstance(String param1, String param2) {
+        MoneyFragment fragment = new MoneyFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,7 +61,18 @@ public class InventoryItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inventory_item, container, false);
+        return inflater.inflate(R.layout.fragment_money, container, false);
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
 }

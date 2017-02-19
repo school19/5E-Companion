@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<race name="elf">
+<race>
+    <name>Elf</name>
     <ability-score-increase score="Dexterity">2</ability-score-increase>
     <speed>30</speed>
     <darkvision>60</darkvision>

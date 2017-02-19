@@ -1,4 +1,5 @@
-<race name="Hill">
+<race>
+    <name>Hill</name>
     <ability-score-increase score="Wisdom">1</ability-score-increase>
     <trait>
         <description>Dwarven Toughness</description>

@@ -4,7 +4,7 @@ package com.schoolerc.ddcompanion.character;
  * Created by Chaz Schooler on 2/13/2017.
  */
 
-public class CharacterComponentVisitor {
+public class ComponentVisitor {
     public void visit(AbilityScoreIncreaseComponent abilityScoreIncreaseComponent)
     {
 
