@@ -1,6 +1,6 @@
 package com.schoolerc.ddcompanion.character;
 
-import org.w3c.dom.Element;
+import org.xmlpull.v1.XmlPullParser;
 
 /**
  * Created by Chaz Schooler on 2/5/2017.
@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 
 public class ClassComponent extends Component {
     @Override
-    public void load(Element element) {
+    public void load(XmlPullParser parser) {
 
     }
 }

@@ -1,5 +1,7 @@
 package com.schoolerc.ddcompanion.character;
 
+import com.schoolerc.ddcompanion.util.Math;
+
 import org.w3c.dom.Element;
 
 import java.io.Serializable;
@@ -8,9 +10,8 @@ import java.io.Serializable;
  * Created by Chaz Schooler on 12/30/2016.
  */
 
-public class Character implements Serializable, Component {
+public class Character extends Component implements Serializable {
 
-    private String mName;
     private int mStrengthScore;
     private int mDexterityScore;
     private int mConstitutionScore;
@@ -25,10 +26,6 @@ public class Character implements Serializable, Component {
     {
 
     }
-
-    public String getName(){return mName;}
-
-    public void setName(String name){mName = name;}
 
     public int getStrengthScore()
     {
@@ -83,32 +80,32 @@ public class Character implements Serializable, Component {
 
     public int getStrengthBonus()
     {
-        return CharacterUtilities.scoreToBonus(getStrengthScore());
+        return Math.scoreToBonus(getStrengthScore());
     }
 
     public int getDexterityBonus()
     {
-        return CharacterUtilities.scoreToBonus(getDexterityScore());
+        return Math.scoreToBonus(getDexterityScore());
     }
 
     public int getConstitutionBonus()
     {
-        return CharacterUtilities.scoreToBonus(getConstitutionScore());
+        return Math.scoreToBonus(getConstitutionScore());
     }
 
     public int getIntelligenceBonus()
     {
-        return CharacterUtilities.scoreToBonus(getIntelligenceScore());
+        return Math.scoreToBonus(getIntelligenceScore());
     }
 
     public int getWisdomBonus()
     {
-        return CharacterUtilities.scoreToBonus(getWisdomScore());
+        return Math.scoreToBonus(getWisdomScore());
     }
 
     public int getCharismaBonus()
     {
-        return CharacterUtilities.scoreToBonus(getCharismaScore());
+        return Math.scoreToBonus(getCharismaScore());
     }
 
     public int getStrengthSave()

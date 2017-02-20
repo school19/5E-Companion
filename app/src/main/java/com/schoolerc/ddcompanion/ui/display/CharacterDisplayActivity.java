@@ -8,22 +8,22 @@ import android.util.Log;
 
 import com.schoolerc.ddcompanion.R;
 import com.schoolerc.ddcompanion.character.Component;
-import com.schoolerc.ddcompanion.character.CharacterLoader;
+import com.schoolerc.ddcompanion.util.CharacterLoader;
 
 import java.io.File;
 import java.util.List;
 
-public class CharacterDisplayActivity extends Activity implements LoaderManager.LoaderCallbacks<List<Component>> {
+public class CharacterDisplayActivity extends Activity implements LoaderManager.LoaderCallbacks<List<Character>> {
 
     private static final int LOADER_ID_CHARACTERS = 0;
     private static final String KEY_CHARACTER_LIST = "key_character_list";
     private static final String KEY_ACTIVE_CHARACTER = "key_active_character";
-    private static final String TAG = "CharacterDisplayActivity";
+    private static final String TAG = "CharDisplayActivity";
     private static final String DEFAULT_CHARACTER_DIRECTORY = "characters";
 
     private int activeIndex = 0;
-    private Component activeCharacter = null;
-    private List<Component> characterList = null;
+    private Character activeCharacter = null;
+    private List<Character> characterList = null;
     private CharacterListFragment listFragment = null;
     private CharacterDetailsFragment detailsFragment = null;
 
@@ -49,19 +49,19 @@ public class CharacterDisplayActivity extends Activity implements LoaderManager.
         }
     }
 
-    public void setCharacterData(List<Component> characterList) {
+    public void setCharacterData(List<Character> characterList) {
         this.characterList = characterList;
     }
 
 
-    public Loader<List<Component>> onCreateLoader(int ID, Bundle args) {
+    public Loader<List<Character>> onCreateLoader(int ID, Bundle args) {
         return new CharacterLoader(this, new File(getFilesDir(), DEFAULT_CHARACTER_DIRECTORY));
     }
 
-    public void onLoaderReset(Loader<List<Component>> loader) {
+    public void onLoaderReset(Loader<List<Character>> loader) {
     }
 
-    public void onLoadFinished(Loader<List<Component>> loader, List<Component> data) {
+    public void onLoadFinished(Loader<List<Character>> loader, List<Character> data) {
         setCharacterData(data);
     }
 }
