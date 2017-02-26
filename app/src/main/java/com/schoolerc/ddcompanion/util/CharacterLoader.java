@@ -23,11 +23,11 @@ public class CharacterLoader extends AsyncTaskLoader<List<Character>> {
     private static final String TAG = "CharacterLoader";
     private final File directory;
     private List<Component> characters;
-    private onErrorListener listener;
+    private OnErrorListener listener;
 
     public CharacterLoader(Context context, File directory) {
         super(context);
-        if (!(context instanceof onErrorListener)) {
+        if (!(context instanceof OnErrorListener)) {
             throw new RuntimeException("Context must implement onErrorListener interface!");
         }
 

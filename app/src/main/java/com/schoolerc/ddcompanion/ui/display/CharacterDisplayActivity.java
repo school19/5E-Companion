@@ -2,18 +2,21 @@ package com.schoolerc.ddcompanion.ui.display;
 
 import android.app.Activity;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.util.Log;
+import com.schoolerc.ddcompanion.util.OnErrorListener;
 
 import com.schoolerc.ddcompanion.R;
 import com.schoolerc.ddcompanion.character.Component;
+import com.schoolerc.ddcompanion.ui.creator.CharacterCreatorActivity;
 import com.schoolerc.ddcompanion.util.CharacterLoader;
 
 import java.io.File;
 import java.util.List;
 
-public class CharacterDisplayActivity extends Activity implements LoaderManager.LoaderCallbacks<List<Character>> {
+public class CharacterDisplayActivity extends Activity implements LoaderManager.LoaderCallbacks<List<Character>>, CharacterListFragment.OnEditCharacterListListener , OnErrorListener{
 
     private static final int LOADER_ID_CHARACTERS = 0;
     private static final String KEY_CHARACTER_LIST = "key_character_list";
@@ -63,5 +66,16 @@ public class CharacterDisplayActivity extends Activity implements LoaderManager.
 
     public void onLoadFinished(Loader<List<Character>> loader, List<Character> data) {
         setCharacterData(data);
+    }
+
+    public void onAddCharacter()
+    {
+        Intent intent = new Intent(this, CharacterCreatorActivity.class);
+        startActivity(intent);
+    }
+
+    public void onError(Exception exception, Object object)
+    {
+
     }
 }
