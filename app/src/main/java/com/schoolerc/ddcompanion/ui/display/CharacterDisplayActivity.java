@@ -1,22 +1,27 @@
 package com.schoolerc.ddcompanion.ui.display;
 
 import android.app.Activity;
-import android.app.LoaderManager;
 import android.content.Intent;
-import android.content.Loader;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.couchbase.lite.ManagerOptions;
+import com.couchbase.lite.android.AndroidContext;
 import com.schoolerc.ddcompanion.util.OnErrorListener;
 
 import com.schoolerc.ddcompanion.R;
-import com.schoolerc.ddcompanion.character.Component;
 import com.schoolerc.ddcompanion.ui.creator.CharacterCreatorActivity;
-import com.schoolerc.ddcompanion.util.CharacterLoader;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
-public class CharacterDisplayActivity extends Activity implements LoaderManager.LoaderCallbacks<List<Character>>, CharacterListFragment.OnEditCharacterListListener , OnErrorListener{
+import com.couchbase.lite.Manager;
+
+
+public class CharacterDisplayActivity extends Activity implements CharacterListFragment.OnEditCharacterListListener , OnErrorListener{
 
     private static final int LOADER_ID_CHARACTERS = 0;
     private static final String KEY_CHARACTER_LIST = "key_character_list";
@@ -36,6 +41,24 @@ public class CharacterDisplayActivity extends Activity implements LoaderManager.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character);
 
+        Manager manager = null;
+        deleteFile("test");
+        try{
+            FileOutputStream stream = openFileOutput("test", 0);
+            FileWriter writer = new FileWriter(stream.getFD());
+            writer.write("{}");
+            writer.close();
+            stream.close();
+            manager = new Manager(new AndroidContext(getApplicationContext()), Manager.DEFAULT_OPTIONS);
+            manager.getExistingDatabase("test");
+        }
+        catch(Exception ex)
+        {
+            Log.i(TAG, "fuuuuuuuuuuuuuuuuck");
+            System.exit(0);
+        }
+
+        Log.i(TAG, "Number of DBs: " + manager.getAllDatabaseNames().size());
         try {
             listFragment = (CharacterListFragment) getFragmentManager().findFragmentById(R.id.fragmentCharacterList);
             detailsFragment = (CharacterDetailsFragment) getFragmentManager().findFragmentById(R.id.fragmentCharacterDetails);
@@ -46,27 +69,8 @@ public class CharacterDisplayActivity extends Activity implements LoaderManager.
             int activeIndex = savedInstanceState.getInt(KEY_ACTIVE_CHARACTER);
             activeCharacter = characterList != null ? characterList.get(activeIndex) : null;
         }
-        if (characterList == null) {
-            Log.i(TAG, "Loading characters");
-            getLoaderManager().initLoader(LOADER_ID_CHARACTERS, null, this);
-        }
     }
 
-    public void setCharacterData(List<Character> characterList) {
-        this.characterList = characterList;
-    }
-
-
-    public Loader<List<Character>> onCreateLoader(int ID, Bundle args) {
-        return new CharacterLoader(this, new File(getFilesDir(), DEFAULT_CHARACTER_DIRECTORY));
-    }
-
-    public void onLoaderReset(Loader<List<Character>> loader) {
-    }
-
-    public void onLoadFinished(Loader<List<Character>> loader, List<Character> data) {
-        setCharacterData(data);
-    }
 
     public void onAddCharacter()
     {
