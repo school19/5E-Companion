@@ -15,4 +15,6 @@
     </trait>
     <language name="Common"/>
     <language name="Elvish"/>
+
+    <subrace id="high" src="high.xml"/>
 </race>

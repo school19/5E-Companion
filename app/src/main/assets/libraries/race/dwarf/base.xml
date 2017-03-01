@@ -31,4 +31,5 @@
 
     <language>Common</language>
     <language>Dwarvish</language>
+    <subrace id="hill" src="hill.xml"/>
 </race>
