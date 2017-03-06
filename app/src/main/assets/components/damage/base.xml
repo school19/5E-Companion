@@ -1,41 +1,41 @@
 <library>
-    <damage>
+    <damage id="acid">
         <name>Acid</name>
     </damage>
-    <damage>
+    <damage id="bludgeoning">
         <name>Bludgeoning</name>
     </damage>
-    <damage>
+    <damage id="cold">
         <name>Cold</name>
     </damage>
-    <damage>
+    <damage id="fire">
         <name>Fire</name>
     </damage>
-    <damage>
+    <damage id="force">
         <name>Force</name>
     </damage>
-    <damage>
+    <damage id="lightning">
         <name>Lightning</name>
     </damage>
-    <damage>
+    <damage id="necrotic">
         <name>Necrotic</name>
     </damage>
-    <damage>
+    <damage id="piercing">
         <name>Piercing</name>
     </damage>
-    <damage>
+    <damage id="poison">
         <name>Poison</name>
     </damage>
-    <damage>
+    <damage id="psychic">
         <name>Psychic</name>
     </damage>
-    <damage>
+    <damage id="radiant">
         <name>Radiant</name>
     </damage>
-    <damage>
+    <damage id="slashing">
         <name>Slashing</name>
     </damage>
-    <damage>
+    <damage id="thunder">
         <name>Thunder</name>
     </damage>
 </library>

@@ -11,6 +11,7 @@ import com.schoolerc.ddcompanion.R;
 import com.schoolerc.ddcompanion.ui.creator.CharacterCreatorActivity;
 
 import java.util.List;
+import java.util.zip.ZipFile;
 
 
 public class CharacterDisplayActivity extends Activity implements CharacterListFragment.OnEditCharacterListListener, OnErrorListener{
@@ -30,6 +31,14 @@ public class CharacterDisplayActivity extends Activity implements CharacterListF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
+        try {
+            Log.e(TAG, "Data directory: " + this.getFilesDir().list()[1]);
+        }
+        catch(Exception ex)
+        {
+
+        }
+        this.getFilesDir().mkdirs();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character);
 
@@ -43,6 +52,8 @@ public class CharacterDisplayActivity extends Activity implements CharacterListF
             int activeIndex = savedInstanceState.getInt(KEY_ACTIVE_CHARACTER);
             activeCharacter = characterList != null ? characterList.get(activeIndex) : null;
         }
+
+
     }
 
 
