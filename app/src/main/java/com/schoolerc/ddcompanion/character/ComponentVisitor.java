@@ -5,6 +5,7 @@ package com.schoolerc.ddcompanion.character;
  */
 
 public class ComponentVisitor {
+
     public void visit(AbilityScoreIncreaseComponent abilityScoreIncreaseComponent)
     {
 

@@ -1,34 +1,25 @@
 package com.schoolerc.ddcompanion.ui.display;
 
 import android.app.Activity;
-import android.app.LoaderManager;
 import android.content.Intent;
-import android.content.Loader;
 import android.os.Bundle;
 import android.util.Log;
-import com.schoolerc.ddcompanion.util.OnErrorListener;
+import android.widget.Toast;
 
 import com.schoolerc.ddcompanion.R;
-import com.schoolerc.ddcompanion.character.Component;
+import com.schoolerc.ddcompanion.util.FileUtil;
+import com.schoolerc.ddcompanion.util.OnErrorListener;
+
 import com.schoolerc.ddcompanion.ui.creator.CharacterCreatorActivity;
-import com.schoolerc.ddcompanion.util.CharacterLoader;
 
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
 
-public class CharacterDisplayActivity extends Activity implements LoaderManager.LoaderCallbacks<List<Character>>, CharacterListFragment.OnEditCharacterListListener , OnErrorListener{
+public class CharacterDisplayActivity extends Activity implements CharacterListFragment.OnEditCharacterListListener , OnErrorListener{
 
-    private static final int LOADER_ID_CHARACTERS = 0;
-    private static final String KEY_CHARACTER_LIST = "key_character_list";
-    private static final String KEY_ACTIVE_CHARACTER = "key_active_character";
     private static final String TAG = "CharDisplayActivity";
-    private static final String DEFAULT_CHARACTER_DIRECTORY = "characters";
+    private static final String COMPONENTS_DIRECTORY = "components";
 
-    private int activeIndex = 0;
-    private Character activeCharacter = null;
-    private List<Character> characterList = null;
-    private CharacterListFragment listFragment = null;
-    private CharacterDetailsFragment detailsFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,36 +27,17 @@ public class CharacterDisplayActivity extends Activity implements LoaderManager.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character);
 
-        try {
-            listFragment = (CharacterListFragment) getFragmentManager().findFragmentById(R.id.fragmentCharacterList);
-            detailsFragment = (CharacterDetailsFragment) getFragmentManager().findFragmentById(R.id.fragmentCharacterDetails);
-        } catch (ClassCastException ex) {
-            Log.e(TAG, "fragment loading failed", ex);
+        File componentsFile = new File(getFilesDir().getAbsolutePath() + File.separator + COMPONENTS_DIRECTORY);
+        if(!componentsFile.exists())
+        {
+            try {
+                FileUtil.unzip(getAssets().open("app.zip"), getFilesDir(), this);
+            }
+            catch(IOException ex)
+            {
+                onError(ex, "Failed to open asset file");
+            }
         }
-        if (savedInstanceState != null) {
-            int activeIndex = savedInstanceState.getInt(KEY_ACTIVE_CHARACTER);
-            activeCharacter = characterList != null ? characterList.get(activeIndex) : null;
-        }
-        if (characterList == null) {
-            Log.i(TAG, "Loading characters");
-            getLoaderManager().initLoader(LOADER_ID_CHARACTERS, null, this);
-        }
-    }
-
-    public void setCharacterData(List<Character> characterList) {
-        this.characterList = characterList;
-    }
-
-
-    public Loader<List<Character>> onCreateLoader(int ID, Bundle args) {
-        return new CharacterLoader(this, new File(getFilesDir(), DEFAULT_CHARACTER_DIRECTORY));
-    }
-
-    public void onLoaderReset(Loader<List<Character>> loader) {
-    }
-
-    public void onLoadFinished(Loader<List<Character>> loader, List<Character> data) {
-        setCharacterData(data);
     }
 
     public void onAddCharacter()
@@ -76,6 +48,6 @@ public class CharacterDisplayActivity extends Activity implements LoaderManager.
 
     public void onError(Exception exception, Object object)
     {
-
+        Toast.makeText(this, (String)object, Toast.LENGTH_LONG).show();
     }
 }

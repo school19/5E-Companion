@@ -17,6 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    task zipAssets(type:Zip) {
+        from 'src/main/staging'
+    }
+    task copyAssetZip(type:Copy){
+        from zipAssets.getArchivePath()
+        into 'src/main/assets'
+    }
+    copyAssetZip.dependsOn zipAssets
+    preBuild.dependsOn copyAssetZip
 }
 
 dependencies {
@@ -26,6 +35,6 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
 }
