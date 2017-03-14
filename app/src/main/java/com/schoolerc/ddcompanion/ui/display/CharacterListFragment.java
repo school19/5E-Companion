@@ -1,7 +1,8 @@
 package com.schoolerc.ddcompanion.ui.display;
 
+import android.app.LoaderManager;
 import android.content.Context;
-import android.net.Uri;
+import android.content.Loader;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
@@ -11,11 +12,14 @@ import android.view.ViewGroup;
 
 import com.schoolerc.ddcompanion.R;
 import android.view.View.OnClickListener;
+import com.schoolerc.ddcompanion.character.Component;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CharacterListFragment extends Fragment{
+public class CharacterListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Component>> {
 
     private OnEditCharacterListListener mListener;
 
@@ -64,5 +68,20 @@ public class CharacterListFragment extends Fragment{
     public interface OnEditCharacterListListener
     {
         void onAddCharacter();
+    }
+
+    public void onLoadFinished(Loader<List<Component>> loader, List<Component> components)
+    {
+
+    }
+
+    public void onLoaderReset(Loader<List<Component>> loader)
+    {
+
+    }
+
+    public Loader<List<Component>> onCreateLoader(int id, Bundle args)
+    {
+        return null;
     }
 }

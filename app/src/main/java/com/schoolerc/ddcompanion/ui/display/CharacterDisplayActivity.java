@@ -15,7 +15,11 @@ import com.schoolerc.ddcompanion.ui.creator.CharacterCreatorActivity;
 import java.io.File;
 import java.io.IOException;
 
-public class CharacterDisplayActivity extends Activity implements CharacterListFragment.OnEditCharacterListListener , OnErrorListener{
+import java.util.List;
+import java.util.zip.ZipFile;
+
+
+public class CharacterDisplayActivity extends Activity implements CharacterListFragment.OnEditCharacterListListener, OnErrorListener{
 
     private static final String TAG = "CharDisplayActivity";
     private static final String COMPONENTS_DIRECTORY = "components";
@@ -24,6 +28,14 @@ public class CharacterDisplayActivity extends Activity implements CharacterListF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
+        try {
+            Log.e(TAG, "Data directory: " + this.getFilesDir().list()[1]);
+        }
+        catch(Exception ex)
+        {
+
+        }
+        this.getFilesDir().mkdirs();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character);
 
@@ -39,7 +51,7 @@ public class CharacterDisplayActivity extends Activity implements CharacterListF
             }
         }
     }
-
+	
     public void onAddCharacter()
     {
         Intent intent = new Intent(this, CharacterCreatorActivity.class);
