@@ -1,4 +1,4 @@
-package com.schoolerc.ddcompanion.data;
+package com.schoolerc.ddcompanion.character.data;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
