@@ -12,11 +12,10 @@ import java.io.InputStreamReader;
  * Created by Chaz on 3/20/2017.
  */
 
-public class ComponentXmlParser extends ComponentParser {
+public class ComponentXmlParser implements ComponentParser {
     private XmlPullParser pullParser;
     public ComponentXmlParser(ComponentBuilder builder)
     {
-        super(builder);
         pullParser = Xml.newPullParser();
     }
 
