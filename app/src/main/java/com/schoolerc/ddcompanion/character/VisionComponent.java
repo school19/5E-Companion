@@ -7,13 +7,6 @@ import org.xmlpull.v1.XmlPullParser;
  * Created by Chaz Schooler on 2/11/2017.
  */
 
-public class VisionComponent extends Component {
-
+public class VisionComponent implements Component {
     private int range;
-
-    @Override
-    public void load(XmlPullParser parser)
-    {
-
-    }
 }

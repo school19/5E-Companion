@@ -7,8 +7,4 @@ import org.xmlpull.v1.XmlPullParser;
  */
 
 public class ClassComponent extends Component {
-    @Override
-    public void load(XmlPullParser parser) {
-
-    }
 }

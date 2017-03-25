@@ -15,8 +15,4 @@ public class ChooseComponent extends Component {
 
     private int quantity;
     private List<Component> components;
-
-    @Override
-    public void load(XmlPullParser parser) {
-    }
 }

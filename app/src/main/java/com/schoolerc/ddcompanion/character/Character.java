@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by Chaz Schooler on 12/30/2016.
  */
 
-public class Character extends Component implements Serializable {
+public class Character implements Component, Serializable {
 
     private int mStrengthScore;
     private int mDexterityScore;

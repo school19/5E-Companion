@@ -4,5 +4,5 @@ package com.schoolerc.ddcompanion.character;
  * Created by Chaz Schooler on 2/15/2017.
  */
 
-public class AdvantageComponent extends Component {
+public class AdvantageComponent implements Component {
 }

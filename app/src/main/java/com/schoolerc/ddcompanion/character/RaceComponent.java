@@ -7,10 +7,5 @@ import org.xmlpull.v1.XmlPullParser;
  * Created by Chaz Schooler on 2/5/2017.
  */
 
-public class RaceComponent extends Component {
-    @Override
-    public void load(XmlPullParser parser)
-    {
-
-    }
+public class RaceComponent implements Component {
 }
