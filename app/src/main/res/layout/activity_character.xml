@@ -5,12 +5,12 @@
     android:id="@+id/activity_character"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.schoolerc.ddcompanion.ui.display.CharacterDisplayActivity">
+    tools:context="com.schoolerc.fiftheditioncompanion.ui.display.CharacterDisplayActivity">
     <fragment
         android:id="@+id/fragmentCharacterDetails"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:name="com.schoolerc.ddcompanion.ui.display.CharacterDetailsFragment"
+        android:name="com.schoolerc.fiftheditioncompanion.ui.display.CharacterDetailsFragment"
         tools:layout="@layout/fragment_character_details"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
