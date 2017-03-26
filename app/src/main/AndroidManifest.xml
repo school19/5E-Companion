@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.schoolerc.ddcompanion">
+    package="com.schoolerc.fiftheditioncompanion">
 
     <application
         android:allowBackup="true"
@@ -15,17 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.creator.CharacterCreatorActivity"></activity>
+        <activity android:name=".ui.creator.CharacterCreatorActivity"/>
 
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.schoolerc.ddcompanion"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/resource_paths" />
-        </provider>
     </application>
 
 </manifest>
