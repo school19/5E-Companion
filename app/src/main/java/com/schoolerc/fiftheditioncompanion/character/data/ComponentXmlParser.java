@@ -24,6 +24,7 @@ import com.schoolerc.fiftheditioncompanion.character.VisionComponent;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 
@@ -40,10 +41,56 @@ public class ComponentXmlParser implements ComponentParser {
     {
         try {
             pullParser.setInput(inputStream, null);
-        } catch (XmlPullParserException e) {
+            pullParser.next(); //Move from START_DOCUMENT to first tag
+            return parseComponent();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private Component parseComponent() throws XmlPullParserException, IOException
+    {
+
+        pullParser.require(XmlPullParser.START_TAG, null, null);
+
+        String s = pullParser.getName().toLowerCase();
+        switch (s) {
+            case "ability-score":
+                return parseAbilityScore();
+            case "ability-score-increase":
+                return parseAbilityScoreIncrease();
+            case "advantage":
+                return parseAdvantageComponent();
+            case "choose":
+                return parseChooseComponent();
+            case "class":
+                return parseClassComponent();
+            case "condition":
+                return parseConditionComponent();
+            case "damage":
+                return parseDamageComponent();
+            case "effect":
+                return parseEffectComponent();
+            case "immunity":
+                return parseImmunityComponent();
+            case "language":
+                return parseLanguageComponent();
+            case "race":
+                return parseRaceComponent();
+            case "resistance":
+                return parseResistanceComponent();
+            case "speed":
+                return parseSpeedComponent();
+            case "subrace":
+                return parseSubraceComponent();
+            case "trait":
+                return parseTraitComponent();
+            case "vision":
+                return parseVisionComponent();
+            default:
+                return null;
+        }
     }
 
     @Override
