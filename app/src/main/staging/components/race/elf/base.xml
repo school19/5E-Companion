@@ -2,9 +2,9 @@
 <race>
     <name>Elf</name>
     <ability-score-increase>
-        <ability-score>
+        <target>
             Intelligence
-        </ability-score>
+        </target>
         <value>2</value>
     </ability-score-increase>
     <speed>30</speed>

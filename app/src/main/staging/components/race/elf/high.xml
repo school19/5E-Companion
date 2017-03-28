@@ -1,20 +1,43 @@
-<race>
+<subrace>
     <name>High</name>
-    <ability-score-increase score="Intelligence">1</ability-score-increase>
+    <ability-score-increase>
+        <target>Intelligence</target>
+        <value>1</value>
+    </ability-score-increase>
     <trait>
         <description>Elf Weapon Training</description>
-        <proficiency><weapon>Longsword</weapon></proficiency>
-        <proficiency><weapon>Shortsword</weapon></proficiency>
-        <proficiency><weapon>Shortbow</weapon></proficiency>
-        <proficiency><weapon>Longbow</weapon></proficiency>
+        <proficiency>
+            <weapon>Longsword</weapon>
+        </proficiency>
+        <proficiency>
+            <weapon>Shortsword</weapon>
+        </proficiency>
+        <proficiency>
+            <weapon>Shortbow</weapon>
+        </proficiency>
+        <proficiency>
+            <weapon>Longbow</weapon>
+        </proficiency>
     </trait>
     <trait>
         <description>Cantrip</description>
         <choose quantity="1">
-            <spell refid="acid_splash"/>
-            <spell refid="blade_ward"/>
-            <spell refid="firebolt"/>
-            <!-- finish wizard cantrips here -->
+            <spell refid="acid_splash" />
+            <spell refid="blade_ward" />
+            <spell refid="chill_touch"/>
+            <spell refid="dancing_lights"/>
+            <spell refid="firebolt" />
+            <spell refid="friends"/>
+            <spell refid="light"/>
+            <spell refid="mage_hand"/>
+            <spell refid="mending"/>
+            <spell refid="message"/>
+            <spell refid="minor_illusion"/>
+            <spell refid="poison_spray"/>
+            <spell refid="prestidigitation"/>
+            <spell refid="ray_of_frost"/>
+            <spell refid="shocking_grasp"/>
+            <spell refid="true_strike"/>
         </choose>
     </trait>
     <choose quantity="1">
@@ -33,4 +56,4 @@
         <language>Sylvan</language>
         <language>Undercommon</language>
     </choose>
-</race>
+</subrace>
