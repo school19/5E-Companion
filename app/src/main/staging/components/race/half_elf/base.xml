@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <race name="Half-Elf">
     <ability-score-increase>
-        <ability-score>
+        <target>
             Charisma
-        </ability-score>
+        </target>
         <value>
             2
         </value>
     </ability-score-increase>
     <choose quantity="2">
         <ability-score-increase>
-            <ability-score>
+            <target>
                 Strength
-            </ability-score>
+            </target>
             <value>
                 1
             </value>
         </ability-score-increase>
         <ability-score-increase>
-            <ability-score>
+            <target>
                 Dexterity
-            </ability-score>
+            </target>
             <value>
                 1
             </value>
         </ability-score-increase>
         <ability-score-increase>
-            <ability-score>
+            <target>
                 Constitution
-            </ability-score>
+            </target>
             <value>
                 1
             </value>
         </ability-score-increase>
         <ability-score-increase>
-            <ability-score>
+            <target>
                 Intelligence
-            </ability-score>
+            </target>
             <value>
                 1
             </value>
         </ability-score-increase>
         <ability-score-increase>
-            <ability-score>
+            <target>
                 Wisdom
-            </ability-score>
+            </target>
             <value>
                 1
             </value>
