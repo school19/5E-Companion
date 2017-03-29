@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<race>
+<race id="elf">
     <name>Elf</name>
     <ability-score-increase>
         <target>
@@ -8,15 +8,15 @@
         <value>2</value>
     </ability-score-increase>
     <speed>30</speed>
-    <darkvision>60</darkvision>
+    <vision type="darkvision">60</vision>
     <trait>
         <description>Keen Senses</description>
-        <proficiency category="skill">Perception</proficiency>
+        <skill-proficiency>Perception</skill-proficiency>
     </trait>
     <trait>
         <description>Fey Ancestry</description>
-        <advantage><saving-throw>Charm</saving-throw></advantage>
-        <immunity><condition>Sleep</condition></immunity>
+        <saving-throw-advantage><condition>Charm</condition></saving-throw-advantage>
+        <condition-immunity>Sleep</condition-immunity>
     </trait>
     <language>Common</language>
     <language>Elvish</language>
