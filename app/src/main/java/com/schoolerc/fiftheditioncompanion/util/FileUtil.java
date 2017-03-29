@@ -14,8 +14,10 @@ import java.util.zip.ZipInputStream;
  * Created by Chaz Schooler on 3/11/2017.
  */
 
-public class FileUtil {
+public final class FileUtil {
     private static final String TAG = "FileUtil";
+
+    private FileUtil(){}
 
     public static void unzip(InputStream src, File dst, OnErrorListener errorListener) {
         try {

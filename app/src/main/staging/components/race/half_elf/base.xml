@@ -54,9 +54,7 @@
     <vision type="darkvision">60</vision>
     <trait>
         <description>Fey Ancestry</description>
-        <advantage>
-            <saving-throw>Charm</saving-throw>
-        </advantage>
+        <saving-throw-advantage>Charm</saving-throw-advantage>
         <immunity>
             <condition>Sleep</condition>
         </immunity>
@@ -64,24 +62,24 @@
     <trait>
         <description>Skill Versatility</description>
         <choose quantity="2">
-            <skill>Acrobatics</skill>
-            <skill>Animal Handling</skill>
-            <skill>Arcana</skill>
-            <skill>Athletics</skill>
-            <skill>Deception</skill>
-            <skill>History</skill>
-            <skill>Insight</skill>
-            <skill>Intimidation</skill>
-            <skill>Investigation</skill>
-            <skill>Medicine</skill>
-            <skill>Nature</skill>
-            <skill>Perception</skill>
-            <skill>Performance</skill>
-            <skill>Persuasion</skill>
-            <skill>Religion</skill>
-            <skill>Sleight of Hand</skill>
-            <skill>Stealth</skill>
-            <skill>Survival</skill>
+            <skill-proficiency>Acrobatics</skill-proficiency>
+            <skill-proficiency>Animal Handling</skill-proficiency>
+            <skill-proficiency>Arcana</skill-proficiency>
+            <skill-proficiency>Athletics</skill-proficiency>
+            <skill-proficiency>Deception</skill-proficiency>
+            <skill-proficiency>History</skill-proficiency>
+            <skill-proficiency>Insight</skill-proficiency>
+            <skill-proficiency>Intimidation</skill-proficiency>
+            <skill-proficiency>Investigation</skill-proficiency>
+            <skill-proficiency>Medicine</skill-proficiency>
+            <skill-proficiency>Nature</skill-proficiency>
+            <skill-proficiency>Perception</skill-proficiency>
+            <skill-proficiency>Performance</skill-proficiency>
+            <skill-proficiency>Persuasion</skill-proficiency>
+            <skill-proficiency>Religion</skill-proficiency>
+            <skill-proficiency>Sleight of Hand</skill-proficiency>
+            <skill-proficiency>Stealth</skill-proficiency>
+            <skill-proficiency>Survival</skill-proficiency>
         </choose>
     </trait>
     <language>Common</language>
