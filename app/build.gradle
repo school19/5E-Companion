@@ -17,6 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    task zipAssets(type:Zip) {
+        from 'src/main/staging'
+    }
+    task copyAssetZip(type:Copy){
+        from zipAssets.getArchivePath()
+        into 'src/main/assets'
+    }
+    copyAssetZip.dependsOn zipAssets
+    preBuild.dependsOn copyAssetZip
 }
 
 dependencies {
