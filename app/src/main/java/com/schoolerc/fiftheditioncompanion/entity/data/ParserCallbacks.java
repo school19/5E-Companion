@@ -2,9 +2,10 @@ package com.schoolerc.fiftheditioncompanion.entity.data;
 
 import com.schoolerc.fiftheditioncompanion.entity.Component;
 
-import java.io.InputStream;
+/**
+ * Created by Chaz on 4/2/2017.
+ */
 
-
-public interface ComponentParser {
-    Component parse(InputStream inputStream);
+public interface ParserCallbacks {
+    void doneParsing(Component component);
 }
