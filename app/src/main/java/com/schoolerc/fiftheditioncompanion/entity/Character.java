@@ -2,8 +2,6 @@ package com.schoolerc.fiftheditioncompanion.entity;
 
 import com.schoolerc.fiftheditioncompanion.util.Math;
 
-import org.w3c.dom.Element;
-
 import java.io.Serializable;
 
 /**
@@ -22,9 +20,14 @@ public class Character implements Component, Serializable {
     public Character() {
     }
 
-    public void Load(Element element)
+    public static class Builder
     {
 
+    }
+
+    public boolean equals(Character c)
+    {
+        return false;
     }
 
     public int getStrengthScore()

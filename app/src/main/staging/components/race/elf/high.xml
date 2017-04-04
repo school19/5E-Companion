@@ -22,38 +22,42 @@
     <trait>
         <description>Cantrip</description>
         <choose quantity="1">
-            <spell refid="acid_splash" />
-            <spell refid="blade_ward" />
-            <spell refid="chill_touch"/>
-            <spell refid="dancing_lights"/>
-            <spell refid="firebolt" />
-            <spell refid="friends"/>
-            <spell refid="light"/>
-            <spell refid="mage_hand"/>
-            <spell refid="mending"/>
-            <spell refid="message"/>
-            <spell refid="minor_illusion"/>
-            <spell refid="poison_spray"/>
-            <spell refid="prestidigitation"/>
-            <spell refid="ray_of_frost"/>
-            <spell refid="shocking_grasp"/>
-            <spell refid="true_strike"/>
+            <quantity>1</quantity>
+            <options>
+                <spell refid="acid_splash" />
+                <spell refid="blade_ward" />
+                <spell refid="chill_touch"/>
+                <spell refid="dancing_lights"/>
+                <spell refid="firebolt" />
+                <spell refid="friends"/>
+                <spell refid="light"/>
+                <spell refid="mage_hand"/>
+                <spell refid="mending"/>
+                <spell refid="message"/>
+                <spell refid="minor_illusion"/>
+                <spell refid="poison_spray"/>
+                <spell refid="prestidigitation"/>
+                <spell refid="ray_of_frost"/>
+                <spell refid="shocking_grasp"/>
+                <spell refid="true_strike"/>
+            </options>
         </choose>
     </trait>
-    <choose quantity="1">
-        <language>Dwarvish</language>
-        <language>Giant</language>
-        <language>Gnomish</language>
-        <language>Goblin</language>
-        <language>Halfling</language>
-        <language>Orc</language>
-        <language>Abyssal</language>
-        <language>Celestial</language>
-        <language>Draconic</language>
-        <language>Deep Speech</language>
-        <language>Infernal</language>
-        <language>Primordial</language>
-        <language>Sylvan</language>
-        <language>Undercommon</language>
+    <choose>
+        <quantity>1</quantity>
+        <options><language>Dwarvish</language>
+            <language>Giant</language>
+            <language>Gnomish</language>
+            <language>Goblin</language>
+            <language>Halfling</language>
+            <language>Orc</language>
+            <language>Abyssal</language>
+            <language>Celestial</language>
+            <language>Draconic</language>
+            <language>Deep Speech</language>
+            <language>Infernal</language>
+            <language>Primordial</language>
+            <language>Sylvan</language>
+            <language>Undercommon</language></options>
     </choose>
 </subrace>
