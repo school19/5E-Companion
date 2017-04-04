@@ -13,8 +13,8 @@ public class AbilityScoreIncreaseComponent implements Component {
     {
         public Builder()
         {
-
         }
+
         private AbilityScore abilityScore;
         private int bonus;
 
@@ -48,6 +48,7 @@ public class AbilityScoreIncreaseComponent implements Component {
 
     private AbilityScoreIncreaseComponent(Builder b)
     {
-
+        abilityScore = b.getAbilityScore();
+        bonus = b.getBonus();
     }
 }

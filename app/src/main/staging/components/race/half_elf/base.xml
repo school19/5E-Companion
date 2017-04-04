@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<race name="Half-Elf">
+<race>
+    <name>Half Elf</name>
     <ability-score-increase>
         <target>
             Charisma
@@ -8,83 +9,91 @@
             2
         </value>
     </ability-score-increase>
-    <choose quantity="2">
-        <ability-score-increase>
-            <target>
-                Strength
-            </target>
-            <value>
-                1
-            </value>
-        </ability-score-increase>
-        <ability-score-increase>
-            <target>
-                Dexterity
-            </target>
-            <value>
-                1
-            </value>
-        </ability-score-increase>
-        <ability-score-increase>
-            <target>
-                Constitution
-            </target>
-            <value>
-                1
-            </value>
-        </ability-score-increase>
-        <ability-score-increase>
-            <target>
-                Intelligence
-            </target>
-            <value>
-                1
-            </value>
-        </ability-score-increase>
-        <ability-score-increase>
-            <target>
-                Wisdom
-            </target>
-            <value>
-                1
-            </value>
-        </ability-score-increase>
+    <choose>
+        <quantity>2</quantity>
+        <options>
+            <ability-score-increase>
+                <target>
+                    Strength
+                </target>
+                <value>
+                    1
+                </value>
+            </ability-score-increase>
+            <ability-score-increase>
+                <target>
+                    Dexterity
+                </target>
+                <value>
+                    1
+                </value>
+            </ability-score-increase>
+            <ability-score-increase>
+                <target>
+                    Constitution
+                </target>
+                <value>
+                    1
+                </value>
+            </ability-score-increase>
+            <ability-score-increase>
+                <target>
+                    Intelligence
+                </target>
+                <value>
+                    1
+                </value>
+            </ability-score-increase>
+            <ability-score-increase>
+                <target>
+                    Wisdom
+                </target>
+                <value>
+                    1
+                </value>
+            </ability-score-increase>
+        </options>
     </choose>
     <speed>30</speed>
-    <vision type="darkvision">60</vision>
+    <vision><type>Darkvision</type><range>60</range></vision>
     <trait>
         <description>Fey Ancestry</description>
-        <saving-throw-advantage>Charm</saving-throw-advantage>
+        <advantage><saving-throw>Charm</saving-throw></advantage>
         <immunity>
             <condition>Sleep</condition>
         </immunity>
     </trait>
     <trait>
         <description>Skill Versatility</description>
-        <choose quantity="2">
-            <skill-proficiency>Acrobatics</skill-proficiency>
-            <skill-proficiency>Animal Handling</skill-proficiency>
-            <skill-proficiency>Arcana</skill-proficiency>
-            <skill-proficiency>Athletics</skill-proficiency>
-            <skill-proficiency>Deception</skill-proficiency>
-            <skill-proficiency>History</skill-proficiency>
-            <skill-proficiency>Insight</skill-proficiency>
-            <skill-proficiency>Intimidation</skill-proficiency>
-            <skill-proficiency>Investigation</skill-proficiency>
-            <skill-proficiency>Medicine</skill-proficiency>
-            <skill-proficiency>Nature</skill-proficiency>
-            <skill-proficiency>Perception</skill-proficiency>
-            <skill-proficiency>Performance</skill-proficiency>
-            <skill-proficiency>Persuasion</skill-proficiency>
-            <skill-proficiency>Religion</skill-proficiency>
-            <skill-proficiency>Sleight of Hand</skill-proficiency>
-            <skill-proficiency>Stealth</skill-proficiency>
-            <skill-proficiency>Survival</skill-proficiency>
+        <choose>
+            <quantity>2</quantity>
+            <options>
+                <proficiency><skill-check>Acrobatics</skill-check></proficiency>
+            <proficiency><skill-check>Animal Handling</skill-check></proficiency>
+            <proficiency><skill-check>Arcana</skill-check></proficiency>
+            <proficiency><skill-check>Athletics</skill-check></proficiency>
+            <proficiency><skill-check>Deception</skill-check></proficiency>
+            <proficiency><skill-check>History</skill-check></proficiency>
+            <proficiency><skill-check>Insight</skill-check></proficiency>
+            <proficiency><skill-check>Intimidation</skill-check></proficiency>
+            <proficiency><skill-check>Investigation</skill-check></proficiency>
+            <proficiency><skill-check>Medicine</skill-check></proficiency>
+            <proficiency><skill-check>Nature</skill-check></proficiency>
+            <proficiency><skill-check>Perception</skill-check></proficiency>
+            <proficiency><skill-check>Performance</skill-check></proficiency>
+            <proficiency><skill-check>Persuasion</skill-check></proficiency>
+            <proficiency><skill-check>Religion</skill-check></proficiency>
+            <proficiency><skill-check>Sleight of Hand</skill-check></proficiency>
+            <proficiency><skill-check>Stealth</skill-check></proficiency>
+            <proficiency><skill-check>Survival</skill-check></proficiency>
+            </options>
         </choose>
     </trait>
     <language>Common</language>
     <language>Elvish</language>
     <choose quantity="1">
+        <quantity>1</quantity>
+        <options>
         <language>Dwarvish</language>
         <language>Giant</language>
         <language>Gnomish</language>
@@ -99,5 +108,6 @@
         <language>Primordial</language>
         <language>Sylvan</language>
         <language>Undercommon</language>
+        </options>
     </choose>
 </race>

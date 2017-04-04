@@ -9,3 +9,5 @@
 .externalNativeBuild
 /app/src/main/assets
 /app/build
+gen
+encodings.xml
