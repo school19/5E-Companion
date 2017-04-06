@@ -9,11 +9,11 @@ import com.schoolerc.fiftheditioncompanion.entity.operators.ComponentVisitor;
 
 public class AbilityScoreIncreaseComponent extends Component {
     private AbilityScore abilityScore;
-    private int bonus;
+    private int increase;
 
     @Override
     void accept(ComponentVisitor visitor) {
-
+        visitor.visitAbilityScoreIncreaseComponent(this);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class AbilityScoreIncreaseComponent extends Component {
         }
 
         private AbilityScore abilityScore;
-        private int bonus;
+        private int increase;
 
         public Builder abilityScore(AbilityScore score)
         {
@@ -66,9 +66,9 @@ public class AbilityScoreIncreaseComponent extends Component {
             return this;
         }
 
-        public Builder bonus(int bonus)
+        public Builder increase(int bonus)
         {
-            this.bonus = bonus;
+            this.increase = bonus;
             return this;
         }
 
@@ -77,9 +77,9 @@ public class AbilityScoreIncreaseComponent extends Component {
             return new AbilityScoreIncreaseComponent(this);
         }
 
-        private int getBonus()
+        private int getIncrease()
         {
-            return bonus;
+            return increase;
         }
 
         private AbilityScore getAbilityScore()
@@ -91,6 +91,26 @@ public class AbilityScoreIncreaseComponent extends Component {
     private AbilityScoreIncreaseComponent(Builder b)
     {
         abilityScore = b.getAbilityScore();
-        bonus = b.getBonus();
+        increase = b.getIncrease();
+    }
+
+    public void setIncrease(int increase)
+    {
+        this.increase = increase;
+    }
+
+    public void setAbilityScore(AbilityScore abilityScore)
+    {
+        this.abilityScore = abilityScore;
+    }
+
+    public int getIncrease()
+    {
+        return increase;
+    }
+
+    public AbilityScore getAbilityScore()
+    {
+        return abilityScore;
     }
 }

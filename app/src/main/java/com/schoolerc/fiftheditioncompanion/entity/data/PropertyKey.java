@@ -11,5 +11,7 @@ public enum PropertyKey {
     Constitution,
     Intelligence,
     Wisdom,
-    Charisma
+    Charisma,
+    AbilityScore,
+    Increase
 }

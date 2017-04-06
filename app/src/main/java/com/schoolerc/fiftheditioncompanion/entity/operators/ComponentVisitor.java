@@ -1,6 +1,7 @@
 package com.schoolerc.fiftheditioncompanion.entity.operators;
 
 import com.schoolerc.fiftheditioncompanion.entity.AbilityScoreComponent;
+import com.schoolerc.fiftheditioncompanion.entity.AbilityScoreIncreaseComponent;
 import com.schoolerc.fiftheditioncompanion.entity.Character;
 
 /**
@@ -10,4 +11,5 @@ import com.schoolerc.fiftheditioncompanion.entity.Character;
 public interface ComponentVisitor {
     void visitCharacter(Character c);
     void visitAbilityScoreComponent(AbilityScoreComponent abilityScoreComponent);
+    void visitAbilityScoreIncreaseComponent(AbilityScoreIncreaseComponent abilityScoreIncreaseComponent);
 }

@@ -14,23 +14,25 @@ import java.util.ArrayList;
 }
 
 //Primary Components
-%token CHARACTER_BEGIN_TOKEN
-%token CHARACTER_END_TOKEN
-%token ABILITY_SCORES_BEGIN_TOKEN
-%token ABILITY_SCORES_END_TOKEN
+%token CHARACTER_BEGIN_TOKEN CHARACTER_END_TOKEN
+%token ABILITY_SCORES_BEGIN_TOKEN ABILITY_SCORES_END_TOKEN
+%token ABILITY_SCORE_INCREASE_BEGIN_TOKEN ABILITY_SCORE_INCREASE_END_TOKEN
 
 //Attributes
-%token <Integer> STRENGTH_TOKEN DEXTERITY_TOKEN CONSTITUTION_TOKEN INTELLIGENCE_TOKEN WISDOM_TOKEN CHARISMA_TOKEN
+%token <Integer> STRENGTH_TOKEN DEXTERITY_TOKEN CONSTITUTION_TOKEN INTELLIGENCE_TOKEN WISDOM_TOKEN CHARISMA_TOKEN INCREASE_TOKEN
 %token <String> NAME_TOKEN
+%token <AbilityScore> ABILITY_SCORE_TOKEN
 
 %type <Component> component
 %type <Character> character_component
 %type <AbilityScoreComponent> ability_scores
-%type <List<Pair<PropertyKey, Object>>> character_property_list ability_scores_property_list
+%type <AbilityScoreIncreaseComponent> ability_score_increase
+%type <List<Pair<PropertyKey, Object>>> character_property_list ability_scores_property_list ability_score_increase_property_list
 %type <List<Component>> component_list
-%type <Pair<PropertyKey, Object>> character_property ability_scores_property
+%type <Pair<PropertyKey, Object>> character_property ability_scores_property ability_score_increase_property
 %type <Pair<PropertyKey, Object>> name_property
 %type <Pair<PropertyKey, Object>> strength_property dexterity_property constitution_property intelligence_property wisdom_property charisma_property
+%type <Pair<PropertyKey, Object>> ability_score_property increase_property
 
 %%
 
@@ -38,6 +40,7 @@ root: component {callbacks.doneParsing($1);}
 
 component: character_component {$$ = (Component)$1;}
         | ability_scores {$$ = (Component)$1;}
+        | ability_score_increase {$$ = (Component)$1;}
 
 component_list: component_list component { $1.add($2); $$ = $1;}
         | %empty {$$ = new ArrayList<Component>();}
@@ -74,6 +77,18 @@ ability_scores_property: strength_property
         | wisdom_property
         | charisma_property
 
+ability_score_increase: ABILITY_SCORE_INCREASE_BEGIN_TOKEN ability_score_increase_property_list ABILITY_SCORE_INCREASE_END_TOKEN
+        {
+            AbilityScoreIncreaseComponent.Builder builder = ParserBuilderAdapter.abilityScoreIncreaseBuilderFromProperties($2);
+            $$ = builder.build();
+        }
+
+ability_score_increase_property_list: ability_score_increase_property_list ability_score_increase_property { $1.add($2); $$ = $1;}
+        | ability_score_increase_property { List<Pair<PropertyKey, Object>> tmp = new ArrayList<>(); tmp.add($1); $$ = tmp;}
+
+ability_score_increase_property: ability_score_property
+        | increase_property
+
 name_property: NAME_TOKEN { $$ = new Pair<>(PropertyKey.Name, $1);}
 
 strength_property: STRENGTH_TOKEN { $$ = new Pair<>(PropertyKey.Strength, $1); }
@@ -82,3 +97,6 @@ constitution_property: CONSTITUTION_TOKEN { $$ = new Pair<>(PropertyKey.Constitu
 intelligence_property: INTELLIGENCE_TOKEN { $$ = new Pair<>(PropertyKey.Intelligence, $1); }
 wisdom_property: WISDOM_TOKEN { $$ = new Pair<>(PropertyKey.Wisdom, $1); }
 charisma_property: CHARISMA_TOKEN { $$ = new Pair<>(PropertyKey.Charisma, $1); }
+
+ability_score_property: ABILITY_SCORE_TOKEN { $$ = new Pair<>(PropertyKey.AbilityScore, $1);}
+increase_property: INCREASE_TOKEN { $$ = new Pair<>(PropertyKey.Increase, $1);}
