@@ -1,245 +1,116 @@
 package com.schoolerc.fiftheditioncompanion.entity;
 
+import com.schoolerc.fiftheditioncompanion.entity.operators.ComponentVisitor;
 import com.schoolerc.fiftheditioncompanion.util.Math;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by Chaz Schooler on 12/30/2016.
  */
 
-public class Character implements Component, Serializable {
+public class Character extends Component {
 
-    private int mStrengthScore;
-    private int mDexterityScore;
-    private int mConstitutionScore;
-    private int mIntelligenceScore;
-    private int mWisdomScore;
-    private int mCharismaScore;
+    private String name;
 
-    public Character() {
+    public Character(Builder builder) {
+        setName(builder.getName());
+        for (Component component : builder.getChildren()) {
+            addComponent(component);
+        }
     }
 
     public static class Builder
     {
+        private String name = "";
+        List<Component> children;
 
+        public Builder()
+        {
+            children = new Vector<>();
+        }
+
+        public Builder name(String name)
+        {
+            this.name = name;
+            return this;
+        }
+
+        public Builder child(Component component)
+        {
+            children.add(component);
+            return this;
+        }
+
+        public Builder children(Collection<Component> components)
+        {
+            children.addAll(components);
+            return this;
+        }
+
+        public List<Component> getChildren()
+        {
+            return children;
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public Character build()
+        {
+            return new Character(this);
+        }
     }
 
-    public boolean equals(Character c)
+    @Override
+    public String getName()
     {
-        return false;
+        return name;
     }
-
-    public int getStrengthScore()
+    public void setName(String name)
     {
-        return mStrengthScore;
+        this.name = name;
     }
 
-    public int getDexterityScore()
+    public void accept(ComponentVisitor visitor)
     {
-        return mDexterityScore;
+        visitor.visitCharacter(this);
     }
 
-    public int getConstitutionScore()
-    {
-        return mConstitutionScore;
+    @Override
+    public int getStrengthScore() {
+        return 0; //TODO replace with visitor that scans children for strength
     }
 
-    public int getIntelligenceScore()
-    {
-        return mIntelligenceScore;
+    @Override
+    public int getDexterityScore() {
+        return 0; //TODO replace with visitor that scans children for dexterity
     }
 
-    public int getWisdomScore()
-    {
-        return mWisdomScore;
+    @Override
+    public int getConstitutionScore() {
+        return 0; //TODO replace with visitor that scans children for constitution
     }
 
-    public int getCharismaScore()
-    {
-        return mCharismaScore;
+    @Override
+    public int getIntelligenceScore() {
+        return 0; //TODO replace with visitor that scans children for intelligence
     }
 
-    public void setStrengthScore(int strengthScore)
-    {
-        mStrengthScore = strengthScore;
+    @Override
+    public int getWisdomScore() {
+        return 0; //TODO replace with visitor that scans children for wisdom
     }
 
-    public void setDexterityScore(int dexterityScore)
-    {
-        mDexterityScore = dexterityScore;
+    @Override
+    public int getCharismaScore() {
+        return 0; //TODO replace with visitor that scans children for charisma
     }
 
-    public void setConstitutionScore(int constitutionScore) {mConstitutionScore = constitutionScore;}
 
-    public void setIntelligenceScore(int intelligenceScore) {mIntelligenceScore = intelligenceScore;}
-
-    public void setWisdomScore(int wisdomScore)
-    {
-        mWisdomScore = wisdomScore;
-    }
-
-    public void setCharismaScore(int charismaScore) {mCharismaScore = charismaScore;}
-
-    public int getStrengthBonus()
-    {
-        return Math.scoreToBonus(getStrengthScore());
-    }
-
-    public int getDexterityBonus()
-    {
-        return Math.scoreToBonus(getDexterityScore());
-    }
-
-    public int getConstitutionBonus()
-    {
-        return Math.scoreToBonus(getConstitutionScore());
-    }
-
-    public int getIntelligenceBonus()
-    {
-        return Math.scoreToBonus(getIntelligenceScore());
-    }
-
-    public int getWisdomBonus()
-    {
-        return Math.scoreToBonus(getWisdomScore());
-    }
-
-    public int getCharismaBonus()
-    {
-        return Math.scoreToBonus(getCharismaScore());
-    }
-
-    public int getStrengthSave()
-    {
-        return getStrengthBonus();
-    }
-
-    public int getDexteritySave()
-    {
-        return getDexterityBonus();
-    }
-
-    public int getConstitutionSave()
-    {
-        return getConstitutionBonus();
-    }
-
-    public int getIntelligenceSave()
-    {
-        return getIntelligenceBonus();
-    }
-
-    public int getWisdomSave()
-    {
-        return getWisdomBonus();
-    }
-
-    public int getCharismaSave()
-    {
-        return getCharismaScore();
-    }
-
-    public int getAcrobaticsBonus()
-    {
-        return getDexterityBonus();
-    }
-
-    public int getAnimalHandlingBonus()
-    {
-        return getWisdomBonus();
-    }
-
-    public int getArcanaBonus()
-    {
-        return getIntelligenceBonus();
-    }
-
-    public int getAthleticsBonus()
-    {
-        return getStrengthBonus();
-    }
-
-    public int getDeceptionBonus()
-    {
-        return getCharismaScore();
-    }
-
-    public int getHistoryBonus()
-    {
-        return getIntelligenceBonus();
-    }
-
-    public int getInsightBonus()
-    {
-        return getWisdomBonus();
-    }
-
-    public int getIntimidationBonus()
-    {
-        return getCharismaBonus();
-    }
-
-    public int getInvestigationBonus()
-    {
-        return getIntelligenceBonus();
-    }
-
-    public int getMedicineBonus()
-    {
-        return getWisdomBonus();
-    }
-
-    public int getNatureBonus()
-    {
-        return getIntelligenceBonus();
-    }
-
-    public int getPerceptionBonus()
-    {
-        return getWisdomBonus();
-    }
-
-    public int getPerformanceBonus()
-    {
-        return getCharismaBonus();
-    }
-
-    public int getPersuasionBonus()
-    {
-        return getCharismaBonus();
-    }
-
-    public int getReligionBonus()
-    {
-        return getIntelligenceBonus();
-    }
-
-    public int getSleightOfHandBonus()
-    {
-        return getDexterityBonus();
-    }
-
-    public int getStealthBonus()
-    {
-        return getDexterityBonus();
-    }
-
-    public int getSurvivalBonus()
-    {
-        return getWisdomBonus();
-    }
-
-    public int getMovementSpeed(){return 0;}
-
-    public int getArmorClass()
-    {
-        return getDexterityBonus()+10;
-    }
-
-    public int getProficiencyBonus()
-    {
-        return 0;
-    }
 }

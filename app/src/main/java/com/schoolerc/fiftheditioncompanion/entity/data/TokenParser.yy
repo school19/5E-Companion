@@ -1,37 +1,84 @@
 %language "Java"
 %name-prefix "Token"
 %define public
-%define api.push-pull push
 
 %parse-param {ParserCallbacks callbacks}
 
 %code imports{
 package com.schoolerc.fiftheditioncompanion.entity.data;
+import com.schoolerc.fiftheditioncompanion.entity.Character;
 import com.schoolerc.fiftheditioncompanion.entity.*;
-import android.util.Pair;
+import com.schoolerc.fiftheditioncompanion.util.Pair;
 import java.util.List;
 import java.util.ArrayList;
 }
 
 //Primary Components
-%token CHARACTER_BEGIN_TOKEN CHARACTER_END_TOKEN
-%token NAME_BEGIN_TOKEN NAME_END_TOKEN
-%token <String> STRING
+%token CHARACTER_BEGIN_TOKEN
+%token CHARACTER_END_TOKEN
+%token ABILITY_SCORES_BEGIN_TOKEN
+%token ABILITY_SCORES_END_TOKEN
+
+//Attributes
+%token <Integer> STRENGTH_TOKEN DEXTERITY_TOKEN CONSTITUTION_TOKEN INTELLIGENCE_TOKEN WISDOM_TOKEN CHARISMA_TOKEN
+%token <String> NAME_TOKEN
+
 %type <Component> component
 %type <Character> character_component
-%type <ArrayList<Pair<String, Object>>> character_property_list
-%type <Pair<String, Object>> character_property
-%type <Pair<String, Object>> name_property
+%type <AbilityScoreComponent> ability_scores
+%type <List<Pair<PropertyKey, Object>>> character_property_list ability_scores_property_list
+%type <List<Component>> component_list
+%type <Pair<PropertyKey, Object>> character_property ability_scores_property
+%type <Pair<PropertyKey, Object>> name_property
+%type <Pair<PropertyKey, Object>> strength_property dexterity_property constitution_property intelligence_property wisdom_property charisma_property
+
 %%
 
 root: component {callbacks.doneParsing($1);}
-component: character_component
 
-character_component: CHARACTER_BEGIN_TOKEN character_property_list CHARACTER_END_TOKEN {$$ = new com.schoolerc.fiftheditioncompanion.entity.Character();}
+component: character_component {$$ = (Component)$1;}
+        | ability_scores {$$ = (Component)$1;}
 
-character_property_list: character_property character_property_list { $2.add($1); $$ = $2;} |
-        character_property {ArrayList<Pair<String,Object>> tmp = new ArrayList<Pair<String, Object>>(); tmp.add($1); $$ = tmp;}
+component_list: component_list component { $1.add($2); $$ = $1;}
+        | %empty {$$ = new ArrayList<Component>();}
+
+character_component: CHARACTER_BEGIN_TOKEN character_property_list component_list CHARACTER_END_TOKEN
+    {
+        Character.Builder builder = ParserBuilderAdapter.characterBuilderFromProperties($2);
+        Character tmp = builder.build();
+        for(Component c : $3)
+        {
+            tmp.addComponent(c);
+        }
+        $$ = tmp;
+    }
+
+character_property_list: character_property character_property_list { $2.add($1); $$ = $2;}
+        | character_property {$$ = new ArrayList<Pair<PropertyKey, Object>>(); ((ArrayList<Pair<PropertyKey, Object>>)$$).add($1);}
 
 character_property: name_property
 
-name_property: NAME_BEGIN_TOKEN STRING NAME_END_TOKEN { $$ = new Pair<String, Object>("name", $2);}
+ability_scores: ABILITY_SCORES_BEGIN_TOKEN ability_scores_property_list ABILITY_SCORES_END_TOKEN
+    {
+        AbilityScoreComponent.Builder builder = ParserBuilderAdapter.abilityScoreBuilderFromProperties($2);
+        $$ = builder.build();
+    }
+
+ability_scores_property_list: ability_scores_property_list ability_scores_property { $1.add($2); $$ = $1; }
+        | ability_scores_property { $$ = new ArrayList<Pair<PropertyKey, Object>>(); ((ArrayList<Pair<PropertyKey, Object>>)$$).add($1);}
+
+ability_scores_property: strength_property
+        | dexterity_property
+        | constitution_property
+        | intelligence_property
+        | wisdom_property
+        | charisma_property
+
+name_property: NAME_TOKEN { $$ = new Pair<>(PropertyKey.Name, $1);}
+
+strength_property: STRENGTH_TOKEN { $$ = new Pair<>(PropertyKey.Strength, $1); }
+dexterity_property: DEXTERITY_TOKEN { $$ = new Pair<>(PropertyKey.Dexterity, $1); }
+constitution_property: CONSTITUTION_TOKEN { $$ = new Pair<>(PropertyKey.Constitution, $1); }
+intelligence_property: INTELLIGENCE_TOKEN { $$ = new Pair<>(PropertyKey.Intelligence, $1); }
+wisdom_property: WISDOM_TOKEN { $$ = new Pair<>(PropertyKey.Wisdom, $1); }
+charisma_property: CHARISMA_TOKEN { $$ = new Pair<>(PropertyKey.Charisma, $1); }
