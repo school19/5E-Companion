@@ -5,7 +5,7 @@
 %parse-param {ParserCallbacks callbacks}
 
 %code imports{
-package com.schoolerc.fiftheditioncompanion.entity.data;
+package com.schoolerc.fiftheditioncompanion.entity.parsing;
 import com.schoolerc.fiftheditioncompanion.entity.Character;
 import com.schoolerc.fiftheditioncompanion.entity.*;
 import com.schoolerc.fiftheditioncompanion.util.Pair;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 //Attributes
 %token <Integer> STRENGTH_TOKEN DEXTERITY_TOKEN CONSTITUTION_TOKEN INTELLIGENCE_TOKEN WISDOM_TOKEN CHARISMA_TOKEN INCREASE_TOKEN
 %token <String> NAME_TOKEN
-%token <AbilityScore> ABILITY_SCORE_TOKEN
+%token <AbilityScore> ABILITY_SCORE_TARGET_TOKEN
 
 %type <Component> component
 %type <Character> character_component
@@ -98,5 +98,5 @@ intelligence_property: INTELLIGENCE_TOKEN { $$ = new Pair<>(PropertyKey.Intellig
 wisdom_property: WISDOM_TOKEN { $$ = new Pair<>(PropertyKey.Wisdom, $1); }
 charisma_property: CHARISMA_TOKEN { $$ = new Pair<>(PropertyKey.Charisma, $1); }
 
-ability_score_property: ABILITY_SCORE_TOKEN { $$ = new Pair<>(PropertyKey.AbilityScore, $1);}
+ability_score_property: ABILITY_SCORE_TARGET_TOKEN { $$ = new Pair<>(PropertyKey.AbilityScore, $1);}
 increase_property: INCREASE_TOKEN { $$ = new Pair<>(PropertyKey.Increase, $1);}

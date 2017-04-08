@@ -1,11 +1,9 @@
-package com.schoolerc.fiftheditioncompanion.entity.data;
+package com.schoolerc.fiftheditioncompanion.entity.parsing;
 
 import com.schoolerc.fiftheditioncompanion.util.Pair;
 
 import com.schoolerc.fiftheditioncompanion.entity.Character;
 import com.schoolerc.fiftheditioncompanion.entity.*;
-
-import java.util.Objects;
 
 /**
  * Created by Chaz on 4/4/2017.

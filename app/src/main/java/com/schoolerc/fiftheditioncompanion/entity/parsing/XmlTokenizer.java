@@ -1,4 +1,4 @@
-package com.schoolerc.fiftheditioncompanion.entity.data;
+package com.schoolerc.fiftheditioncompanion.entity.parsing;
 
 import com.schoolerc.fiftheditioncompanion.entity.Component;
 import com.schoolerc.fiftheditioncompanion.util.OnErrorListener;

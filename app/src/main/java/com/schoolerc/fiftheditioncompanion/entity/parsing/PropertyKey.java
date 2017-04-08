@@ -1,4 +1,4 @@
-package com.schoolerc.fiftheditioncompanion.entity.data;
+package com.schoolerc.fiftheditioncompanion.entity.parsing;
 
 /**
  * Created by Chaz on 4/4/2017.

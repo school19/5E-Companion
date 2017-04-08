@@ -7,9 +7,9 @@ package com.schoolerc.fiftheditioncompanion;
 import com.schoolerc.fiftheditioncompanion.entity.AbilityScoreComponent;
 import com.schoolerc.fiftheditioncompanion.entity.Character;
 import com.schoolerc.fiftheditioncompanion.entity.Component;
-import com.schoolerc.fiftheditioncompanion.entity.data.ParserCallbacks;
-import com.schoolerc.fiftheditioncompanion.entity.data.TokenParser;
-import com.schoolerc.fiftheditioncompanion.entity.data.XmlTokenizer;
+import com.schoolerc.fiftheditioncompanion.entity.parsing.ParserCallbacks;
+import com.schoolerc.fiftheditioncompanion.entity.parsing.TokenParser;
+import com.schoolerc.fiftheditioncompanion.entity.parsing.XmlTokenizer;
 import com.schoolerc.fiftheditioncompanion.util.OnErrorListener;
 
 import org.junit.Assert;
