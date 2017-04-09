@@ -22,6 +22,9 @@ public class ParserBuilderAdapter {
                 case Name:
                     builder.name((String) property.second);
                     break;
+                case Child:
+                    builder.child((Component) property.second);
+                    break;
             }
         }
         return builder;

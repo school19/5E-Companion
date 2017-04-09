@@ -13,5 +13,6 @@ public enum PropertyKey {
     Wisdom,
     Charisma,
     AbilityScore,
-    Increase
+    Increase,
+    Child
 }
