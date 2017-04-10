@@ -12,7 +12,7 @@ public class AbilityScoreIncreaseComponent extends Component {
     private int increase;
 
     @Override
-    void accept(ComponentVisitor visitor) {
+    public void accept(ComponentVisitor visitor) {
         visitor.visitAbilityScoreIncreaseComponent(this);
     }
 

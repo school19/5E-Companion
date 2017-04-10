@@ -11,7 +11,7 @@ public class VisionComponent extends Component {
     private int range;
 
     @Override
-    void accept(ComponentVisitor visitor) {
+    public void accept(ComponentVisitor visitor) {
 
     }
 

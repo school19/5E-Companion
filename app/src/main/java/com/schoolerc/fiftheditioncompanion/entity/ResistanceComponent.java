@@ -10,7 +10,7 @@ public class ResistanceComponent extends Component {
     DamageType resistantTo;
 
     @Override
-    void accept(ComponentVisitor visitor) {
+    public void accept(ComponentVisitor visitor) {
 
     }
 

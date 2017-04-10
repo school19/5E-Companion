@@ -10,7 +10,7 @@ public class DisadvantageComponent extends Component {
     DiceRoll disadvantageOn;
 
     @Override
-    void accept(ComponentVisitor visitor) {
+    public void accept(ComponentVisitor visitor) {
 
     }
 

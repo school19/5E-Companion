@@ -14,7 +14,7 @@ public class ChooseComponent extends Component {
     private List<Component> components;
 
     @Override
-    void accept(ComponentVisitor visitor) {
+    public void accept(ComponentVisitor visitor) {
 
     }
 

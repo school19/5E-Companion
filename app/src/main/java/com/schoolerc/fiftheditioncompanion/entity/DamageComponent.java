@@ -8,7 +8,7 @@ import com.schoolerc.fiftheditioncompanion.entity.operators.ComponentVisitor;
 
 public class DamageComponent extends Component implements Effect {
     @Override
-    void accept(ComponentVisitor visitor) {
+    public void accept(ComponentVisitor visitor) {
 
     }
 

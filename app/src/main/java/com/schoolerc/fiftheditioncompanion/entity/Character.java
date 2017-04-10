@@ -2,18 +2,20 @@ package com.schoolerc.fiftheditioncompanion.entity;
 
 import com.schoolerc.fiftheditioncompanion.entity.operators.ComponentVisitor;
 import com.schoolerc.fiftheditioncompanion.util.Math;
+import com.schoolerc.fiftheditioncompanion.entity.operators.*;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
+
 
 /**
  * Created by Chaz Schooler on 12/30/2016.
  */
 
-public class Character extends Component {
+public class Character extends Component implements ComponentObserver{
 
+    private AbilityScoreCalculator abilityScoreCalculator = new AbilityScoreCalculator();
     private String name;
 
     public Character(Builder builder) {
@@ -21,6 +23,8 @@ public class Character extends Component {
         for (Component component : builder.getChildren()) {
             addComponent(component);
         }
+        addObserver(this);
+        recalculate();
     }
 
     public static class Builder
@@ -80,6 +84,20 @@ public class Character extends Component {
     public void accept(ComponentVisitor visitor)
     {
         visitor.visitCharacter(this);
+    }
+
+    @Override
+    public void childAdded() {
+        recalculate();
+    }
+
+    @Override
+    public void childRemoved() {
+        recalculate();
+    }
+
+    private void recalculate()
+    {
     }
 
     @Override

@@ -10,7 +10,7 @@ public class ProficiencyComponent extends Component {
     DiceRoll proficientIn;
 
     @Override
-    void accept(ComponentVisitor visitor) {
+    public void accept(ComponentVisitor visitor) {
 
     }
 

@@ -21,8 +21,9 @@ import java.io.InputStream;
 
 public class XmlParsingTest implements OnErrorListener, ParserCallbacks{
 
-    private static final String characterNameTestString = "<character name=\"Aelar\"></character>";
-    private static final String abilityScoresTestString = "<ability-scores strength=\"10\" dexterity=\"11\" constitution=\"12\" intelligence=\"13\" wisdom=\"14\" charisma=\"15\"></ability-scores>";
+    private static final String characterNameTestString = "<character><name>Aelar</name></character>";
+    private static final String abilityScoresTestString = "<ability-scores><strength>10</strength><dexterity>11</dexterity><constitution>12</constitution><intelligence>13</intelligence><wisdom>14</wisdom><charisma>15</charisma></ability-scores>";
+    private static final String abilityScoreImprovementTestString = "<ability-score-improvement><";
 
 
     private Component parseResult;
