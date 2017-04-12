@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <race>
     <name>Half Elf</name>
-    <ability-score-increase>
+    <ability-score-modifier>
         <target>
             Charisma
         </target>
         <value>
             2
         </value>
-    </ability-score-increase>
+    </ability-score-modifier>
     <choose>
         <quantity>2</quantity>
         <options>
-            <ability-score-increase>
+            <ability-score-modifier>
                 <target>
                     Strength
                 </target>
                 <value>
                     1
                 </value>
-            </ability-score-increase>
-            <ability-score-increase>
+            </ability-score-modifier>
+            <ability-score-modifier>
                 <target>
                     Dexterity
                 </target>
                 <value>
                     1
                 </value>
-            </ability-score-increase>
-            <ability-score-increase>
+            </ability-score-modifier>
+            <ability-score-modifier>
                 <target>
                     Constitution
                 </target>
                 <value>
                     1
                 </value>
-            </ability-score-increase>
-            <ability-score-increase>
+            </ability-score-modifier>
+            <ability-score-modifier>
                 <target>
                     Intelligence
                 </target>
                 <value>
                     1
                 </value>
-            </ability-score-increase>
-            <ability-score-increase>
+            </ability-score-modifier>
+            <ability-score-modifier>
                 <target>
                     Wisdom
                 </target>
                 <value>
                     1
                 </value>
-            </ability-score-increase>
+            </ability-score-modifier>
         </options>
     </choose>
     <speed>30</speed>

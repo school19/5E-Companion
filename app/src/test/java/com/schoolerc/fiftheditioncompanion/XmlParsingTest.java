@@ -4,12 +4,14 @@
 
 package com.schoolerc.fiftheditioncompanion;
 
-import com.schoolerc.fiftheditioncompanion.entity.AbilityScoreComponent;
-import com.schoolerc.fiftheditioncompanion.entity.Character;
-import com.schoolerc.fiftheditioncompanion.entity.Component;
-import com.schoolerc.fiftheditioncompanion.entity.parsing.ParserCallbacks;
-import com.schoolerc.fiftheditioncompanion.entity.parsing.TokenParser;
-import com.schoolerc.fiftheditioncompanion.entity.parsing.XmlTokenizer;
+import com.schoolerc.fiftheditioncompanion.rules.AbilityScore;
+import com.schoolerc.fiftheditioncompanion.components.AbilityScoreComponent;
+import com.schoolerc.fiftheditioncompanion.components.AbilityScoreIncreaseComponent;
+import com.schoolerc.fiftheditioncompanion.components.Character;
+import com.schoolerc.fiftheditioncompanion.components.Component;
+import com.schoolerc.fiftheditioncompanion.components.parsing.ParserCallbacks;
+import com.schoolerc.fiftheditioncompanion.components.parsing.TokenParser;
+import com.schoolerc.fiftheditioncompanion.components.parsing.XmlTokenizer;
 import com.schoolerc.fiftheditioncompanion.util.OnErrorListener;
 
 import org.junit.Assert;
@@ -23,7 +25,8 @@ public class XmlParsingTest implements OnErrorListener, ParserCallbacks{
 
     private static final String characterNameTestString = "<character><name>Aelar</name></character>";
     private static final String abilityScoresTestString = "<ability-scores><strength>10</strength><dexterity>11</dexterity><constitution>12</constitution><intelligence>13</intelligence><wisdom>14</wisdom><charisma>15</charisma></ability-scores>";
-    private static final String abilityScoreImprovementTestString = "<ability-score-improvement><";
+    private static final String abilityScoreIncreaseTestString = "<ability-score-increase><ability-score-target>Strength</ability-score-target><modifier>2</modifier></ability-score-increase>";
+    private static final String attackRollTestString = null;
 
 
     private Component parseResult;
@@ -40,7 +43,7 @@ public class XmlParsingTest implements OnErrorListener, ParserCallbacks{
     }
 
     @Test
-    public void characterAbilityScoresParseTest()
+    public void abilityScoresParseTest()
     {
         AbilityScoreComponent.Builder abilityBuilder = new AbilityScoreComponent.Builder();
         AbilityScoreComponent component = abilityBuilder.strength(10)
@@ -60,6 +63,20 @@ public class XmlParsingTest implements OnErrorListener, ParserCallbacks{
         Assert.assertEquals(component.getWisdomScore(), parseResult.getWisdomScore());
         Assert.assertEquals(component.getCharismaScore(), parseResult.getCharismaScore());
 
+    }
+
+    @Test
+    public void abilityScoreImprovementParseTest()
+    {
+        AbilityScoreIncreaseComponent.Builder testBuilder = new AbilityScoreIncreaseComponent.Builder();
+        AbilityScoreIncreaseComponent testComponent = testBuilder.abilityScore(AbilityScore.Strength)
+                .modifier(2)
+                .build();
+
+        parseString(abilityScoreIncreaseTestString);
+
+        Assert.assertEquals(testComponent.getAbilityScore(), ((AbilityScoreIncreaseComponent)parseResult).getAbilityScore());
+        Assert.assertEquals(testComponent.getModifier(), ((AbilityScoreIncreaseComponent)parseResult).getModifier());
     }
 
     private void parseString(String src)

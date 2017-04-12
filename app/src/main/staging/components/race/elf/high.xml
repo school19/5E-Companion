@@ -1,9 +1,9 @@
 <subrace>
     <name>High</name>
-    <ability-score-increase>
+    <ability-score-modifier>
         <target>Intelligence</target>
         <value>1</value>
-    </ability-score-increase>
+    </ability-score-modifier>
     <trait>
         <description>Elf Weapon Training</description>
         <proficiency>

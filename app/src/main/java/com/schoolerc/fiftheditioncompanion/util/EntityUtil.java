@@ -1,8 +1,8 @@
 package com.schoolerc.fiftheditioncompanion.util;
 
-import com.schoolerc.fiftheditioncompanion.entity.AbilityScore;
-import com.schoolerc.fiftheditioncompanion.entity.DamageType;
-import com.schoolerc.fiftheditioncompanion.entity.Skill;
+import com.schoolerc.fiftheditioncompanion.rules.AbilityScore;
+import com.schoolerc.fiftheditioncompanion.rules.DamageType;
+import com.schoolerc.fiftheditioncompanion.rules.Skill;
 
 /**
  * Created by Chaz on 3/27/2017.

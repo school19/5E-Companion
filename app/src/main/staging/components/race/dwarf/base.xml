@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <race>
     <name>Dwarf</name>
-    <ability-score-increase score="Constitution">2</ability-score-increase>
+    <ability-score-modifier score="Constitution">2</ability-score-modifier>
     <speed>25</speed>
     <vision type="darkvision">60</vision>
     <trait>

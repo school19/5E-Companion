@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <race id="elf">
     <name>Elf</name>
-    <ability-score-increase>
+    <ability-score-modifier>
         <target>
             Intelligence
         </target>
         <value>2</value>
-    </ability-score-increase>
+    </ability-score-modifier>
     <speed>30</speed>
     <vision type="darkvision">60</vision>
     <trait>
