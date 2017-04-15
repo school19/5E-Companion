@@ -5,4 +5,7 @@ package com.schoolerc.fiftheditioncompanion.components.parsing;
  */
 
 public interface Tokenizer {
+    String lval();
+    Token peek();
+    Token next();
 }

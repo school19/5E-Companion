@@ -18,10 +18,6 @@ android {
         }
     }
 
-    task bisonExec(type:Exec){
-        workingDir file('src/main/java/com/schoolerc/fiftheditioncompanion/components/parsing')
-        commandLine 'bison', 'TokenParser.yy', '--output=TokenParser.java'
-    }
     task zipAssets(type:Zip) {
         from 'src/main/staging'
     }
@@ -31,7 +27,6 @@ android {
     }
     copyAssetZip.dependsOn zipAssets
     preBuild.dependsOn copyAssetZip
-    preBuild.dependsOn bisonExec
 }
 
 dependencies {

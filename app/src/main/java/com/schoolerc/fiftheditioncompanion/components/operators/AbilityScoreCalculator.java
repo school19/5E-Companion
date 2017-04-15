@@ -2,6 +2,7 @@ package com.schoolerc.fiftheditioncompanion.components.operators;
 
 import com.schoolerc.fiftheditioncompanion.components.AbilityScoreComponent;
 import com.schoolerc.fiftheditioncompanion.components.AbilityScoreIncreaseComponent;
+import com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent;
 import com.schoolerc.fiftheditioncompanion.components.Character;
 import com.schoolerc.fiftheditioncompanion.components.ChooseComponent;
 import com.schoolerc.fiftheditioncompanion.components.ClassComponent;
@@ -47,6 +48,11 @@ public class AbilityScoreCalculator implements ComponentVisitor {
     @Override
     public void visitAbilityScoreIncreaseComponent(AbilityScoreIncreaseComponent abilityScoreIncreaseComponent) {
 
+    }
+
+    @Override
+    public void visitAbilitiyScoreModifierComponent(AbilityScoreModifierComponent abilityScoreModifierComponent) {
+        
     }
 
     @Override

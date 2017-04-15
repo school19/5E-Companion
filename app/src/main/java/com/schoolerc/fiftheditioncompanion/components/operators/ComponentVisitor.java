@@ -2,6 +2,7 @@ package com.schoolerc.fiftheditioncompanion.components.operators;
 
 import com.schoolerc.fiftheditioncompanion.components.AbilityScoreComponent;
 import com.schoolerc.fiftheditioncompanion.components.AbilityScoreIncreaseComponent;
+import com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent;
 import com.schoolerc.fiftheditioncompanion.components.Character;
 import com.schoolerc.fiftheditioncompanion.components.ChooseComponent;
 import com.schoolerc.fiftheditioncompanion.components.ClassComponent;
@@ -26,6 +27,7 @@ public interface ComponentVisitor {
     void visitCharacter(Character c);
     void visitAbilityScoreComponent(AbilityScoreComponent abilityScoreComponent);
     void visitAbilityScoreIncreaseComponent(AbilityScoreIncreaseComponent abilityScoreIncreaseComponent);
+    void visitAbilitiyScoreModifierComponent(AbilityScoreModifierComponent abilityScoreModifierComponent);
     void visitChooseComponent(ChooseComponent chooseComponent);
     void visitClassComponent(ClassComponent classComponent);
     void visitConditionComponent(ConditionComponent conditionComponent);
