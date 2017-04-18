@@ -37,6 +37,15 @@ public class XmlTokenizer implements Tokenizer {
         startTagMap.put("choose", Token.ChooseBegin);
         startTagMap.put("quantity", Token.QuantityBegin);
         startTagMap.put("options", Token.OptionsBegin);
+        startTagMap.put("race", Token.RaceBegin);
+        startTagMap.put("class", Token.ClassBegin);
+        startTagMap.put("subrace", Token.SubraceBegin);
+        startTagMap.put("description", Token.DescriptionBegin);
+        startTagMap.put("list", Token.ComponentListBegin);
+        startTagMap.put("race-proxy", Token.RaceProxyBegin);
+        startTagMap.put("class-proxy", Token.ClassProxyBegin);
+        startTagMap.put("subrace-proxy", Token.SubraceProxyBegin);
+        startTagMap.put("trait", Token.TraitBegin);
     }
 
     private Map<String, Token> endTagMap = new HashMap<>();
@@ -55,6 +64,15 @@ public class XmlTokenizer implements Tokenizer {
         endTagMap.put("choose", Token.ChooseEnd);
         endTagMap.put("quantity", Token.QuantityEnd);
         endTagMap.put("options", Token.OptionsEnd);
+        endTagMap.put("race", Token.RaceEnd);
+        endTagMap.put("class", Token.ClassEnd);
+        endTagMap.put("subrace", Token.SubraceEnd);
+        endTagMap.put("description", Token.DescriptionEnd);
+        endTagMap.put("list", Token.ComponentListEnd);
+        endTagMap.put("race-proxy", Token.RaceProxyEnd);
+        endTagMap.put("class-proxy", Token.ClassProxyEnd);
+        endTagMap.put("subrace-proxy", Token.SubraceProxyEnd);
+        endTagMap.put("trait", Token.TraitEnd);
     }
 
     private List<Pair<Pattern, Token>> contentPatterns = new ArrayList<>();

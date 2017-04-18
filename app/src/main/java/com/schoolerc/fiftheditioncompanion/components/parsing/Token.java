@@ -47,5 +47,19 @@ public enum Token {
     QuantityBegin,
     QuantityEnd,
     OptionsBegin,
-    OptionsEnd
+    OptionsEnd,
+    ClassProxyBegin,
+    ClassProxyEnd,
+    RaceProxyBegin,
+    RaceProxyEnd,
+    SubraceBegin,
+    SubraceEnd,
+    SubraceProxyBegin,
+    SubraceProxyEnd,
+    DescriptionBegin,
+    DescriptionEnd,
+    TraitBegin,
+    TraitEnd,
+    ComponentListBegin,
+    ComponentListEnd
 }
