@@ -372,7 +372,7 @@ public class Parser {
                     builder.name(parseName());
                     break;
                 default:
-                    throw new ParseException(unexpectedOfList(Arrays.asList(Token.SubraceBegin, Token.SubraceProxyBegin), lookahead));
+                    throw new ParseException(unexpectedOfList(Arrays.asList(Token.SubraceBegin, Token.SubraceProxyBegin, Token.AbilityScoreModifierBegin, Token.TraitBegin), lookahead));
             }
             lookahead = tokenizer.peek();
         }

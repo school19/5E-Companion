@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,6 +47,13 @@ public class XmlTokenizer implements Tokenizer {
         startTagMap.put("class-proxy", Token.ClassProxyBegin);
         startTagMap.put("subrace-proxy", Token.SubraceProxyBegin);
         startTagMap.put("trait", Token.TraitBegin);
+        startTagMap.put("language", Token.LanguageBegin);
+        startTagMap.put("proficiency", Token.ProficiencyBegin);
+        startTagMap.put("weapon", Token.WeaponBegin);
+        startTagMap.put("armor", Token.ArmorBegin);
+        startTagMap.put("saving-throw", Token.SavingThrowBegin);
+        startTagMap.put("skill", Token.SkillBegin);
+        startTagMap.put("tool", Token.ToolBegin);
     }
 
     private Map<String, Token> endTagMap = new HashMap<>();
@@ -73,6 +81,13 @@ public class XmlTokenizer implements Tokenizer {
         endTagMap.put("class-proxy", Token.ClassProxyEnd);
         endTagMap.put("subrace-proxy", Token.SubraceProxyEnd);
         endTagMap.put("trait", Token.TraitEnd);
+        endTagMap.put("language", Token.LanguageEnd);
+        endTagMap.put("proficiency", Token.ProficiencyEnd);
+        endTagMap.put("weapon", Token.WeaponEnd);
+        endTagMap.put("armor", Token.ArmorEnd);
+        endTagMap.put("saving-throw", Token.SavingThrowEnd);
+        endTagMap.put("skill", Token.SkillEnd);
+        endTagMap.put("tool", Token.ToolEnd);
     }
 
     private List<Pair<Pattern, Token>> contentPatterns = new ArrayList<>();
@@ -87,19 +102,41 @@ public class XmlTokenizer implements Tokenizer {
         contentPatterns.add(new Pair<>(Pattern.compile("intelligence", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Intelligence));
         contentPatterns.add(new Pair<>(Pattern.compile("wisdom", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Wisdom));
         contentPatterns.add(new Pair<>(Pattern.compile("charisma", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Charisma));
+        contentPatterns.add(new Pair<>(Pattern.compile("athletics", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Athletics));
+        contentPatterns.add(new Pair<>(Pattern.compile("arcana", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Arcana));
+        contentPatterns.add(new Pair<>(Pattern.compile("acrobatics", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Acrobatics));
+        contentPatterns.add(new Pair<>(Pattern.compile("animal handling", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.AnimalHandling));
+        contentPatterns.add(new Pair<>(Pattern.compile("history", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.History));
+        contentPatterns.add(new Pair<>(Pattern.compile("deception", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Deception));
+        contentPatterns.add(new Pair<>(Pattern.compile("insight", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Insight));
+        contentPatterns.add(new Pair<>(Pattern.compile("perception", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Perception));
+        contentPatterns.add(new Pair<>(Pattern.compile("sleight of hand", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.SleightOfHand));
+        contentPatterns.add(new Pair<>(Pattern.compile("stealth", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Stealth));
+        contentPatterns.add(new Pair<>(Pattern.compile("nature", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Nature));
+        contentPatterns.add(new Pair<>(Pattern.compile("medicine", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Medicine));
+        contentPatterns.add(new Pair<>(Pattern.compile("religion", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Religion));
+        contentPatterns.add(new Pair<>(Pattern.compile("investigation", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Investigation));
+        contentPatterns.add(new Pair<>(Pattern.compile("survival", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Survival));
+        contentPatterns.add(new Pair<>(Pattern.compile("persuasion", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Persuasion));
+        contentPatterns.add(new Pair<>(Pattern.compile("performance", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Performance));
+        contentPatterns.add(new Pair<>(Pattern.compile("intimidation", Pattern.CASE_INSENSITIVE | Pattern.LITERAL), Token.Intimidation));
     }
 
 
     private boolean parsed = false;
     private int index = 0;
+    String lval;
+    Token token;
     private List<Pair<Token, String>> tokenStream;
     private XmlPullParser pullParser;
-    public XmlTokenizer(InputStream inputStream)
-    {
+    public XmlTokenizer(InputStream inputStream){
         pullParser = Xml.newPullParser();
         try {
             pullParser.setInput(inputStream, null);
-        } catch (XmlPullParserException e) {
+
+            //Skip START_DOCUMENT event
+            pullParser.next();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         tokenStream = new ArrayList<>();
@@ -183,11 +220,7 @@ public class XmlTokenizer implements Tokenizer {
 
     @Override
     public Token peek() {
-        if(!parsed)
-        {
-            parse();
-        }
-        return tokenStream.get(index).first;
+        return token;
     }
 
     @Override
