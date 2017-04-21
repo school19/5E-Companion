@@ -68,30 +68,30 @@
         <choose>
             <quantity>2</quantity>
             <options>
-                <proficiency><skill-check>Acrobatics</skill-check></proficiency>
-            <proficiency><skill-check>Animal Handling</skill-check></proficiency>
-            <proficiency><skill-check>Arcana</skill-check></proficiency>
-            <proficiency><skill-check>Athletics</skill-check></proficiency>
-            <proficiency><skill-check>Deception</skill-check></proficiency>
-            <proficiency><skill-check>History</skill-check></proficiency>
-            <proficiency><skill-check>Insight</skill-check></proficiency>
-            <proficiency><skill-check>Intimidation</skill-check></proficiency>
-            <proficiency><skill-check>Investigation</skill-check></proficiency>
-            <proficiency><skill-check>Medicine</skill-check></proficiency>
-            <proficiency><skill-check>Nature</skill-check></proficiency>
-            <proficiency><skill-check>Perception</skill-check></proficiency>
-            <proficiency><skill-check>Performance</skill-check></proficiency>
-            <proficiency><skill-check>Persuasion</skill-check></proficiency>
-            <proficiency><skill-check>Religion</skill-check></proficiency>
-            <proficiency><skill-check>Sleight of Hand</skill-check></proficiency>
-            <proficiency><skill-check>Stealth</skill-check></proficiency>
-            <proficiency><skill-check>Survival</skill-check></proficiency>
+                <proficiency><skill>Acrobatics</skill></proficiency>
+                <proficiency><skill>Animal Handling</skill></proficiency>
+                <proficiency><skill>Arcana</skill></proficiency>
+                <proficiency><skill>Athletics</skill></proficiency>
+                <proficiency><skill>Deception</skill></proficiency>
+                <proficiency><skill>History</skill></proficiency>
+                <proficiency><skill>Insight</skill></proficiency>
+                <proficiency><skill>Intimidation</skill></proficiency>
+                <proficiency><skill>Investigation</skill></proficiency>
+                <proficiency><skill>Medicine</skill></proficiency>
+                <proficiency><skill>Nature</skill></proficiency>
+                <proficiency><skill>Perception</skill></proficiency>
+                <proficiency><skill>Performance</skill></proficiency>
+                <proficiency><skill>Persuasion</skill></proficiency>
+                <proficiency><skill>Religion</skill></proficiency>
+                <proficiency><skill>Sleight of Hand</skill></proficiency>
+                <proficiency><skill>Stealth</skill></proficiency>
+                <proficiency><skill>Survival</skill></proficiency>
             </options>
         </choose>
     </trait>
     <language>Common</language>
     <language>Elvish</language>
-    <choose quantity="1">
+    <choose>
         <quantity>1</quantity>
         <options>
         <language>Dwarvish</language>

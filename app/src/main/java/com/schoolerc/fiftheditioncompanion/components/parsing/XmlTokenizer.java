@@ -43,9 +43,9 @@ public class XmlTokenizer implements Tokenizer {
         startTagMap.put("subrace", Token.SubraceBegin);
         startTagMap.put("description", Token.DescriptionBegin);
         startTagMap.put("list", Token.ComponentListBegin);
-        startTagMap.put("race-proxy", Token.RaceProxyBegin);
-        startTagMap.put("class-proxy", Token.ClassProxyBegin);
-        startTagMap.put("subrace-proxy", Token.SubraceProxyBegin);
+        startTagMap.put("race-ref", Token.RaceProxyBegin);
+        startTagMap.put("class-ref", Token.ClassProxyBegin);
+        startTagMap.put("subrace-ref", Token.SubraceProxyBegin);
         startTagMap.put("trait", Token.TraitBegin);
         startTagMap.put("language", Token.LanguageBegin);
         startTagMap.put("proficiency", Token.ProficiencyBegin);
@@ -77,9 +77,9 @@ public class XmlTokenizer implements Tokenizer {
         endTagMap.put("subrace", Token.SubraceEnd);
         endTagMap.put("description", Token.DescriptionEnd);
         endTagMap.put("list", Token.ComponentListEnd);
-        endTagMap.put("race-proxy", Token.RaceProxyEnd);
-        endTagMap.put("class-proxy", Token.ClassProxyEnd);
-        endTagMap.put("subrace-proxy", Token.SubraceProxyEnd);
+        endTagMap.put("race-ref", Token.RaceProxyEnd);
+        endTagMap.put("class-ref", Token.ClassProxyEnd);
+        endTagMap.put("subrace-ref", Token.SubraceProxyEnd);
         endTagMap.put("trait", Token.TraitEnd);
         endTagMap.put("language", Token.LanguageEnd);
         endTagMap.put("proficiency", Token.ProficiencyEnd);

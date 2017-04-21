@@ -1,8 +1,6 @@
 package com.schoolerc.fiftheditioncompanion.components.parsing;
 
 
-import android.support.annotation.NonNull;
-
 import com.schoolerc.fiftheditioncompanion.components.AbilityScoreComponent;
 import com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent;
 import com.schoolerc.fiftheditioncompanion.components.Character;
@@ -16,6 +14,7 @@ import com.schoolerc.fiftheditioncompanion.components.SubraceComponent;
 import com.schoolerc.fiftheditioncompanion.components.SubraceComponentProxy;
 import com.schoolerc.fiftheditioncompanion.components.TraitComponent;
 import com.schoolerc.fiftheditioncompanion.rules.AbilityScore;
+import com.schoolerc.fiftheditioncompanion.rules.Skill;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,12 +29,14 @@ public class Parser {
         tokenizer = t;
     }
 
+    //Parsing entry point
     public Component parse() throws ParseException {
         //root of grammar
         //root: component
         return parseComponent();
     }
 
+    //Component parsing methods
     private Component parseComponent() throws ParseException {
         /*
         component: character
@@ -79,10 +80,7 @@ public class Parser {
         /*
         character: CHARACTER_BEGIN_TOKEN character_children CHARACTER_END_TOKEN
          */
-        Token start = tokenizer.next();
-        if (start != Token.CharacterBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.CharacterBegin, start));
-        }
+        requireNext(Token.CharacterBegin);
         Character.Builder builder = new Character.Builder();
 
         Token lookAhead = tokenizer.peek();
@@ -113,86 +111,13 @@ public class Parser {
             lookAhead = tokenizer.peek();
         }
 
-        Token end = tokenizer.next();
-        if (end != Token.CharacterEnd) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.CharacterEnd, end));
-        }
+        requireNext(Token.CharacterEnd);
 
         return builder.build();
     }
 
-    private String parseName() throws ParseException {
-        Token t = tokenizer.next();
-        if (t != Token.NameBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.NameBegin, t));
-        }
-
-        String result;
-        t = tokenizer.next();
-        if (t != Token.Text) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.Text, t));
-        }
-
-        result = tokenizer.lval();
-
-        t = tokenizer.next();
-        if (t != Token.NameEnd) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.NameEnd, t));
-        }
-
-        return result;
-    }
-
-    private int parseWrappedNumber(Token begin, Token end) throws ParseException {
-        Token t = tokenizer.next();
-        if (t != begin) {
-            throw new ParseException(unexpectedTokenStringFormat(begin, t));
-        }
-
-        t = tokenizer.next();
-        if (t != Token.Number) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.Number, t));
-        }
-
-        int result = Integer.parseInt(tokenizer.lval());
-
-        t = tokenizer.next();
-        if (t != end) {
-            throw new ParseException(unexpectedTokenStringFormat(end, t));
-        }
-
-        return result;
-    }
-
-    private int parseStrength() throws ParseException {
-        return parseWrappedNumber(Token.StrengthBegin, Token.StrengthEnd);
-    }
-
-    private int parseDexterity() throws ParseException {
-        return parseWrappedNumber(Token.DexterityBegin, Token.DexterityEnd);
-    }
-
-    private int parseConstitution() throws ParseException {
-        return parseWrappedNumber(Token.ConstitutionBegin, Token.ConstitutionEnd);
-    }
-
-    private int parseIntelligence() throws ParseException {
-        return parseWrappedNumber(Token.IntelligenceBegin, Token.IntelligenceEnd);
-    }
-
-    private int parseWisdom() throws ParseException {
-        return parseWrappedNumber(Token.WisdomBegin, Token.WisdomEnd);
-    }
-
-    private int parseCharisma() throws ParseException {
-        return parseWrappedNumber(Token.CharacterBegin, Token.CharismaEnd);
-    }
-
     private AbilityScoreComponent parseAbilityScoreComponent() throws ParseException {
-        Token start = tokenizer.next();
-        if (start != Token.AbilityScoresBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.AbilityScoresBegin, start));
-        }
+        requireNext(Token.AbilityScoresBegin);
 
         AbilityScoreComponent.Builder builder = new AbilityScoreComponent.Builder();
 
@@ -223,14 +148,13 @@ public class Parser {
             lookahead = tokenizer.peek();
         }
 
+        requireNext(Token.AbilityScoresEnd);
+
         return builder.build();
     }
 
     private AbilityScoreModifierComponent parseAbilityScoreModifier() throws ParseException {
-        Token start = tokenizer.next();
-        if (start != Token.AbilityScoreModifierBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.AbilityScoreModifierBegin, start));
-        }
+        requireNext(Token.AbilityScoreModifierBegin);
 
         AbilityScoreModifierComponent.Builder builder = new AbilityScoreModifierComponent.Builder();
 
@@ -238,7 +162,7 @@ public class Parser {
         while (lookahead != Token.AbilityScoreModifierEnd) {
             switch (lookahead) {
                 case AbilityScoreTargetBegin:
-                    builder.target(parseAbiltiyScoreTarget());
+                    builder.target(parseAbilityScoreTarget());
                     break;
                 case ValueBegin:
                     builder.value(parseValue());
@@ -247,18 +171,13 @@ public class Parser {
             lookahead = tokenizer.peek();
         }
 
+        requireNext(Token.AbilityScoreModifierEnd);
+
         return builder.build();
     }
 
-    private int parseValue() throws ParseException {
-        return parseWrappedNumber(Token.ValueBegin, Token.ValueEnd);
-    }
-
-    private AbilityScore parseAbiltiyScoreTarget() throws ParseException {
-        Token start = tokenizer.next();
-        if (start != Token.AbilityScoreTargetBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.AbilityScoreTargetBegin, start));
-        }
+    private AbilityScore parseAbilityScoreTarget() throws ParseException {
+        requireNext(Token.AbilityScoreTargetBegin);
 
         AbilityScore result;
         Token target = tokenizer.next();
@@ -285,19 +204,13 @@ public class Parser {
                 throw new ParseException(unexpectedOfList(Arrays.asList(Token.Strength, Token.Dexterity, Token.Constitution, Token.Intelligence, Token.Wisdom, Token.Charisma), target));
         }
 
-        Token end = tokenizer.next();
-        if (end != Token.AbilityScoreTargetEnd) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.AbilityScoreTargetEnd, end));
-        }
+        requireNext(Token.AbilityScoreTargetEnd);
 
         return result;
     }
 
     private TraitComponent parseTraitComponent() throws ParseException {
-        Token start = tokenizer.next();
-        if (start != Token.TraitBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.TraitBegin, start));
-        }
+        requireNext(Token.TraitBegin);
 
         TraitComponent.Builder builder = new TraitComponent.Builder();
 
@@ -319,14 +232,13 @@ public class Parser {
             lookahead = tokenizer.peek();
         }
 
+        requireNext(Token.TraitEnd);
+
         return builder.build();
     }
 
     private ChooseComponent parseChooseComponent() throws ParseException {
-        Token start = tokenizer.next();
-        if (start != Token.ChooseBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.ChooseBegin, start));
-        }
+        requireNext(Token.ChooseBegin);
 
         ChooseComponent.Builder builder = new ChooseComponent.Builder();
 
@@ -343,19 +255,13 @@ public class Parser {
             lookahead = tokenizer.peek();
         }
 
-        Token end = tokenizer.next();
-        if (end != Token.ChooseEnd) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.ChooseEnd, end));
-        }
+        requireNext(Token.ChooseEnd);
 
         return builder.build();
     }
 
     private RaceComponent parseRaceComponent() throws ParseException {
-        Token start = tokenizer.next();
-        if (start != Token.RaceBegin) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.RaceBegin, start));
-        }
+        requireNext(Token.RaceBegin);
 
         RaceComponent.Builder builder = new RaceComponent.Builder();
 
@@ -377,47 +283,34 @@ public class Parser {
             lookahead = tokenizer.peek();
         }
 
-        Token end = tokenizer.next();
-        if (end != Token.RaceEnd) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.RaceEnd, end));
-        }
+        requireNext(Token.RaceEnd);
 
         return builder.build();
     }
 
     private RaceComponentProxy parseRaceComponentProxy() throws ParseException {
-        return null;
+        return null; //TODO
     }
 
     private ClassComponent parseClassComponent() throws ParseException {
-        return null;
+        return null; //TODO
     }
 
     private ClassComponentProxy parseClassComponentProxy() throws ParseException {
-        return null;
+        return null; //TODO
     }
 
     private SubraceComponent parseSubraceComponent() throws ParseException {
-        return null;
+        return null; //TODO
     }
 
     private SubraceComponentProxy parseSubraceComponentProxy() throws ParseException {
-        return null;
+        return null; //TODO
     }
 
-    private int parseQuantity() throws ParseException {
-        return parseWrappedNumber(Token.QuantityBegin, Token.QuantityEnd);
-    }
-
-    private List<Component> parseOptions() throws ParseException {
-        return parseComponentList(Token.OptionsBegin, Token.OptionsEnd);
-    }
-
+    //Generic attribute parsing methods
     private List<Component> parseComponentList(Token start, Token end) throws ParseException {
-        Token t = tokenizer.next();
-        if (t != start) {
-            throw new ParseException(unexpectedTokenStringFormat(start, t));
-        }
+        requireNext(start);
 
         List<Component> list = new ArrayList<>();
         Token lookahead = tokenizer.peek();
@@ -426,38 +319,160 @@ public class Parser {
             lookahead = tokenizer.peek();
         }
 
-        t = tokenizer.next();
-        if (t != end) {
-            throw new ParseException(unexpectedTokenStringFormat(end, t));
-        }
+        requireNext(end);
 
         return list;
     }
 
     private String parseWrappedString(Token start, Token end) throws ParseException {
-        Token t = tokenizer.next();
-        if (t != start) {
-            throw new ParseException(unexpectedTokenStringFormat(start, t));
-        }
+        requireNext(start);
 
-        t = tokenizer.next();
-        if (t != Token.Text) {
-            throw new ParseException(unexpectedTokenStringFormat(Token.Text, t));
-        }
+        requireNext(Token.Text);
         String result = tokenizer.lval();
 
-        t = tokenizer.next();
-        if (t != end) {
-            throw new ParseException(unexpectedTokenStringFormat(end, t));
-        }
+        requireNext(end);
+        return result;
+    }
+
+    private int parseWrappedNumber(Token start, Token end) throws ParseException {
+        requireNext(start);
+
+        requireNext(Token.Number);
+        int result = Integer.parseInt(tokenizer.lval());
+
+        requireNext(end);
 
         return result;
+    }
+
+    //Specializations of generic attribute parsing methods
+    private List<Component> parseOptions() throws ParseException {
+        return parseComponentList(Token.OptionsBegin, Token.OptionsEnd);
+    }
+
+    private int parseStrength() throws ParseException {
+        return parseWrappedNumber(Token.StrengthBegin, Token.StrengthEnd);
+    }
+
+    private int parseDexterity() throws ParseException {
+        return parseWrappedNumber(Token.DexterityBegin, Token.DexterityEnd);
+    }
+
+    private int parseConstitution() throws ParseException {
+        return parseWrappedNumber(Token.ConstitutionBegin, Token.ConstitutionEnd);
+    }
+
+    private int parseIntelligence() throws ParseException {
+        return parseWrappedNumber(Token.IntelligenceBegin, Token.IntelligenceEnd);
+    }
+
+    private int parseWisdom() throws ParseException {
+        return parseWrappedNumber(Token.WisdomBegin, Token.WisdomEnd);
+    }
+
+    private int parseCharisma() throws ParseException {
+        return parseWrappedNumber(Token.CharacterBegin, Token.CharismaEnd);
+    }
+
+    private int parseValue() throws ParseException {
+        return parseWrappedNumber(Token.ValueBegin, Token.ValueEnd);
+    }
+
+    private int parseQuantity() throws ParseException {
+        return parseWrappedNumber(Token.QuantityBegin, Token.QuantityEnd);
     }
 
     private String parseDescription() throws ParseException {
         return parseWrappedString(Token.DescriptionBegin, Token.DescriptionEnd);
     }
 
+    private String parseName() throws ParseException {
+        return parseWrappedString(Token.NameBegin, Token.NameEnd);
+    }
+
+    private Skill parseSkill() throws ParseException {
+        requireNext(Token.SkillBegin);
+
+        Skill result;
+        Token skillToken = tokenizer.next();
+        switch (skillToken) {
+            case Acrobatics:
+                result = Skill.Acrobatics;
+                break;
+            case AnimalHandling:
+                result = Skill.AnimalHandling;
+                break;
+            case Arcana:
+                result = Skill.Arcana;
+                break;
+            case Athletics:
+                result = Skill.Athletics;
+                break;
+            case Deception:
+                result = Skill.Deception;
+                break;
+            case History:
+                result = Skill.History;
+                break;
+            case Insight:
+                result = Skill.Insight;
+                break;
+            case Intimidation:
+                result = Skill.Intimidation;
+                break;
+            case Investigation:
+                result = Skill.Investigation;
+                break;
+            case Medicine:
+                result = Skill.Medicine;
+                break;
+            case Nature:
+                result = Skill.Nature;
+                break;
+            case Perception:
+                result = Skill.Perception;
+                break;
+            case Performance:
+                result = Skill.Performance;
+                break;
+            case Persuasion:
+                result = Skill.Persuasion;
+                break;
+            case Religion:
+                result = Skill.Religion;
+                break;
+            case SleightOfHand:
+                result = Skill.SleightOfHand;
+                break;
+            case Stealth:
+                result = Skill.Stealth;
+                break;
+            case Survival:
+                result = Skill.Survival;
+                break;
+            default:
+                throw new ParseException(unexpectedOfList(
+                        Arrays.asList(Token.Acrobatics, Token.AnimalHandling, Token.Arcana,
+                                Token.Athletics, Token.Deception, Token.History, Token.Insight,
+                                Token.Intimidation, Token.Investigation, Token.Medicine, Token.Nature,
+                                Token.Perception, Token.Performance, Token.Persuasion, Token.Religion,
+                                Token.SleightOfHand, Token.Stealth, Token.Survival),
+                        skillToken));
+        }
+
+        requireNext(Token.SkillEnd);
+        return result;
+    }
+
+    //Helper methods
+    private void requireNext(Token required) throws ParseException {
+        Token token = tokenizer.next();
+        if (token != required) {
+            throw new ParseException(unexpectedTokenStringFormat(required, token));
+        }
+    }
+
+    //Error string methods
     private String unexpectedOfList(List<Token> expected, Token unexpected) {
         StringBuilder builder = new StringBuilder();
         builder.append("Parse Error: Expected one of (");

@@ -72,6 +72,8 @@ public enum Token {
     ArmorEnd,
     SavingThrowBegin,
     SavingThrowEnd,
+    SkillCheckBegin,
+    SkillCheckEnd,
     SkillBegin,
     SkillEnd,
     ToolBegin,
