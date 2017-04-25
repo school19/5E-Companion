@@ -4,24 +4,34 @@
 
 package com.schoolerc.fiftheditioncompanion;
 
-
-import android.util.Xml;
-
-import com.schoolerc.fiftheditioncompanion.components.parsing.Token;
+import com.schoolerc.fiftheditioncompanion.components.ClassComponent;
+import com.schoolerc.fiftheditioncompanion.components.RaceComponent;
+import com.schoolerc.fiftheditioncompanion.components.operators.PrettyPrinter;
+import com.schoolerc.fiftheditioncompanion.rules.AbilityScore;
 
 import org.junit.Test;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.StringReader;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
+import java.io.File;
 
 public class XmlParsingTest{
 
-    private String testString = "<document></document>";
+
     @Test
-    public void tokenTest()
+    public void halfElfRaceTest()
     {
-        System.out.println(Token.CharacterBegin.toString());
+        String halfElfRacePath = "app/src/main/staging/components/race/half_elf/base.xml";
+
+        Serializer serializer = new Persister();
+
+        try {
+            RaceComponent component = serializer.read(RaceComponent.class, new File(halfElfRacePath));
+            PrettyPrinter printer = new PrettyPrinter(System.out);
+            component.accept(printer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

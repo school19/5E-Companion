@@ -3,16 +3,21 @@ package com.schoolerc.fiftheditioncompanion.components;
 import com.schoolerc.fiftheditioncompanion.components.operators.ComponentVisitor;
 import com.schoolerc.fiftheditioncompanion.rules.AbilityScore;
 
+import org.simpleframework.xml.Element;
+
 /**
  * Created by Chaz on 4/14/2017.
  */
 
 public class AbilityScoreModifierComponent extends Component {
 
+    @Element
     private int value;
+
+    @Element
     private AbilityScore target;
 
-    public AbilityScoreModifierComponent(Builder builder) {
+    public AbilityScoreModifierComponent() {
 
     }
 
@@ -21,32 +26,6 @@ public class AbilityScoreModifierComponent extends Component {
         visitor.visitAbilitiyScoreModifierComponent(this);
     }
 
-    public static class Builder {
-        private int value;
-        private AbilityScore target;
-
-        public Builder target(AbilityScore target) {
-            this.target = target;
-            return this;
-        }
-
-        public Builder value(int value) {
-            this.value = value;
-            return this;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public AbilityScore getTarget() {
-            return target;
-        }
-
-        public AbilityScoreModifierComponent build() {
-            return new AbilityScoreModifierComponent(this);
-        }
-    }
 
     public int getValue() {
         return value;

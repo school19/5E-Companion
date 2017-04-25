@@ -6,11 +6,7 @@ import com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierCompon
 import com.schoolerc.fiftheditioncompanion.components.Character;
 import com.schoolerc.fiftheditioncompanion.components.ChooseComponent;
 import com.schoolerc.fiftheditioncompanion.components.ClassComponent;
-import com.schoolerc.fiftheditioncompanion.components.ConditionComponent;
-import com.schoolerc.fiftheditioncompanion.components.DamageComponent;
-import com.schoolerc.fiftheditioncompanion.components.ImmunityComponent;
 import com.schoolerc.fiftheditioncompanion.components.LanguageComponent;
-import com.schoolerc.fiftheditioncompanion.components.ProficiencyComponent;
 import com.schoolerc.fiftheditioncompanion.components.RaceComponent;
 import com.schoolerc.fiftheditioncompanion.components.ResistanceComponent;
 import com.schoolerc.fiftheditioncompanion.components.SpeedComponent;
@@ -30,11 +26,7 @@ public interface ComponentVisitor {
     void visitAbilitiyScoreModifierComponent(AbilityScoreModifierComponent abilityScoreModifierComponent);
     void visitChooseComponent(ChooseComponent chooseComponent);
     void visitClassComponent(ClassComponent classComponent);
-    void visitConditionComponent(ConditionComponent conditionComponent);
-    void visitDamageComponent(DamageComponent damageComponent);
-    void visitImmunityComponent(ImmunityComponent immunityComponent);
     void visitLanguageComponent(LanguageComponent languageComponent);
-    void visitProficiencyComponent(ProficiencyComponent proficiencyComponent);
     void visitRaceComponent(RaceComponent raceComponent);
     void visitResistanceComponent(ResistanceComponent resistanceComponent);
     void visitSpeedComponent(SpeedComponent speedComponent);

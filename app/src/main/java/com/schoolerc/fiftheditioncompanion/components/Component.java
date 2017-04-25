@@ -3,13 +3,23 @@ package com.schoolerc.fiftheditioncompanion.components;
 
 import com.schoolerc.fiftheditioncompanion.components.operators.ComponentVisitor;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementArray;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Transient;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-public abstract class Component implements Iterable<Component> {
+@Root
+public class Component implements Iterable<Component> {
 
+    @ElementList(required=false)
     private List<Component> children;
+
+    @Transient
     private List<ComponentObserver> observers;
 
     public Component()
@@ -17,7 +27,7 @@ public abstract class Component implements Iterable<Component> {
         children = new Vector<>();
         observers = new Vector<>();
     }
-    public abstract void accept(ComponentVisitor visitor);
+    public void accept(ComponentVisitor visitor){}
 
     public void addComponent(Component child)
     {

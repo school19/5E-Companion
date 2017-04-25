@@ -3,15 +3,17 @@ package com.schoolerc.fiftheditioncompanion.components;
 
 import com.schoolerc.fiftheditioncompanion.components.operators.ComponentVisitor;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Chaz Schooler on 2/5/2017.
- */
 
+@Root
 public class RaceComponent extends Component {
 
+    @Attribute
     String name;
 
     @Override
@@ -19,51 +21,10 @@ public class RaceComponent extends Component {
         visitor.visitRaceComponent(this);
     }
 
-    public RaceComponent(Builder builder)
+    public RaceComponent()
     {
-        for (Component component : builder.getChildren()) {
-            addComponent(component);
-        }
-        setName(builder.getName());
     }
 
-    public static class Builder
-    {
-        List<Component> children;
-        String name;
-
-        public Builder()
-        {
-            children = new ArrayList<>();
-        }
-
-        public RaceComponent build()
-        {
-            return new RaceComponent(this);
-        }
-
-        public Builder child(Component child)
-        {
-            this.children.add(child);
-            return this;
-        }
-
-        public Builder name(String name)
-        {
-            this.name = name;
-            return this;
-        }
-
-        public List<Component> getChildren()
-        {
-            return children;
-        }
-
-        public String getName()
-        {
-            return name;
-        }
-    }
 
     public void setName(String name)
     {

@@ -1,113 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<race>
-    <name>Half Elf</name>
-    <ability-score-modifier>
-        <target>
-            Charisma
-        </target>
-        <value>
-            2
-        </value>
-    </ability-score-modifier>
-    <choose>
-        <quantity>2</quantity>
-        <options>
-            <ability-score-modifier>
-                <target>
-                    Strength
-                </target>
-                <value>
-                    1
-                </value>
-            </ability-score-modifier>
-            <ability-score-modifier>
-                <target>
-                    Dexterity
-                </target>
-                <value>
-                    1
-                </value>
-            </ability-score-modifier>
-            <ability-score-modifier>
-                <target>
-                    Constitution
-                </target>
-                <value>
-                    1
-                </value>
-            </ability-score-modifier>
-            <ability-score-modifier>
-                <target>
-                    Intelligence
-                </target>
-                <value>
-                    1
-                </value>
-            </ability-score-modifier>
-            <ability-score-modifier>
-                <target>
-                    Wisdom
-                </target>
-                <value>
-                    1
-                </value>
-            </ability-score-modifier>
-        </options>
-    </choose>
-    <speed>30</speed>
-    <vision><type>Darkvision</type><range>60</range></vision>
-    <trait>
-        <description>Fey Ancestry</description>
-        <advantage><saving-throw>Charm</saving-throw></advantage>
-        <immunity>
-            <condition>Sleep</condition>
-        </immunity>
-    </trait>
-    <trait>
-        <description>Skill Versatility</description>
-        <choose>
+<component name="Half Elf" class="com.schoolerc.fiftheditioncompanion.components.RaceComponent">
+    <children>
+        <component
+            class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+            <target>Charisma</target>
+            <value>2</value>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.ChooseComponent">
             <quantity>2</quantity>
-            <options>
-                <proficiency><skill>Acrobatics</skill></proficiency>
-                <proficiency><skill>Animal Handling</skill></proficiency>
-                <proficiency><skill>Arcana</skill></proficiency>
-                <proficiency><skill>Athletics</skill></proficiency>
-                <proficiency><skill>Deception</skill></proficiency>
-                <proficiency><skill>History</skill></proficiency>
-                <proficiency><skill>Insight</skill></proficiency>
-                <proficiency><skill>Intimidation</skill></proficiency>
-                <proficiency><skill>Investigation</skill></proficiency>
-                <proficiency><skill>Medicine</skill></proficiency>
-                <proficiency><skill>Nature</skill></proficiency>
-                <proficiency><skill>Perception</skill></proficiency>
-                <proficiency><skill>Performance</skill></proficiency>
-                <proficiency><skill>Persuasion</skill></proficiency>
-                <proficiency><skill>Religion</skill></proficiency>
-                <proficiency><skill>Sleight of Hand</skill></proficiency>
-                <proficiency><skill>Stealth</skill></proficiency>
-                <proficiency><skill>Survival</skill></proficiency>
-            </options>
-        </choose>
-    </trait>
-    <language>Common</language>
-    <language>Elvish</language>
-    <choose>
-        <quantity>1</quantity>
-        <options>
-        <language>Dwarvish</language>
-        <language>Giant</language>
-        <language>Gnomish</language>
-        <language>Goblin</language>
-        <language>Halfling</language>
-        <language>Orc</language>
-        <language>Abyssal</language>
-        <language>Celestial</language>
-        <language>Draconic</language>
-        <language>Deep Speech</language>
-        <language>Infernal</language>
-        <language>Primordial</language>
-        <language>Sylvan</language>
-        <language>Undercommon</language>
-        </options>
-    </choose>
-</race>
+            <children>
+                <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+                    <target>Strength</target>
+                    <value>1</value>
+                </component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+                    <target>Dexterity</target>
+                    <value>1</value>
+                </component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+                    <target>Constitution</target>
+                    <value>1</value>
+                </component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+                    <target>Intelligence</target>
+                    <value>1</value>
+                </component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+                    <target>Wisdom</target>
+                    <value>1</value>
+                </component>
+            </children>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.VisionComponent">
+            <type>Darkvision</type>
+            <range>60</range>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.SpeedComponent"
+            speed="30" />
+        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+            <name>Fey Ancestry</name>
+            <description>You have advantage on saving throws against being charmed, and magic can't
+                put you to sleep
+            </description>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+            <name>Skill Versatility</name>
+            <description>You gain proficiency in two skills of your choice</description>
+            <children>
+                <component class="com.schoolerc.fiftheditioncompanion.components.ChooseComponent">
+                    <quantity>2</quantity>
+                    <children>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Acrobatics</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>AnimalHandling</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Arcana</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Athletics</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Deception</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>History</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Insight</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Intimidation</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Investigation</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Medicine</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Nature</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Perception</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Performance</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Persuasion</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Religion</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>SleightOfHand</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Stealth</skill></component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Survival</skill></component>
+                    </children>
+                </component>
+            </children>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Common</language></component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Elvish</language></component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.ChooseComponent">
+            <quantity>1</quantity>
+            <children>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Dwarvish</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Giant</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Gnomish</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Goblin</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Halfling</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Orc</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Abyssal</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Celestial</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Draconic</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Deep Speech</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Infernal</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Primordial</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Sylvan</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Undercommon</language></component>
+            </children>
+        </component>
+    </children>
+</component>

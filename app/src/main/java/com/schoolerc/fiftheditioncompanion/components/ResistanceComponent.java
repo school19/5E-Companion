@@ -14,4 +14,14 @@ public class ResistanceComponent extends Component {
     public void accept(ComponentVisitor visitor) {
         visitor.visitResistanceComponent(this);
     }
+
+    public DamageType getResistance()
+    {
+        return resistantTo;
+    }
+
+    public void setResistance(DamageType type)
+    {
+        resistantTo = type;
+    }
 }

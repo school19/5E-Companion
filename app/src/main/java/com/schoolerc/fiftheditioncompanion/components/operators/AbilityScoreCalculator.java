@@ -7,11 +7,7 @@ import com.schoolerc.fiftheditioncompanion.components.Character;
 import com.schoolerc.fiftheditioncompanion.components.ChooseComponent;
 import com.schoolerc.fiftheditioncompanion.components.ClassComponent;
 import com.schoolerc.fiftheditioncompanion.components.Component;
-import com.schoolerc.fiftheditioncompanion.components.ConditionComponent;
-import com.schoolerc.fiftheditioncompanion.components.DamageComponent;
-import com.schoolerc.fiftheditioncompanion.components.ImmunityComponent;
 import com.schoolerc.fiftheditioncompanion.components.LanguageComponent;
-import com.schoolerc.fiftheditioncompanion.components.ProficiencyComponent;
 import com.schoolerc.fiftheditioncompanion.components.RaceComponent;
 import com.schoolerc.fiftheditioncompanion.components.ResistanceComponent;
 import com.schoolerc.fiftheditioncompanion.components.SpeedComponent;
@@ -66,27 +62,7 @@ public class AbilityScoreCalculator implements ComponentVisitor {
     }
 
     @Override
-    public void visitConditionComponent(ConditionComponent conditionComponent) {
-
-    }
-
-    @Override
-    public void visitDamageComponent(DamageComponent damageComponent) {
-
-    }
-
-    @Override
-    public void visitImmunityComponent(ImmunityComponent immunityComponent) {
-
-    }
-
-    @Override
     public void visitLanguageComponent(LanguageComponent languageComponent) {
-
-    }
-
-    @Override
-    public void visitProficiencyComponent(ProficiencyComponent proficiencyComponent) {
 
     }
 
