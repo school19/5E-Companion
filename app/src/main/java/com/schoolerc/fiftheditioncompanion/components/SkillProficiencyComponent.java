@@ -9,6 +9,18 @@ import org.simpleframework.xml.Element;
  */
 
 public class SkillProficiencyComponent extends Component {
-    @Element(name="skill")
-    Skill proficientIn;
+    @Element
+    private Skill skill;
+
+    public SkillProficiencyComponent(){}
+
+    public Skill getSkill()
+    {
+        return skill;
+    }
+
+    public void setSkill(Skill skill)
+    {
+        this.skill = skill;
+    }
 }

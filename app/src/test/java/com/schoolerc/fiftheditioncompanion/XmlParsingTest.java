@@ -4,10 +4,7 @@
 
 package com.schoolerc.fiftheditioncompanion;
 
-import com.schoolerc.fiftheditioncompanion.components.ClassComponent;
 import com.schoolerc.fiftheditioncompanion.components.RaceComponent;
-import com.schoolerc.fiftheditioncompanion.components.operators.PrettyPrinter;
-import com.schoolerc.fiftheditioncompanion.rules.AbilityScore;
 
 import org.junit.Test;
 
@@ -23,14 +20,26 @@ public class XmlParsingTest{
     public void halfElfRaceTest()
     {
         String halfElfRacePath = "app/src/main/staging/components/race/half_elf/base.xml";
-
         Serializer serializer = new Persister();
 
         try {
-            RaceComponent component = serializer.read(RaceComponent.class, new File(halfElfRacePath));
-            PrettyPrinter printer = new PrettyPrinter(System.out);
-            component.accept(printer);
+            serializer.validate(RaceComponent.class, new File(halfElfRacePath));
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void dwarfRaceTest()
+    {
+        String dwarfRacePath = "app/src/main/staging/components/race/dwarf/base.xml";
+        Serializer serializer = new Persister();
+
+        try{
+            serializer.validate(RaceComponent.class, new File(dwarfRacePath));
+        }
+        catch(Exception e)
+        {
             e.printStackTrace();
         }
     }

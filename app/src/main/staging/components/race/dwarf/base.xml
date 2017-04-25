@@ -1,34 +1,65 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<race>
-    <name>Dwarf</name>
-    <ability-score-modifier score="Constitution">2</ability-score-modifier>
-    <speed>25</speed>
-    <vision type="darkvision">60</vision>
-    <trait>
-        <description>Dwarven Combat Training</description>
-        <proficiency><weapon>Battleaxe</weapon></proficiency>
-        <proficiency><weapon>Handaxe</weapon></proficiency>
-        <proficiency><weapon>Light Hammer</weapon></proficiency>
-        <proficiency><weapon>Warhammer</weapon></proficiency>
-    </trait>
-    <trait>
-        <description>Dwarven Resilience</description>
-        <advantage><saving-throw>poison</saving-throw></advantage>
-        <resistance><damage>poison</damage></resistance>
-    </trait>
-    <trait>
-        <description>Stonecunning</description>
-        <requirement condition="stonecutting"><double><proficiency><skill>History</skill></proficiency></double></requirement>
-    </trait>
-    <trait>
-        <description>Tool Proficiency</description>
-        <choose quantity="1">
-            <proficiency><tool>Smith's Tools</tool></proficiency>
-            <proficiency><tool>Brewer's Supplies</tool></proficiency>
-            <proficiency><tool>Mason's Tools</tool></proficiency>
-        </choose>
-    </trait>
-
-    <language>Common</language>
-    <language>Dwarvish</language>
-</race>
+<component class="com.schoolerc.fiftheditioncompanion.components.RaceComponent" name="Dwarf">
+    <children>
+        <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+            <target>Constitution</target>
+            <value>2</value>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.SpeedComponent" speed="25"/>
+        <component class="com.schoolerc.fiftheditioncompanion.components.VisionComponent">
+            <type>Darkvision</type>
+            <range>60</range>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+            <name>Dwarven Combat Training</name>
+            <children>
+                <component class="com.schoolerc.fiftheditioncompanion.components.WeaponProficiencyComponent">
+                    <weapon>Battleaxe</weapon>
+                </component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.WeaponProficiencyComponent">
+                    <weapon>Handaxe</weapon>
+                </component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.WeaponProficiencyComponent">
+                    <weapon>LightHammer</weapon>
+                </component>
+                <component class="com.schoolerc.fiftheditioncompanion.components.WeaponProficiencyComponent">
+                    <weapon>Warhammer</weapon>
+                </component>
+            </children>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+            <name>Dwarven Resilience</name>
+            <children>
+                <component class="com.schoolerc.fiftheditioncompanion.components.ResistanceComponent">
+                    <type>Poison</type>
+                </component>
+                <!-- TODO: Somehow model advantage on a saving throw for poison as well -->
+            </children>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+            <name>Stonecunning</name>
+            <description>You are considered proficient in, and double your proficiency bonus on Intelligence (History) checks related to the origin of stonework</description>
+            <!-- TODO: somehow model what is described above-->
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+            <name>Tool Proficiency</name>
+            <children>
+                <component class="com.schoolerc.fiftheditioncompanion.components.ChooseComponent">
+                    <quantity>1</quantity>
+                    <children>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.ToolProficiencyComponent">
+                            <tool>SmithsTools</tool>
+                        </component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.ToolProficiencyComponent">
+                            <tool>BrewersSupplies</tool>
+                        </component>
+                        <component class="com.schoolerc.fiftheditioncompanion.components.ToolProficiencyComponent">
+                            <tool>MasonsTools</tool>
+                        </component>
+                    </children>
+                </component>
+            </children>
+        </component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Common</language></component>
+        <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Dwarvish</language></component>
+    </children>
+</component>

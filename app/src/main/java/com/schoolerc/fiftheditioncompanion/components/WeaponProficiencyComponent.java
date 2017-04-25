@@ -10,17 +10,17 @@ import org.simpleframework.xml.Element;
 
 public class WeaponProficiencyComponent extends Component {
     @Element
-    private WeaponType proficientIn;
+    private WeaponType weapon;
 
     public WeaponProficiencyComponent(){}
 
     public WeaponType getProficient()
     {
-        return proficientIn;
+        return weapon;
     }
 
     public void setProficient(WeaponType type)
     {
-        proficientIn = type;
+        weapon = type;
     }
 }

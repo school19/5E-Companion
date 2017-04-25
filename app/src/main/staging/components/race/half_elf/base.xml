@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <component name="Half Elf" class="com.schoolerc.fiftheditioncompanion.components.RaceComponent">
     <children>
-        <component
-            class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
             <target>Charisma</target>
             <value>2</value>
         </component>
@@ -35,8 +34,7 @@
             <type>Darkvision</type>
             <range>60</range>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.SpeedComponent"
-            speed="30" />
+        <component class="com.schoolerc.fiftheditioncompanion.components.SpeedComponent" speed="30" />
         <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
             <name>Fey Ancestry</name>
             <description>You have advantage on saving throws against being charmed, and magic can't
