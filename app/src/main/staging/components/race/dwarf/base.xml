@@ -1,15 +1,15 @@
-<component class="com.schoolerc.fiftheditioncompanion.components.RaceComponent" name="Dwarf">
+<component class="com.schoolerc.fiftheditioncompanion.rules.Race" name="Dwarf">
     <children>
-        <component class="com.schoolerc.fiftheditioncompanion.components.AbilityScoreModifierComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.rules.AbilityScoreModifierComponent">
             <target>Constitution</target>
             <value>2</value>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.SpeedComponent" speed="25"/>
-        <component class="com.schoolerc.fiftheditioncompanion.components.VisionComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.rules.SpeedComponent" speed="25"/>
+        <component class="com.schoolerc.fiftheditioncompanion.rules.VisionComponent">
             <type>Darkvision</type>
             <range>60</range>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.rules.TraitComponent">
             <name>Dwarven Combat Training</name>
             <children>
                 <component class="com.schoolerc.fiftheditioncompanion.components.WeaponProficiencyComponent">
@@ -26,24 +26,24 @@
                 </component>
             </children>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.rules.TraitComponent">
             <name>Dwarven Resilience</name>
             <children>
-                <component class="com.schoolerc.fiftheditioncompanion.components.ResistanceComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.rules.ResistanceComponent">
                     <type>Poison</type>
                 </component>
                 <!-- TODO: Somehow model advantage on a saving throw for poison as well -->
             </children>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.rules.TraitComponent">
             <name>Stonecunning</name>
             <description>You are considered proficient in, and double your proficiency bonus on Intelligence (History) checks related to the origin of stonework</description>
             <!-- TODO: somehow model what is described above-->
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.TraitComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.rules.TraitComponent">
             <name>Tool Proficiency</name>
             <children>
-                <component class="com.schoolerc.fiftheditioncompanion.components.ChooseComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.rules.ChooseComponent">
                     <quantity>1</quantity>
                     <children>
                         <component class="com.schoolerc.fiftheditioncompanion.components.ToolProficiencyComponent">
@@ -59,7 +59,7 @@
                 </component>
             </children>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Common</language></component>
-        <component class="com.schoolerc.fiftheditioncompanion.components.LanguageComponent"><language>Dwarvish</language></component>
+        <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Common</language></component>
+        <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Dwarvish</language></component>
     </children>
 </component>

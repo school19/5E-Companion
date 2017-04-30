@@ -4,8 +4,9 @@
 
 package com.schoolerc.fiftheditioncompanion;
 
-import com.schoolerc.fiftheditioncompanion.components.RaceComponent;
+import com.schoolerc.fiftheditioncompanion.rules.Race;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import org.simpleframework.xml.Serializer;
@@ -23,7 +24,7 @@ public class XmlParsingTest{
         Serializer serializer = new Persister();
 
         try {
-            serializer.validate(RaceComponent.class, new File(halfElfRacePath));
+            serializer.validate(Race.class, new File(halfElfRacePath));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,7 +37,7 @@ public class XmlParsingTest{
         Serializer serializer = new Persister();
 
         try{
-            serializer.validate(RaceComponent.class, new File(dwarfRacePath));
+            Assert.assertTrue(serializer.validate(Race.class, new File(dwarfRacePath)));
         }
         catch(Exception e)
         {

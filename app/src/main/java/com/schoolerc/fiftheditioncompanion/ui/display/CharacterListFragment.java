@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 
 import com.schoolerc.fiftheditioncompanion.R;
-import com.schoolerc.fiftheditioncompanion.components.Component;
+import com.schoolerc.fiftheditioncompanion.rules.Component;
 
 import java.util.List;
 
