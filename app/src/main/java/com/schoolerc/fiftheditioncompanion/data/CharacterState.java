@@ -19,6 +19,16 @@ public class CharacterState implements Cloneable{
         this.currentHitPoints = currentHitPoints;
     }
 
+    private int level;
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     private int maxHitPoints;
     private int currentHitPoints;
 

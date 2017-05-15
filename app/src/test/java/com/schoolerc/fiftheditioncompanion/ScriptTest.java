@@ -1,10 +1,15 @@
 package com.schoolerc.fiftheditioncompanion;
 
 import com.schoolerc.fiftheditioncompanion.data.CharacterClass;
+import com.schoolerc.fiftheditioncompanion.data.CharacterState;
+import com.schoolerc.fiftheditioncompanion.data.Modifier;
 import com.schoolerc.fiftheditioncompanion.data.Race;
 import com.schoolerc.fiftheditioncompanion.data.Repository;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.List;
+import java.util.concurrent.Exchanger;
 
 import junit.framework.Assert;
 
@@ -12,6 +17,7 @@ import org.mozilla.javascript.Context;
 
 import org.junit.Test;
 import org.mozilla.javascript.ContextFactory;
+import org.mozilla.javascript.ImporterTopLevel;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
 
@@ -142,7 +148,7 @@ public class ScriptTest {
             Scriptable scope = c.initStandardObjects();
 
             Object result = c.evaluateString(scope, "[1,2,3]", "list test", 0, null);
-            List<Double> list = (List<Double>)c.jsToJava(result, List.class);
+            List<Double> list = (List<Double>)Context.jsToJava(result, List.class);
             for (Double integer : list) {
                 System.out.println(integer);
             }
@@ -161,6 +167,34 @@ public class ScriptTest {
     {
         String dwarfScriptPath = scriptDirectory + "\\dwarf.js";
         Context c = null;
+        try{
+            c = ContextFactory.getGlobal().enterContext();
+            c.setOptimizationLevel(-1);
+            Scriptable scope = c.initStandardObjects();
+            Scriptable importer = new ImporterTopLevel(c);
+
+            Object result = c.evaluateReader(importer, new FileReader(new File(dwarfScriptPath)), "dwarf.js", 0, null);
+            Race race = (Race)Context.jsToJava(result, Race.class);
+
+            CharacterState state = new CharacterState();
+            state.setConstitutionScore(10);
+            state.setLevel(10);
+            state.setMaxHitPoints(4);
+
+            for (Modifier modifier : race.getModifiers()) {
+                modifier.apply(state);
+            }
+
+            Assert.assertEquals(state.getConstitutionScore(), 12);
+            Assert.assertEquals(state.getMaxHitPoints(), 14);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            Context.exit();
+        }
     }
 
 }
