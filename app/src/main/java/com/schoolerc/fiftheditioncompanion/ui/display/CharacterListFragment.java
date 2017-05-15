@@ -13,14 +13,13 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 
 import com.schoolerc.fiftheditioncompanion.R;
-import com.schoolerc.fiftheditioncompanion.rules.Component;
 
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CharacterListFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Component>> {
+public class CharacterListFragment extends Fragment {
 
     private OnEditCharacterListListener mListener;
 
@@ -69,20 +68,5 @@ public class CharacterListFragment extends Fragment implements LoaderManager.Loa
     public interface OnEditCharacterListListener
     {
         void onAddCharacter();
-    }
-
-    public void onLoadFinished(Loader<List<Component>> loader, List<Component> components)
-    {
-
-    }
-
-    public void onLoaderReset(Loader<List<Component>> loader)
-    {
-
-    }
-
-    public Loader<List<Component>> onCreateLoader(int id, Bundle args)
-    {
-        return null;
     }
 }

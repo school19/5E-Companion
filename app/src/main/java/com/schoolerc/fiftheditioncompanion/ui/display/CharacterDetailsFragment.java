@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.schoolerc.fiftheditioncompanion.R;
-import com.schoolerc.fiftheditioncompanion.rules.Character;
+import com.schoolerc.fiftheditioncompanion.data.Character;
 
+import org.w3c.dom.Text;
 
 
 /**
@@ -39,7 +40,6 @@ public class CharacterDetailsFragment extends Fragment {
     public static CharacterDetailsFragment newInstance(Character character) {
         CharacterDetailsFragment fragment = new CharacterDetailsFragment();
         Bundle args = new Bundle();
-        args.putParcelable(ARG_CHARACTER, character);
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,7 +48,6 @@ public class CharacterDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            character = (Character)savedInstanceState.getSerializable(ARG_CHARACTER);
         }
     }
 
@@ -58,8 +57,20 @@ public class CharacterDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         final View v =  inflater.inflate(R.layout.fragment_character_details, container, false);
 
-
+        if(character != null) {
+            updateFragmentView(v);
+        }
         return v;
+    }
+
+    private void updateTextView(View parent, int id, String content)
+    {
+        TextView textView = (TextView)parent.findViewById(id);
+        textView.setText(content);
+    }
+
+    private void updateFragmentView(View view)
+    {
     }
 
     @Override

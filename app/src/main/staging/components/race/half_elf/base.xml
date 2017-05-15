@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<component name="Half Elf" class="com.schoolerc.fiftheditioncompanion.rules.Race">
+<component name="Half Elf" class="com.schoolerc.fiftheditioncompanion.data.Race">
     <children>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.AbilityScoreModifierComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.data.AbilityScoreModifierComponent">
             <target>Charisma</target>
             <value>2</value>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.ChooseComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.data.ChooseComponent">
             <quantity>2</quantity>
             <children>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.AbilityScoreModifierComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.data.AbilityScoreModifierComponent">
                     <target>Strength</target>
                     <value>1</value>
                 </component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.AbilityScoreModifierComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.data.AbilityScoreModifierComponent">
                     <target>Dexterity</target>
                     <value>1</value>
                 </component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.AbilityScoreModifierComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.data.AbilityScoreModifierComponent">
                     <target>Constitution</target>
                     <value>1</value>
                 </component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.AbilityScoreModifierComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.data.AbilityScoreModifierComponent">
                     <target>Intelligence</target>
                     <value>1</value>
                 </component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.AbilityScoreModifierComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.data.AbilityScoreModifierComponent">
                     <target>Wisdom</target>
                     <value>1</value>
                 </component>
             </children>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.VisionComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.data.VisionComponent">
             <type>Darkvision</type>
             <range>60</range>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.SpeedComponent" speed="30" />
-        <component class="com.schoolerc.fiftheditioncompanion.rules.TraitComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.data.SpeedComponent" speed="30" />
+        <component class="com.schoolerc.fiftheditioncompanion.data.TraitComponent">
             <name>Fey Ancestry</name>
             <description>You have advantage on saving throws against being charmed, and magic can't
                 put you to sleep
             </description>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.TraitComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.data.TraitComponent">
             <name>Skill Versatility</name>
             <description>You gain proficiency in two skills of your choice</description>
             <children>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.ChooseComponent">
+                <component class="com.schoolerc.fiftheditioncompanion.data.ChooseComponent">
                     <quantity>2</quantity>
                     <children>
                         <component class="com.schoolerc.fiftheditioncompanion.components.SkillProficiencyComponent"><skill>Acrobatics</skill></component>
@@ -70,25 +70,25 @@
                 </component>
             </children>
         </component>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Common</language></component>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Elvish</language></component>
-        <component class="com.schoolerc.fiftheditioncompanion.rules.ChooseComponent">
+        <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Common</language></component>
+        <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Elvish</language></component>
+        <component class="com.schoolerc.fiftheditioncompanion.data.ChooseComponent">
             <quantity>1</quantity>
             <children>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Dwarvish</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Giant</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Gnomish</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Goblin</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Halfling</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Orc</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Abyssal</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Celestial</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Draconic</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Deep Speech</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Infernal</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Primordial</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Sylvan</language></component>
-                <component class="com.schoolerc.fiftheditioncompanion.rules.LanguageComponent"><language>Undercommon</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Dwarvish</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Giant</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Gnomish</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Goblin</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Halfling</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Orc</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Abyssal</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Celestial</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Draconic</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Deep Speech</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Infernal</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Primordial</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Sylvan</language></component>
+                <component class="com.schoolerc.fiftheditioncompanion.data.LanguageComponent"><language>Undercommon</language></component>
             </children>
         </component>
     </children>

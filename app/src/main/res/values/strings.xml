@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">5E Companion</string>
     <string name="placeholder_char_name">Character Name</string>
-    <string name="heading_stats">Stats</string>
+    <string name="heading_ability_scores">Ability Scores</string>
     <string name="label_stat_strength">Strength</string>
     <string name="label_stat_dexterity">Dexterity</string>
     <string name="label_stat_constitution">Constitution</string>
@@ -43,6 +43,21 @@
     <string name="label_silver">Silver</string>
     <string name="label_copper">Copper</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_strength_score">Strength Score</string>
+    <string name="label_dexterity_score">Dexterity Score</string>
+    <string name="label_constitution_score">Constitution Score</string>
+    <string name="label_intelligence_score">Intelligence Score</string>
+    <string name="label_wisdom_score">Wisdom Score</string>
+    <string name="label_charisma_score">Charisma Score</string>
+
+    <string name="label_stats_rolled">Rolled</string>
+    <string name="label_stats_point_buy">Point Buy</string>
+    <string name="label_stats_standard_array">Standard Array</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string-array name="stat_creation_values">
+        <item>Rolled</item>
+        <item>Point Buy</item>
+        <item>Standard Array</item>
+    </string-array>
 </resources>
