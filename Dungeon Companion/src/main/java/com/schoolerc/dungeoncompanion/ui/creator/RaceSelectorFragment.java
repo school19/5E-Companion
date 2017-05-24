@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.schoolerc.dungeoncompanion.data.Race;
+import com.schoolerc.dungeoncompanion.loader.RaceLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class RaceSelectorFragment extends Fragment{
     private void clearRaces(){
         raceData = new ArrayList<>();
     }
+
 
     private class RaceIdCallbacks implements LoaderManager.LoaderCallbacks<Cursor>{
         @Override
@@ -55,14 +57,13 @@ public class RaceSelectorFragment extends Fragment{
         @Override
         public void onLoaderReset(Loader<Cursor> loader) {
             clearRaces();
-            //Also put logic here to indicate to the user the loader did not complete as expected
         }
     }
 
     private class RaceLoaderCallbacks implements LoaderManager.LoaderCallbacks<Race>{
         @Override
         public Loader<Race> onCreateLoader(int id, Bundle args) {
-            return null;
+            return new RaceLoader(getContext(), args.getInt(ARG_RACE_ID));
         }
 
         @Override
@@ -72,7 +73,9 @@ public class RaceSelectorFragment extends Fragment{
 
         @Override
         public void onLoaderReset(Loader<Race> loader) {
-
+            //Not really sure what to put here presently.
+            //Given that the IDLoader handles resetting the
+            //Race array, I don't think anything actually goes here
         }
     }
 
