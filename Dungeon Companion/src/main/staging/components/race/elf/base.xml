@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<raceTemplate id="elf">
+    <name>Elf</name>
+    <ability-score-modifier>
+        <target>
+            Intelligence
+        </target>
+        <value>2</value>
+    </ability-score-modifier>
+    <speed>30</speed>
+    <vision type="darkvision">60</vision>
+    <trait>
+        <description>Keen Senses</description>
+        <skill-proficiency>Perception</skill-proficiency>
+    </trait>
+    <trait>
+        <description>Fey Ancestry</description>
+        <saving-throw-advantage><condition>Charm</condition></saving-throw-advantage>
+        <condition-immunity>Sleep</condition-immunity>
+    </trait>
+    <language>Common</language>
+    <language>Elvish</language>
+</raceTemplate>

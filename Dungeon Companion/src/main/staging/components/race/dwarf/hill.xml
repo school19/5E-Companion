@@ -1,0 +1,8 @@
+<raceTemplate>
+    <name>Hill</name>
+    <ability-score-modifier score="Wisdom">1</ability-score-modifier>
+    <trait>
+        <description>Dwarven Toughness</description>
+        <modifier target="hit-points" operator="+"><variable>CHAR_LVL</variable></modifier>
+    </trait>
+</raceTemplate>

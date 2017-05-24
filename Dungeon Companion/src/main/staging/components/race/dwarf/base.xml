@@ -1,0 +1,65 @@
+<component class="com.schoolerc.dungeoncompanion.data.Race" name="Dwarf">
+    <children>
+        <component class="com.schoolerc.dungeoncompanion.data.AbilityScoreModifierComponent">
+            <target>Constitution</target>
+            <value>2</value>
+        </component>
+        <component class="com.schoolerc.dungeoncompanion.data.SpeedComponent" speed="25"/>
+        <component class="com.schoolerc.dungeoncompanion.data.VisionComponent">
+            <type>Darkvision</type>
+            <range>60</range>
+        </component>
+        <component class="com.schoolerc.dungeoncompanion.data.TraitComponent">
+            <name>Dwarven Combat Training</name>
+            <children>
+                <component class="com.schoolerc.dungeoncompanion.components.WeaponProficiencyComponent">
+                    <weapon>Battleaxe</weapon>
+                </component>
+                <component class="com.schoolerc.dungeoncompanion.components.WeaponProficiencyComponent">
+                    <weapon>Handaxe</weapon>
+                </component>
+                <component class="com.schoolerc.dungeoncompanion.components.WeaponProficiencyComponent">
+                    <weapon>LightHammer</weapon>
+                </component>
+                <component class="com.schoolerc.dungeoncompanion.components.WeaponProficiencyComponent">
+                    <weapon>Warhammer</weapon>
+                </component>
+            </children>
+        </component>
+        <component class="com.schoolerc.dungeoncompanion.data.TraitComponent">
+            <name>Dwarven Resilience</name>
+            <children>
+                <component class="com.schoolerc.dungeoncompanion.data.ResistanceComponent">
+                    <type>Poison</type>
+                </component>
+                <!-- TODO: Somehow model advantage on a saving throw for poison as well -->
+            </children>
+        </component>
+        <component class="com.schoolerc.dungeoncompanion.data.TraitComponent">
+            <name>Stonecunning</name>
+            <description>You are considered proficient in, and double your proficiency bonus on Intelligence (History) checks related to the origin of stonework</description>
+            <!-- TODO: somehow model what is described above-->
+        </component>
+        <component class="com.schoolerc.dungeoncompanion.data.TraitComponent">
+            <name>Tool Proficiency</name>
+            <children>
+                <component class="com.schoolerc.dungeoncompanion.data.ChooseComponent">
+                    <quantity>1</quantity>
+                    <children>
+                        <component class="com.schoolerc.dungeoncompanion.components.ToolProficiencyComponent">
+                            <tool>SmithsTools</tool>
+                        </component>
+                        <component class="com.schoolerc.dungeoncompanion.components.ToolProficiencyComponent">
+                            <tool>BrewersSupplies</tool>
+                        </component>
+                        <component class="com.schoolerc.dungeoncompanion.components.ToolProficiencyComponent">
+                            <tool>MasonsTools</tool>
+                        </component>
+                    </children>
+                </component>
+            </children>
+        </component>
+        <component class="com.schoolerc.dungeoncompanion.data.LanguageComponent"><language>Common</language></component>
+        <component class="com.schoolerc.dungeoncompanion.data.LanguageComponent"><language>Dwarvish</language></component>
+    </children>
+</component>
