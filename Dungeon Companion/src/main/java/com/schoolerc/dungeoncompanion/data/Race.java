@@ -1,11 +1,8 @@
 package com.schoolerc.dungeoncompanion.data;
 
-import android.content.Context;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Chaz on 5/5/2017.

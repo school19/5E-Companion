@@ -55,6 +55,8 @@
     <string name="label_stats_standard_array">Standard Array</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
+    <string name="placeholder_text">Placeholder Text</string>
+    <string name="label_speed">Speed</string>
     <string-array name="stat_creation_values">
         <item>Rolled</item>
         <item>Point Buy</item>

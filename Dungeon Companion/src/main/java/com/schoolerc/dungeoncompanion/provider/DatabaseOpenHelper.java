@@ -16,8 +16,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_RACE_TEMPLATE_TABLE = "CREATE TABLE " + RaceContract.TABLE_NAME
             + "(" +
-            RaceContract._ID + " INTEGER PRIMARY KEY" +
-            RaceContract.COLUMN_NAME + " VARCHAR(255)" +
+            RaceContract._ID + " INTEGER PRIMARY KEY," +
+            RaceContract.COLUMN_NAME + " VARCHAR(255)," +
             RaceContract.COLUMN_SPEED + " INTEGER" +
             ")";
 

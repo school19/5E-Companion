@@ -7,10 +7,6 @@ import android.database.Cursor;
 
 import com.schoolerc.dungeoncompanion.data.Race;
 
-/**
- * Created by Chaz Schooler on 5/24/2017.
- */
-
 public class RaceLoader extends AsyncTaskLoader<Race> {
 
     int id;
@@ -18,12 +14,22 @@ public class RaceLoader extends AsyncTaskLoader<Race> {
     public RaceLoader(Context c, int id) {
         super(c);
         this.id = id;
+        onContentChanged();
     }
 
     @Override
     public Race loadInBackground() {
         Cursor cursor = getContext().getContentResolver().query(ContentUris.withAppendedId(Race.RaceContract.CONTENT_URI, id), null, null, null, null);
         cursor.moveToNext();
-        return null;
+
+        int nameCol = cursor.getColumnIndex(Race.RaceContract.COLUMN_NAME);
+        int speedCol = cursor.getColumnIndex(Race.RaceContract.COLUMN_SPEED);
+
+        Race r = new Race();
+
+        r.setSpeed(cursor.getInt(speedCol));
+        r.setName(cursor.getString(nameCol));
+
+        return r;
     }
 }
