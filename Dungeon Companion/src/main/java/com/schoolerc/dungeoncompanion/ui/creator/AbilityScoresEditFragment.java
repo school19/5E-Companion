@@ -7,11 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,8 +43,11 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
 
     private AbilityScoresComponent abilityScores = new AbilityScoresComponent();
 
+    private AbilityScoresAdapter adapter;
+
     private int pointBuyBudget;
     Map<Integer, Integer> costs = new HashMap<>();
+
     {
         costs.put(8, 0);
         costs.put(9, 1);
@@ -107,16 +114,11 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
 
     public boolean canIncrease(int value) {
         if (validatePointBuy) {
-            if(value >= 15)
-            {
+            if (value >= 15) {
                 return false;
-            }
-            else if(value >= 13)
-            {
+            } else if (value >= 13) {
                 return pointBuyBudget >= 2;
-            }
-            else
-            {
+            } else {
                 return pointBuyBudget >= 1;
             }
         }
@@ -146,59 +148,40 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
         updateFieldControls(abilityScores.getCharisma(), R.id.textViewCharismaScore, R.id.textViewCharismaBonus, R.id.textViewCharismaSave, R.id.buttonCharismaMinus, R.id.buttonCharismaPlus);
     }
 
-    public void clampScores()
-    {
-        if(abilityScores.getStrength() > 15)
-        {
+    public void clampScores() {
+        if (abilityScores.getStrength() > 15) {
             abilityScores.setStrength(15);
-        }
-        else if(abilityScores.getStrength() < 8)
-        {
+        } else if (abilityScores.getStrength() < 8) {
             abilityScores.setStrength(8);
         }
 
-        if(abilityScores.getDexterity() > 15)
-        {
+        if (abilityScores.getDexterity() > 15) {
             abilityScores.setDexterity(15);
-        }
-        else if(abilityScores.getDexterity() < 8)
-        {
+        } else if (abilityScores.getDexterity() < 8) {
             abilityScores.setDexterity(8);
         }
 
-        if(abilityScores.getConstitution() > 15)
-        {
+        if (abilityScores.getConstitution() > 15) {
             abilityScores.setConstitution(15);
-        }
-        else if(abilityScores.getConstitution() < 8)
-        {
+        } else if (abilityScores.getConstitution() < 8) {
             abilityScores.setConstitution(8);
         }
 
-        if(abilityScores.getIntelligence() > 15)
-        {
+        if (abilityScores.getIntelligence() > 15) {
             abilityScores.setIntelligence(15);
-        }
-        else if(abilityScores.getIntelligence() < 8)
-        {
+        } else if (abilityScores.getIntelligence() < 8) {
             abilityScores.setIntelligence(8);
         }
 
-        if(abilityScores.getWisdom() > 15)
-        {
+        if (abilityScores.getWisdom() > 15) {
             abilityScores.setWisdom(15);
-        }
-        else if(abilityScores.getWisdom() < 8)
-        {
+        } else if (abilityScores.getWisdom() < 8) {
             abilityScores.setWisdom(8);
         }
 
-        if(abilityScores.getCharisma() > 15)
-        {
+        if (abilityScores.getCharisma() > 15) {
             abilityScores.setCharisma(15);
-        }
-        else if(abilityScores.getCharisma() < 8)
-        {
+        } else if (abilityScores.getCharisma() < 8) {
             abilityScores.setCharisma(8);
         }
     }
@@ -224,12 +207,9 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
         int bonus = Math.scoreToBonus(value);
         String bonusText;
 
-        if(bonus > 0)
-        {
+        if (bonus > 0) {
             bonusText = "+" + bonus;
-        }
-        else
-        {
+        } else {
             bonusText = "" + bonus;
         }
 
@@ -264,15 +244,19 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadStandardArray();
+        adapter = new AbilityScoresAdapter(getContext(), abilityScores);
+        if (getArguments() != null) {
+        }
+    }
+
+    private void loadStandardArray() {
         abilityScores.setStrength(15);
         abilityScores.setDexterity(14);
         abilityScores.setConstitution(13);
         abilityScores.setIntelligence(12);
         abilityScores.setWisdom(10);
         abilityScores.setCharisma(8);
-
-        if (getArguments() != null) {
-        }
     }
 
     @Override
@@ -298,12 +282,11 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
 
         view.findViewById(R.id.buttonCharismaMinus).setOnClickListener(new ClickResponder(AbilityScore.Charisma, false));
         view.findViewById(R.id.buttonCharismaPlus).setOnClickListener(new ClickResponder(AbilityScore.Charisma, true));
-        
+
         view.findViewById(R.id.floatingActionButtonNext).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validatePointBuy && pointBuyBudget != 0)
-                {
+                if (validatePointBuy && pointBuyBudget != 0) {
                     Toast.makeText(getContext(), "Point Buy budget must come out to 0", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -312,7 +295,92 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
             }
         });
 
+        GridView grid = (GridView) view.findViewById(R.id.gridViewDefaultArray);
+        grid.setAdapter(adapter);
+        grid.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    final GridView parent = (GridView) v;
+
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+
+                    int position = parent.pointToPosition(x, y);
+                    if (position > GridView.INVALID_POSITION) {
+                        int count = parent.getCount();
+                        for (int i = 0; i < count; i++) {
+                            View child = parent.getChildAt(i);
+                            child.setOnDragListener(new View.OnDragListener() {
+                                @Override
+                                public boolean onDrag(View v, DragEvent event) {
+                                    boolean result = true;
+                                    switch (event.getAction()) {
+                                        case DragEvent.ACTION_DRAG_STARTED:
+                                        case DragEvent.ACTION_DRAG_LOCATION:
+                                        case DragEvent.ACTION_DRAG_ENTERED:
+                                        case DragEvent.ACTION_DRAG_EXITED:
+                                        case DragEvent.ACTION_DRAG_ENDED:
+                                            break;
+                                        case DragEvent.ACTION_DROP:
+                                            if (event.getLocalState() == v) {
+                                                result = false;
+                                            } else {
+                                                View dropped = (View) event.getLocalState();
+                                                int droppedIndex = (int) dropped.getTag();
+
+                                                int targetIndex = (int) v.getTag();
+
+                                                BaseAdapter adapter = (BaseAdapter) parent.getAdapter();
+
+                                                int droppedValue = (int) adapter.getItem(droppedIndex);
+                                                int targetValue = (int) adapter.getItem(targetIndex);
+
+                                                updateScoreForIndex(droppedIndex, targetValue);
+                                                updateScoreForIndex(targetIndex, droppedValue);
+                                                adapter.notifyDataSetChanged();
+                                            }
+                                            break;
+                                    }
+                                    return result;
+                                }
+                            });
+                        }
+                        int relativePosition = position - parent.getFirstVisiblePosition();
+                        View target = parent.getChildAt(relativePosition);
+                        target.startDrag(null, new View.DragShadowBuilder(target), target, 0);
+                    }
+                }
+                return true;
+            }
+        });
+
         updateView();
+    }
+
+    private void updateScoreForIndex(int index, int value) {
+        switch (index) {
+            case 0:
+                abilityScores.setStrength(value);
+                break;
+            case 1:
+                abilityScores.setDexterity(value);
+                break;
+            case 2:
+                abilityScores.setConstitution(value);
+                break;
+            case 3:
+                abilityScores.setIntelligence(value);
+                break;
+            case 4:
+                abilityScores.setWisdom(value);
+                break;
+            case 5:
+                abilityScores.setCharisma(value);
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -354,6 +422,8 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
                 break;
             case "Standard Array":
                 validatePointBuy = false;
+                loadStandardArray();
+                adapter.notifyDataSetChanged();
                 showDraggableGrid();
         }
         updateView();
@@ -439,8 +509,7 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
     }
 
 
-    public AbilityScoresComponent getAbilityScores()
-    {
+    public AbilityScoresComponent getAbilityScores() {
         return abilityScores;
     }
 
