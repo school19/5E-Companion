@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.schoolerc.dungeoncompanion.R;
 import com.schoolerc.dungeoncompanion.entity.AbilityScore;
@@ -297,6 +298,19 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
 
         view.findViewById(R.id.buttonCharismaMinus).setOnClickListener(new ClickResponder(AbilityScore.Charisma, false));
         view.findViewById(R.id.buttonCharismaPlus).setOnClickListener(new ClickResponder(AbilityScore.Charisma, true));
+        
+        view.findViewById(R.id.floatingActionButtonNext).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(validatePointBuy && pointBuyBudget != 0)
+                {
+                    Toast.makeText(getContext(), "Point Buy budget must come out to 0", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                mListener.commitAbilityScores();
+            }
+        });
 
         updateView();
     }
@@ -422,10 +436,13 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
         set.clone((ConstraintLayout) root);
         set.centerHorizontally(R.id.textViewAbilityScoreHeading, R.id.gridViewDefaultArray);
         set.applyTo((ConstraintLayout) root);
-
-        Log.i("ABILITY SCORES", "" + root.findViewById(R.id.textViewAbilityScoreHeading).getVisibility());
     }
 
+
+    public AbilityScoresComponent getAbilityScores()
+    {
+        return abilityScores;
+    }
 
     /**
      * This interface must be implemented by activities that contain this
@@ -438,5 +455,6 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
+        void commitAbilityScores();
     }
 }

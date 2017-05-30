@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.schoolerc.dungeoncompanion.R;
+import com.schoolerc.dungeoncompanion.entity.AbilityScoresComponent;
 import com.schoolerc.dungeoncompanion.util.FileUtil;
 import com.schoolerc.dungeoncompanion.util.OnErrorListener;
 
@@ -17,8 +18,16 @@ import java.io.IOException;
 public class CharacterCreatorActivity extends Activity implements AbilityScoresEditFragment.OnFragmentInteractionListener, OnErrorListener{
 
     private static final String TAG = "CharCreator";
+    public static final String ARG_ABILITY_SCORES_FRAGMENT = "ability_scores_fragment";
+    public static final String ARG_RACE_SELECTOR_FRAGMENT = "race_selector_fragment";
+    public static final String ARG_CLASS_SELECTOR_FRAGMENT = "class_selector_fragment";
+    public static final String FRAGMENT_TAG_STEP = "step";
 
-    private AbilityScoresEditFragment fragment;
+    private AbilityScoresEditFragment abilityScoresFragment;
+    private RaceSelectorFragment raceSelectorFragment;
+    private ClassSelectorFragment classSelectorFragment;
+
+    private AbilityScoresComponent abilityScores = new AbilityScoresComponent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +42,16 @@ public class CharacterCreatorActivity extends Activity implements AbilityScoresE
         setContentView(R.layout.activity_character_creator);
 
         if (savedInstanceState != null) {
-            fragment = (AbilityScoresEditFragment) getFragmentManager().getFragment(savedInstanceState, "ability_scores_fragment");
+            abilityScoresFragment = (AbilityScoresEditFragment) getFragmentManager().getFragment(savedInstanceState, ARG_ABILITY_SCORES_FRAGMENT);
+            raceSelectorFragment = (RaceSelectorFragment) getFragmentManager().getFragment(savedInstanceState, ARG_RACE_SELECTOR_FRAGMENT);
+            classSelectorFragment = (ClassSelectorFragment) getFragmentManager().getFragment(savedInstanceState, ARG_CLASS_SELECTOR_FRAGMENT);
         } else {
-            fragment = new AbilityScoresEditFragment();
+            abilityScoresFragment = new AbilityScoresEditFragment();
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.add(R.id.activity_character_creator, fragment, "step");
+            transaction.add(R.id.activity_character_creator, abilityScoresFragment, FRAGMENT_TAG_STEP);
             transaction.commit();
+            raceSelectorFragment = new RaceSelectorFragment();
+            classSelectorFragment = new ClassSelectorFragment();
         }
 
     }
@@ -58,9 +71,15 @@ public class CharacterCreatorActivity extends Activity implements AbilityScoresE
     }
 
     @Override
+    public void commitAbilityScores() {
+        abilityScores = abilityScoresFragment.getAbilityScores();
+        getFragmentManager().beginTransaction().replace(R.id.activity_character_creator, raceSelectorFragment, "step").commit();
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        getFragmentManager().putFragment(outState, "ability_scores_fragment", fragment);
+        getFragmentManager().putFragment(outState, ARG_ABILITY_SCORES_FRAGMENT, abilityScoresFragment);
     }
 
     @Override
