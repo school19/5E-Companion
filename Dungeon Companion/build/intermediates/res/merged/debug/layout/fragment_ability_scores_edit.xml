@@ -49,8 +49,8 @@
         android:text="@string/heading_score"
         app:layout_constraintLeft_toLeftOf="@+id/textViewStrengthScore"
         app:layout_constraintRight_toRightOf="@+id/textViewStrengthScore"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerStatChoice" />
+        app:layout_constraintTop_toTopOf="@+id/textViewAbilityBonusHeading"
+        android:layout_marginTop="0dp" />
 
     <TextView
         android:id="@+id/textViewAbilityBonusHeading"
@@ -101,9 +101,10 @@
         android:text="@string/label_stat_strength"
         app:layout_constraintRight_toLeftOf="@+id/textViewStrengthBonus"
         app:layout_constraintTop_toBottomOf="@+id/textViewAbilityScoreHeading"
-        app:layout_constraintLeft_toRightOf="@+id/buttonStrengthPlus"
+        app:layout_constraintLeft_toRightOf="@+id/gridViewDefaultArray"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewStrengthBonus"
@@ -136,7 +137,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/placeholder_zero"
         app:layout_constraintTop_toBottomOf="@+id/textViewStrengthScore"
-        app:layout_constraintLeft_toRightOf="@+id/button4"
+        app:layout_constraintLeft_toRightOf="@+id/buttonDexterityMinus"
         android:layout_marginLeft="8dp" />
 
     <TextView
@@ -171,10 +172,11 @@
         android:layout_marginTop="8dp"
         android:background="@color/material_grey_500"
         android:text="@string/label_stat_dexterity"
-        app:layout_constraintLeft_toRightOf="@+id/button3"
+        app:layout_constraintLeft_toRightOf="@+id/gridViewDefaultArray"
         app:layout_constraintRight_toLeftOf="@+id/textViewDexterityBonus"
         app:layout_constraintTop_toBottomOf="@+id/textViewStrengthLabel"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewConstitutionScore"
@@ -185,7 +187,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/placeholder_zero"
         app:layout_constraintTop_toBottomOf="@+id/textViewDexterityScore"
-        app:layout_constraintLeft_toRightOf="@+id/button5"
+        app:layout_constraintLeft_toRightOf="@+id/buttonConstitutionMinus"
         android:layout_marginLeft="8dp" />
 
     <TextView
@@ -220,10 +222,11 @@
         android:layout_marginTop="8dp"
         android:background="@color/material_grey_400"
         android:text="@string/label_stat_constitution"
-        app:layout_constraintLeft_toRightOf="@+id/button6"
+        app:layout_constraintLeft_toRightOf="@+id/gridViewDefaultArray"
         app:layout_constraintRight_toLeftOf="@+id/textViewConstitutionBonus"
         app:layout_constraintTop_toBottomOf="@+id/textViewDexterityLabel"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewIntelligenceScore"
@@ -233,8 +236,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/placeholder_zero"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewConstitutionScore" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewConstitutionScore"
+        app:layout_constraintLeft_toRightOf="@+id/buttonIntelligenceMinus"
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/textViewIntelligenceSave"
@@ -268,9 +272,11 @@
         android:layout_marginTop="8dp"
         android:background="@color/material_grey_500"
         android:text="@string/label_stat_intelligence"
-        app:layout_constraintLeft_toRightOf="@+id/textViewIntelligenceScore"
         app:layout_constraintRight_toLeftOf="@+id/textViewIntelligenceBonus"
-        app:layout_constraintTop_toBottomOf="@+id/textViewConstitutionLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewConstitutionLabel"
+        app:layout_constraintLeft_toRightOf="@+id/gridViewDefaultArray"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewWisdomScore"
@@ -280,8 +286,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/placeholder_zero"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewIntelligenceScore" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewIntelligenceScore"
+        app:layout_constraintLeft_toRightOf="@+id/buttonWisdomMinus"
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/textViewWisdomSave"
@@ -315,9 +322,11 @@
         android:layout_marginTop="8dp"
         android:background="@color/material_grey_400"
         android:text="@string/label_stat_wisdom"
-        app:layout_constraintLeft_toRightOf="@+id/textViewWisdomScore"
+        app:layout_constraintLeft_toRightOf="@+id/gridViewDefaultArray"
         app:layout_constraintRight_toLeftOf="@+id/textViewWisdomBonus"
-        app:layout_constraintTop_toBottomOf="@+id/textViewIntelligenceLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewIntelligenceLabel"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewCharismaScore"
@@ -327,8 +336,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/placeholder_zero"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWisdomScore" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewWisdomScore"
+        app:layout_constraintLeft_toRightOf="@+id/buttonCharismaMinus"
+        android:layout_marginLeft="0dp" />
 
     <TextView
         android:id="@+id/textViewCharismaSave"
@@ -362,9 +372,11 @@
         android:layout_marginTop="8dp"
         android:background="@color/material_grey_500"
         android:text="@string/label_stat_charisma"
-        app:layout_constraintLeft_toRightOf="@+id/textViewCharismaScore"
+        app:layout_constraintLeft_toRightOf="@+id/gridViewDefaultArray"
         app:layout_constraintRight_toLeftOf="@+id/textViewCharismaBonus"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWisdomLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewWisdomLabel"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <Button
         android:id="@+id/buttonStrengthPlus"
@@ -387,7 +399,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewAbilityScoreHeading" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonDexterityPlus"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:text="@string/plus"
@@ -397,7 +409,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonStrengthPlus" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonDexterityMinus"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:text="@string/minus"
@@ -407,24 +419,109 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonStrengthMinus" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonConstitutionMinus"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:text="@string/minus"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDexterityMinus" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/buttonConstitutionPlus"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:text="@string/plus"
         app:layout_constraintLeft_toRightOf="@+id/textViewConstitutionScore"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDexterityPlus" />
+
+    <Button
+        android:id="@+id/buttonIntelligencePlus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:text="@string/plus"
+        app:layout_constraintLeft_toRightOf="@+id/textViewIntelligenceScore"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonConstitutionPlus" />
+
+    <Button
+        android:id="@+id/buttonIntelligenceMinus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/minus"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonConstitutionMinus" />
+
+    <Button
+        android:id="@+id/buttonWisdomMinus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/minus"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIntelligenceMinus" />
+
+    <Button
+        android:id="@+id/buttonWisdomPlus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/plus"
+        app:layout_constraintLeft_toRightOf="@+id/textViewWisdomScore"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIntelligencePlus" />
+
+    <Button
+        android:id="@+id/buttonCharismaMinus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/minus"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWisdomMinus" />
+
+    <Button
+        android:id="@+id/buttonCharismaPlus"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/plus"
+        app:layout_constraintLeft_toRightOf="@+id/textViewCharismaScore"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWisdomPlus" />
+
+    <GridView
+        android:id="@+id/gridViewDefaultArray"
+        android:layout_width="92dp"
+        android:layout_height="0dp"
+        android:columnWidth="92dp"
+        android:numColumns="1"
+        app:layout_constraintBottom_toBottomOf="@id/textViewCharismaLabel"
+        app:layout_constraintLeft_toRightOf="@id/buttonStrengthPlus"
+        app:layout_constraintTop_toTopOf="@id/textViewStrengthLabel"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/textViewPointBuyBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerStatChoice"
+        app:layout_constraintLeft_toRightOf="@+id/spinnerStatChoice"
+        app:layout_constraintTop_toTopOf="@+id/spinnerStatChoice" />
 
 
     <!-- End Stats Block -->

@@ -17,7 +17,6 @@
         </activity>
         <activity android:name="com.schoolerc.dungeoncompanion.ui.creator.CharacterCreatorActivity" android:exported="true">
         </activity>
-
     </application>
 
 </manifest>

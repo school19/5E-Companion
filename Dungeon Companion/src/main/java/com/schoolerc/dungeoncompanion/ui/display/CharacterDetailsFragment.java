@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.schoolerc.dungeoncompanion.R;
-import com.schoolerc.dungeoncompanion.data.Character;
+import com.schoolerc.dungeoncompanion.entity.Character;
 
 
 /**

@@ -2,59 +2,69 @@ package com.schoolerc.dungeoncompanion.ui.creator;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.schoolerc.dungeoncompanion.R;
-import com.schoolerc.dungeoncompanion.data.Character;
-import com.schoolerc.dungeoncompanion.data.Repository;
+import com.schoolerc.dungeoncompanion.util.FileUtil;
+import com.schoolerc.dungeoncompanion.util.OnErrorListener;
 
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.Scriptable;
+import java.io.BufferedInputStream;
+import java.io.IOException;
 
 
-public class CharacterCreatorActivity extends Activity implements AbilityScoresEditFragment.OnFragmentInteractionListener, Repository.Listener {
+public class CharacterCreatorActivity extends Activity implements AbilityScoresEditFragment.OnFragmentInteractionListener, OnErrorListener{
 
-    private Context scriptContext;
-    private Scriptable rootScope;
-    private Repository contentRepository;
+    private static final String TAG = "CharCreator";
 
-    private Character root;
-
-    private AbilityScoresEditFragment scoresFragment;
+    private AbilityScoresEditFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences prefs = getSharedPreferences(getPackageName(), 0);
+        if (prefs.getBoolean("first_run", true)) {
+            prefs.edit().putBoolean("first_run", true).apply(); //TODO: Change this back to 'false' after done testing
+            unzipStagedData();
+
+        }
         setContentView(R.layout.activity_character_creator);
 
-        root = new Character();
-        root.setBaseStrength(15);
-        root.setBaseDexterity(14);
-        root.setBaseConstitution(13);
-        root.setBaseIntelligence(12);
-        root.setBaseWisdom(10);
-        root.setBaseCharisma(8);
+        if (savedInstanceState != null) {
+            fragment = (AbilityScoresEditFragment) getFragmentManager().getFragment(savedInstanceState, "ability_scores_fragment");
+        } else {
+            fragment = new AbilityScoresEditFragment();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.add(R.id.activity_character_creator, fragment, "step");
+            transaction.commit();
+        }
 
-        scoresFragment = new AbilityScoresEditFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.add(R.id.activity_character_creator, scoresFragment, "step");
-        transaction.commit();
+    }
 
+    private void unzipStagedData() {
+        try {
+            FileUtil.unzip(new BufferedInputStream(getAssets().open("Dungeon Companion.zip")), getFilesDir(), this);
+        } catch (IOException e) {
+            this.onError(e, "Unzipping prefab assets");
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        scoresFragment.setCharacter(root);
-    }
-
-    @Override
-    public void onRaceRegistered() {
 
     }
 
     @Override
-    public void onClassRegistered() {
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        getFragmentManager().putFragment(outState, "ability_scores_fragment", fragment);
+    }
 
+    @Override
+    public void onError(Exception exception, Object data) {
+        Log.e(TAG, "Exception: " + exception.toString());
     }
 }

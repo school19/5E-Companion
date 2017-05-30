@@ -1,4 +1,4 @@
-package com.schoolerc.dungeoncompanion.data;
+package com.schoolerc.dungeoncompanion.entity;
 
 /**
  * Created by Chaz on 5/7/2017.

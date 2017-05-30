@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.schoolerc.dungeoncompanion.data.Character;
+import com.schoolerc.dungeoncompanion.entity.Character;
 
 import com.schoolerc.dungeoncompanion.R;
 
@@ -61,6 +61,7 @@ public class AbilityScoresFragment extends Fragment implements Character.Listene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
         }
     }

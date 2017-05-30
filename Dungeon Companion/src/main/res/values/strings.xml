@@ -57,6 +57,7 @@
     <string name="minus">-</string>
     <string name="placeholder_text">Placeholder Text</string>
     <string name="label_speed">Speed</string>
+    <string name="label_hit_dice">Hit Dice</string>
     <string-array name="stat_creation_values">
         <item>Rolled</item>
         <item>Point Buy</item>

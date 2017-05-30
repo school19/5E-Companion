@@ -17,5 +17,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:choiceMode="singleChoice"
+        android:saveEnabled="true"
+        android:listSelector="@drawable/list_view_selector" />
 </android.support.constraint.ConstraintLayout>

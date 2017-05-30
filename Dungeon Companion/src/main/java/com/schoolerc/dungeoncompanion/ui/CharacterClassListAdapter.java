@@ -8,26 +8,26 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.schoolerc.dungeoncompanion.R;
-import com.schoolerc.dungeoncompanion.entity.Race;
+import com.schoolerc.dungeoncompanion.entity.CharacterClass;
 
 import java.util.ArrayList;
 
 /**
- * Created by Chaz on 5/23/2017.
+ * Created by Chaz on 5/28/2017.
  */
 
-public class RaceListAdapter extends BaseAdapter {
+public class CharacterClassListAdapter extends BaseAdapter {
 
     private Context context;
 
-    public RaceListAdapter(Context ctx)
+    public CharacterClassListAdapter(Context context)
     {
-        this.context = ctx;
+        this.context = context;
     }
 
-    private ArrayList<Race> data = new ArrayList<>();
+    private ArrayList<CharacterClass> data = new ArrayList<>();
 
-    public void setData(ArrayList<Race> data) {
+    public void setData(ArrayList<CharacterClass> data) {
         if(data == null){
             clear();
         }
@@ -37,22 +37,22 @@ public class RaceListAdapter extends BaseAdapter {
         }
     }
 
-    public ArrayList<Race> getData(){
+    public ArrayList<CharacterClass> getData(){
         return data;
     }
 
-    public void addRace(Race r)
+    public void addClass(CharacterClass c)
     {
-        if(!data.contains(r)){
-            data.add(r);
+        if(!data.contains(c)){
+            data.add(c);
             notifyDataSetChanged();
         }
     }
 
-    public void removeRace(Race r)
+    public void removeClass(CharacterClass c)
     {
-        if(data.contains(r)){
-            data.remove(r);
+        if(data.contains(c)){
+            data.remove(c);
             notifyDataSetChanged();
         }
     }
@@ -80,23 +80,25 @@ public class RaceListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View root;
+        CharacterClass characterClass = (CharacterClass)getItem(position);
+
+        View v;
+
         if(convertView != null)
         {
-            root = convertView;
+            v = convertView;
         }
         else
         {
-            root = LayoutInflater.from(context).inflate(R.layout.layout_race_item, parent, false);
+            v = LayoutInflater.from(context).inflate(R.layout.layout_class_item, parent, false);
         }
-        Race r = (Race) getItem(position);
 
-        TextView nameView = (TextView)root.findViewById(R.id.textViewRaceName);
-        nameView.setText(r.getName());
+        TextView nameView = (TextView) v.findViewById(R.id.textViewClassName);
+        nameView.setText(characterClass.getName());
 
-        TextView speedView = (TextView)root.findViewById(R.id.textViewSpeed);
-        speedView.setText(""+r.getSpeed());
+        TextView hitDiceView = (TextView) v.findViewById(R.id.textViewHitDice);
+        hitDiceView.setText(""+characterClass.getHitDice());
 
-        return root;
+        return v;
     }
 }

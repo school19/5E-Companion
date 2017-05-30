@@ -17,6 +17,9 @@ import java.util.zip.ZipInputStream;
 public final class FileUtil {
     private static final String TAG = "FileUtil";
 
+    public static final String RACE_DEFINITION_DIRECTORY = "race";
+    public static final String CHARACTER_CLASS_DEFINITION_DIRECTORY = "class";
+
     private FileUtil(){}
 
     public static void unzip(InputStream src, File dst, OnErrorListener errorListener) {
