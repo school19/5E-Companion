@@ -1,6 +1,7 @@
 package com.schoolerc.dungeoncompanion.ui.creator;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -348,7 +349,12 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
                         }
                         int relativePosition = position - parent.getFirstVisiblePosition();
                         View target = parent.getChildAt(relativePosition);
-                        target.startDrag(null, new View.DragShadowBuilder(target), target, 0);
+                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                            target.startDragAndDrop(null, new View.DragShadowBuilder(target), target, 0);
+                        }
+                        else {
+                            target.startDrag(null, new View.DragShadowBuilder(target), target, 0);
+                        }
                     }
                 }
                 return true;
