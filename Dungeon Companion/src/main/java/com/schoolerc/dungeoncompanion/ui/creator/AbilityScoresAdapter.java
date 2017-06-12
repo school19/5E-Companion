@@ -31,7 +31,6 @@ public class AbilityScoresAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        StringBuilder builder = new StringBuilder();
         switch (position) {
             case 0:
                 return component.getStrength();
@@ -66,7 +65,7 @@ public class AbilityScoresAdapter extends BaseAdapter {
         }
 
         TextView view = (TextView) v.findViewById(R.id.textViewScore);
-        view.setText("" + getItem(position));
+        view.setText(""+getItem(position));
 
         v.setTag(position);
 

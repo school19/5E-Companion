@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -14,6 +16,7 @@ public class Race extends Component implements Serializable{
 
     private String name;
     private int speed;
+    private List<Subrace> subraceList;
 
     public String getName() {
         return name;
@@ -40,4 +43,27 @@ public class Race extends Component implements Serializable{
     public int getPriority() {
         return 1;
     }
+
+    public void addSubrace(Subrace sub)
+    {
+        if(subraceList == null)
+        {
+            subraceList = new ArrayList<>();
+        }
+        subraceList.add(sub);
+    }
+
+    public List<Subrace> getSubraces()
+    {
+        return subraceList;
+    }
+
+    public void setSubrace(Subrace sub)
+    {
+        subraceList = null;
+        for (Component component : sub) {
+            addChild(component);
+        }
+    }
+
 }

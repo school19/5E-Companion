@@ -2,6 +2,7 @@ package com.schoolerc.dungeoncompanion.ui.creator;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -33,6 +34,8 @@ public class RaceSelectorFragment extends Fragment {
     private static final String ARG_RACE_FILEPATH = "race_filepath";
 
     private static final String ARG_RACE_DATASET = "race_set";
+
+    private OnFragmentInteractionListener listener;
 
     private RaceListAdapter adapter;
     private int selection = -1;
@@ -94,10 +97,27 @@ public class RaceSelectorFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selection = position;
-                //Callback to transition to next fragment instead of storing the selection
+                listener.onRaceSelected((Race)parent.getAdapter().getItem(position));
             }
         });
+    }
+
+    @Override
+    public void onDetach() {
+        listener = null;
+        super.onDetach();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        if(context instanceof OnFragmentInteractionListener)
+        {
+            listener = (OnFragmentInteractionListener) context;
+        }
+        else{
+            throw new RuntimeException("Context must implement OnFragmentInteractionListener");
+        }
+        super.onAttach(context);
     }
 
     @Override
@@ -119,5 +139,9 @@ public class RaceSelectorFragment extends Fragment {
         } else {
             initiateDataLoad();
         }
+    }
+
+    public interface OnFragmentInteractionListener{
+        void onRaceSelected(Race race);
     }
 }

@@ -10,7 +10,12 @@ import java.util.Iterator;
  */
 
 public abstract class Component implements Comparable<Component>, Iterable<Component>{
-    public abstract void apply(CharacterState state);
+    public void apply(CharacterState state)
+    {
+        for (Component component : this) {
+            component.apply(state);
+        }
+    }
     public abstract int getPriority();
 
     public void addChild(Component c)

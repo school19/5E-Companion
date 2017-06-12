@@ -2,12 +2,14 @@ package com.schoolerc.dungeoncompanion.ui.creator;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.schoolerc.dungeoncompanion.R;
@@ -31,6 +33,27 @@ public class ClassSelectorFragment extends Fragment {
     private static final String ARG_CHARACTER_CLASS_FILEPATH = "ClassSelector.class_filepath";
 
     private static final String ARG_CHARACTER_CLASS_DATASET = "ClassSelector.dataset";
+
+    private OnFragmentInteractionListener listener;
+
+    @Override
+    public void onDetach() {
+        listener = null;
+        super.onDetach();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        if(context instanceof OnFragmentInteractionListener)
+        {
+            listener = (OnFragmentInteractionListener)context;
+        }
+        else
+        {
+            throw new RuntimeException("Context must implement OnFragmentInteractionListener");
+        }
+        super.onAttach(context);
+    }
 
     private CharacterClassListAdapter adapter;
 
@@ -103,6 +126,15 @@ public class ClassSelectorFragment extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.listViewClasses);
         listView.setAdapter(adapter);
-        //TODO: Put in a onItemSelected listener too in a bit
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listener.onClassSelected((CharacterClass)parent.getAdapter().getItem(position));
+            }
+        });
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onClassSelected(CharacterClass characterClass);
     }
 }

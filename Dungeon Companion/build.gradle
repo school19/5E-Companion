@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "schoolerc.com.fiftheditioncompanion"
+        applicationId "com.schoolerc.dungeoncompanion"
         minSdkVersion 23
         targetSdkVersion 25
         versionCode 1
@@ -27,6 +27,11 @@ android {
     }
     copyAssetZip.dependsOn zipAssets
     preBuild.dependsOn copyAssetZip
+    externalNativeBuild {
+        cmake {
+            path '../Dungeon Companion/CMakeLists.txt'
+        }
+    }
 }
 
 dependencies {

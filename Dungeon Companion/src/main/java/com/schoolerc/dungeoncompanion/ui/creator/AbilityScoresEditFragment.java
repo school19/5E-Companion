@@ -292,7 +292,7 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
                     return;
                 }
 
-                mListener.commitAbilityScores();
+                mListener.commitAbilityScores(abilityScores);
             }
         });
 
@@ -515,10 +515,6 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
     }
 
 
-    public AbilityScoresComponent getAbilityScores() {
-        return abilityScores;
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -530,6 +526,6 @@ public class AbilityScoresEditFragment extends Fragment implements AdapterView.O
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        void commitAbilityScores();
+        void commitAbilityScores(AbilityScoresComponent component);
     }
 }

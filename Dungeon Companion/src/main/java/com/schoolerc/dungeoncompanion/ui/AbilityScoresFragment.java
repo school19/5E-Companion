@@ -20,28 +20,13 @@ import com.schoolerc.dungeoncompanion.R;
  * Use the {@link AbilityScoresFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AbilityScoresFragment extends Fragment implements Character.Listener {
+public class AbilityScoresFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private Character dataSource;
 
     public AbilityScoresFragment() {
         // Required empty public constructor
-    }
-
-    public void setCharacter(Character c)
-    {
-        if(dataSource != null) {
-            dataSource.removeListener(this);
-        }
-
-        dataSource = c;
-
-        if(dataSource != null) {
-            dataSource.addListener(this);
-        }
-
-        updateView(getView());
     }
 
     /**
@@ -66,33 +51,6 @@ public class AbilityScoresFragment extends Fragment implements Character.Listene
         }
     }
 
-    private void updateView(View v)
-    {
-        updateTextView(v, R.id.textViewStrengthScore, "" + dataSource.getStrengthScore());
-        updateTextView(v, R.id.textViewDexterityScore, "" + dataSource.getDexterityScore());
-        updateTextView(v, R.id.textViewConstitutionScore, "" + dataSource.getConstitutionScore());
-        updateTextView(v, R.id.textViewIntelligenceScore, "" + dataSource.getIntelligenceScore());
-        updateTextView(v, R.id.textViewWisdomScore, "" + dataSource.getWisdomScore());
-        updateTextView(v, R.id.textViewCharismaScore, "" + dataSource.getCharismaScore());
-        updateTextView(v, R.id.textViewStrengthBonus, "" + dataSource.getStrengthBonus());
-        updateTextView(v, R.id.textViewDexterityBonus, "" + dataSource.getDexterityBonus());
-        updateTextView(v, R.id.textViewConstitutionBonus, "" + dataSource.getConstitutionBonus());
-        updateTextView(v, R.id.textViewIntelligenceBonus, "" + dataSource.getIntelligenceBonus());
-        updateTextView(v, R.id.textViewWisdomBonus, "" + dataSource.getWisdomBonus());
-        updateTextView(v, R.id.textViewCharismaBonus, "" + dataSource.getCharismaBonus());
-        updateTextView(v, R.id.textViewStrengthSave, "" + dataSource.getStrengthSave());
-        updateTextView(v, R.id.textViewDexteritySave, "" + dataSource.getDexteritySave());
-        updateTextView(v, R.id.textViewConstitutionSave, "" + dataSource.getConstitutionSave());
-        updateTextView(v, R.id.textViewIntelligenceSave, "" + dataSource.getIntelligenceSave());
-        updateTextView(v, R.id.textViewWisdomSave, "" + dataSource.getWisdomSave());
-        updateTextView(v, R.id.textViewCharismaSave, "" + dataSource.getCharismaSave());
-    }
-
-    private void updateTextView(View parent, int id, String text)
-    {
-        ((TextView)parent.findViewById(id)).setText(text);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -115,16 +73,6 @@ public class AbilityScoresFragment extends Fragment implements Character.Listene
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onCharacterBeforeModified() {
-        //Do nothing
-    }
-
-    @Override
-    public void onCharacterAfterModified() {
-        updateView(getView());
     }
 
     /**

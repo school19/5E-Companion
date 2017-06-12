@@ -1,4 +1,15 @@
 {
   "name":"Dwarf",
-  "speed":25
+  "speed":25,
+  "size":"Medium",
+  "ability_score_improvements":[{"ability_score":"Constitution", "value":2}],
+  "weapon_proficiencies":["Battleaxe", "Handaxe", "LightHammer", "Warhammer"],
+  "damage_resistance":"Poison",
+  "subraces":[
+    {
+      "name":"Hill",
+      "ability_score_improvements":[{"ability_score":"Wisdom", "value":1}],
+      "tough":1
+    }
+  ]
 }

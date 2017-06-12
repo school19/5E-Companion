@@ -11,11 +11,9 @@ public class ToughnessComponent extends Component {
         return factor;
     }
 
-    public void setFactor(int factor) {
+    public ToughnessComponent(int factor){
         this.factor = factor;
     }
-
-    public ToughnessComponent(){}
 
     @Override
     public int getPriority() {

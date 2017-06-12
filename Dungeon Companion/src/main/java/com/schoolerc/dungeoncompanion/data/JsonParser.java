@@ -2,8 +2,11 @@ package com.schoolerc.dungeoncompanion.data;
 
 import android.util.JsonReader;
 
+import com.schoolerc.dungeoncompanion.entity.AbilityScore;
+import com.schoolerc.dungeoncompanion.entity.AbilityScoreModifier;
 import com.schoolerc.dungeoncompanion.entity.CharacterClass;
 import com.schoolerc.dungeoncompanion.entity.Race;
+import com.schoolerc.dungeoncompanion.entity.ToughnessComponent;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,11 +65,44 @@ public class JsonParser implements DataParser {
                 case "speed":
                     r.setSpeed(reader.nextInt());
                     break;
+                case "tough":
+                    ToughnessComponent component = new ToughnessComponent(reader.nextInt());
+                    break;
+                case "ability_score_improvements":
+                    reader.beginArray();
+                    while(reader.hasNext())
+                    {
+                        r.addChild(parseAbilityScoreModifier(reader));
+                    }
+                    reader.endArray();
+                    break;
             }
         }
 
         reader.endObject();
 
         return r;
+    }
+
+    private AbilityScoreModifier parseAbilityScoreModifier(JsonReader reader) throws IOException
+    {
+        reader.beginObject();
+        AbilityScore score = AbilityScore.Strength;
+        int value = 0;
+        while(reader.hasNext())
+        {
+            switch(reader.nextName())
+            {
+                case "ability_score":
+                    score = AbilityScore.valueOf(reader.nextString());
+                    break;
+                case "value":
+                    value = reader.nextInt();
+                    break;
+                default:
+                    break;
+            }
+        }
+        return new AbilityScoreModifier(score, value);
     }
 }
