@@ -1,8 +1,0 @@
-//
-// Created by Chaz on 6/12/2017.
-//
-
-#ifndef INC_5E_COMPANION_CHARACTER_LUA_H
-#define INC_5E_COMPANION_CHARACTER_LUA_H
-
-#endif //INC_5E_COMPANION_CHARACTER_LUA_H

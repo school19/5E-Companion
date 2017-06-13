@@ -6,9 +6,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.schoolerc.dungeoncompanion.entity.Character;
+import com.schoolerc.dungeoncompanion.Character;
 
 import com.schoolerc.dungeoncompanion.R;
 

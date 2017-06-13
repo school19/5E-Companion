@@ -19,7 +19,9 @@ add_library( # Specifies the name of the library.
              # Provides a relative path to your source file(s).
              src/main/cpp/Character
              src/main/cpp/Character_JNI
-             src/main/cpp/Character_Lua)
+             src/main/cpp/Race
+             src/main/cpp/Race_JNI
+             src/main/cpp/Lua_JNI)
 
 add_library(lua-lib
 
