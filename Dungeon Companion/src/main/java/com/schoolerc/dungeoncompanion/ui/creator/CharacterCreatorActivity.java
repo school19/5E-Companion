@@ -9,7 +9,7 @@ import android.util.Log;
 import com.schoolerc.dungeoncompanion.R;
 import com.schoolerc.dungeoncompanion.entity.AbilityScoresComponent;
 import com.schoolerc.dungeoncompanion.entity.CharacterClass;
-import com.schoolerc.dungeoncompanion.entity.Race;
+import com.schoolerc.dungeoncompanion.ui.RaceDescriptor;
 import com.schoolerc.dungeoncompanion.util.FileUtil;
 import com.schoolerc.dungeoncompanion.util.OnErrorListener;
 
@@ -30,7 +30,7 @@ public class CharacterCreatorActivity extends Activity implements AbilityScoresE
     private ClassSelectorFragment classSelectorFragment;
 
     private AbilityScoresComponent abilityScores;
-    private Race race;
+    private RaceDescriptor race;
     private CharacterClass characterClass;
 
     @Override
@@ -103,7 +103,7 @@ public class CharacterCreatorActivity extends Activity implements AbilityScoresE
     }
 
     @Override
-    public void onRaceSelected(Race race) {
+    public void onRaceSelected(RaceDescriptor race) {
         this.race = race;
         getFragmentManager().beginTransaction().replace(R.id.activity_character_creator, classSelectorFragment, "step").addToBackStack(null).commit();
     }

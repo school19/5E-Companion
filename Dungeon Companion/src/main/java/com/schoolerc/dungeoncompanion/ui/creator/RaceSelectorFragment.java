@@ -1,9 +1,7 @@
 package com.schoolerc.dungeoncompanion.ui.creator;
 
 import android.app.Fragment;
-import android.app.LoaderManager;
 import android.content.Context;
-import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -14,15 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.schoolerc.dungeoncompanion.R;
-import com.schoolerc.dungeoncompanion.data.JsonParser;
-import com.schoolerc.dungeoncompanion.entity.Race;
-import com.schoolerc.dungeoncompanion.loader.RaceLoader;
-import com.schoolerc.dungeoncompanion.ui.RaceListAdapter;
+import com.schoolerc.dungeoncompanion.ui.RaceDescriptor;
+import com.schoolerc.dungeoncompanion.ui.RaceDescriptorAdapter;
+import com.schoolerc.dungeoncompanion.ui.RaceDescriptorLoaderCallbacks;
 import com.schoolerc.dungeoncompanion.util.FileUtil;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by Chaz Schooler on 5/24/2017.
@@ -31,35 +28,12 @@ import java.util.ArrayList;
 public class RaceSelectorFragment extends Fragment {
     private static final String TAG = "RaceSelector";
 
-    private static final String ARG_RACE_FILEPATH = "race_filepath";
 
-    private static final String ARG_RACE_DATASET = "race_set";
+    private static final String ARG_DATASET = "race.dataset";
 
     private OnFragmentInteractionListener listener;
 
-    private RaceListAdapter adapter;
-    private int selection = -1;
-
-    private class RaceLoaderCallbacks implements LoaderManager.LoaderCallbacks<Race> {
-        @Override
-        public Loader<Race> onCreateLoader(int id, Bundle args) {
-            Log.d(TAG, "Creating RaceLoader for race file: " + args.getString(ARG_RACE_FILEPATH));
-            return new RaceLoader(getContext(), args.getString(ARG_RACE_FILEPATH), new JsonParser());
-        }
-
-        @Override
-        public void onLoadFinished(Loader<Race> loader, Race data) {
-            Log.d(TAG, "RaceLoader (name: " + data.getName() + ") finished loading");
-            adapter.addRace(data);
-        }
-
-        @Override
-        public void onLoaderReset(Loader<Race> loader) {
-            //Not really sure what to put here presently.
-            //Given that the IDLoader handles resetting the
-            //Race array, I don't think anything actually goes here
-        }
-    }
+    private RaceDescriptorAdapter adapter;
 
     private void initiateDataLoad() {
         adapter.clear();
@@ -69,14 +43,14 @@ public class RaceSelectorFragment extends Fragment {
         File[] raceFiles = raceDir.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                return name.endsWith("json");
+                return name.endsWith("lua");
             }
         });
         for(int i = 0; i < raceFiles.length; i++)
         {
             Bundle args = new Bundle();
-            args.putSerializable(ARG_RACE_FILEPATH, raceFiles[i].getPath());
-            getLoaderManager().initLoader(i, args, new RaceLoaderCallbacks());
+            args.putSerializable(RaceDescriptorLoaderCallbacks.ARG_LOADER_FILEPATH, raceFiles[i].getPath());
+            getLoaderManager().initLoader(i, args, new RaceDescriptorLoaderCallbacks(getContext(), adapter));
         }
     }
 
@@ -97,7 +71,7 @@ public class RaceSelectorFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listener.onRaceSelected((Race)parent.getAdapter().getItem(position));
+                listener.onRaceSelected((RaceDescriptor) parent.getAdapter().getItem(position));
             }
         });
     }
@@ -125,23 +99,22 @@ public class RaceSelectorFragment extends Fragment {
         Log.i(TAG, "onSaveInstanceState");
         super.onSaveInstanceState(outState);
 
-        outState.putSerializable(ARG_RACE_DATASET, adapter.getData());
+        outState.putSerializable(ARG_DATASET, adapter.getData());
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
-        adapter = new RaceListAdapter(getContext());
-
+        adapter = new RaceDescriptorAdapter(getContext());
         if (savedInstanceState != null) {
-            adapter.setData((ArrayList<Race>)savedInstanceState.getSerializable(ARG_RACE_DATASET));
+            adapter.setData((HashSet<RaceDescriptor>)savedInstanceState.getSerializable(ARG_DATASET));
         } else {
             initiateDataLoad();
         }
     }
 
     public interface OnFragmentInteractionListener{
-        void onRaceSelected(Race race);
+        void onRaceSelected(RaceDescriptor race);
     }
 }
