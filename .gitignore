@@ -12,3 +12,5 @@
 gen
 "Dungeon Companion/build"
 build
+modules.xml
+local.properties
