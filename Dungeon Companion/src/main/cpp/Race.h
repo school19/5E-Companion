@@ -1,14 +1,14 @@
 //
-// Created by Chaz on 6/13/2017.
+// Created by Chaz Schooler on 6/18/17.
 //
 
-#ifndef INC_5E_COMPANION_RACE_H
-#define INC_5E_COMPANION_RACE_H
+#ifndef DUNGEONCOMPANION_RACE_H
+#define DUNGEONCOMPANION_RACE_H
+#include <lua.hpp>
+
+long long raceGetSpeed(lua_State *L, int race);
+
+std::string raceGetName(lua_State* L, int race);
 
 
-class Race {
-
-};
-
-
-#endif //INC_5E_COMPANION_RACE_H
+#endif //DUNGEONCOMPANION_RACE_H
