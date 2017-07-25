@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 
-import com.schoolerc.dungeoncompanion.loader.RaceDescriptorLoader;
+import com.schoolerc.dungeoncompanion.loader.RaceLoader;
 
 public class RaceDescriptorLoaderCallbacks implements LoaderManager.LoaderCallbacks<RaceDescriptor> {
 
@@ -21,7 +21,7 @@ public class RaceDescriptorLoaderCallbacks implements LoaderManager.LoaderCallba
     }
     @Override
     public Loader<RaceDescriptor> onCreateLoader(int id, Bundle args) {
-        return new RaceDescriptorLoader(context, args.getString(ARG_LOADER_FILEPATH));
+        return new RaceLoader(context, args.getString(ARG_LOADER_FILEPATH));
     }
 
     @Override

@@ -3,6 +3,7 @@
 # your build.
 
 cmake_minimum_required(VERSION 3.4.1)
+include(ExternalProject)
 
 # Specifies a library name, specifies whether the library is STATIC or
 # SHARED, and provides relative paths to the source code. You can
@@ -11,20 +12,17 @@ cmake_minimum_required(VERSION 3.4.1)
 # automatically packages shared libraries with your APK.
 
 add_library( # Specifies the name of the library.
-             native-lib
+             native_lib
 
              # Sets the library as a shared library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/Character
-             src/main/cpp/Character_JNI
-             src/main/cpp/Race
-             src/main/cpp/Race_JNI
-             src/main/cpp/Lua_JNI)
+             src/main/cpp/lua_JNI
+             src/main/cpp/lauxlib_JNI
+             src/main/cpp/Error)
 
-add_library(lua-lib
-
+add_library(lua_lib
             SHARED
 
             src/main/cpp/lua/src/lapi.c
@@ -61,20 +59,15 @@ add_library(lua-lib
             src/main/cpp/lua/src/lvm.c
             src/main/cpp/lua/src/lzio.c)
 
-find_library( # Sets the name of the path variable.
-              log-lib
+add_library(boost
+            SHARED
+            src/main/cpp/boost_1_64_0/libs/exception/src/clone_current_exception_non_intrusive.cpp
+            src/main/cpp/boost_1_64_0/libs/system/src/error_code.cpp)
 
-              # Specifies the name of the NDK library that
-              # you want CMake to locate.
-              log )
+include_directories(boost src/main/cpp/boost_1_64_0)
 
+target_link_libraries(native_lib
+                      lua_lib
+                      boost)
 
-target_link_libraries( # Specifies the target library.
-                       native-lib
-
-                       # Links the target library to the log library
-                       # included in the NDK.
-                       ${log-lib}
-                       ${lua-lib})
-
-include_directories(native-lib src/main/cpp/lua/src)
+include_directories(native-lib src/main/cpp/lua/src src/main/cpp/boost_1_64_0)

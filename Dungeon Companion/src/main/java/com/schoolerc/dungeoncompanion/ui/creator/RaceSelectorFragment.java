@@ -17,6 +17,11 @@ import com.schoolerc.dungeoncompanion.ui.RaceDescriptorAdapter;
 import com.schoolerc.dungeoncompanion.ui.RaceDescriptorLoaderCallbacks;
 import com.schoolerc.dungeoncompanion.util.FileUtil;
 
+import org.luaj.vm2.Globals;
+import org.luaj.vm2.LuaValue;
+import org.luaj.vm2.ast.Chunk;
+import org.luaj.vm2.lib.jse.JsePlatform;
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.HashSet;
@@ -46,11 +51,15 @@ public class RaceSelectorFragment extends Fragment {
                 return name.endsWith("lua");
             }
         });
+        Globals context = JsePlatform.standardGlobals();
         for(int i = 0; i < raceFiles.length; i++)
         {
-            Bundle args = new Bundle();
-            args.putSerializable(RaceDescriptorLoaderCallbacks.ARG_LOADER_FILEPATH, raceFiles[i].getPath());
-            getLoaderManager().initLoader(i, args, new RaceDescriptorLoaderCallbacks(getContext(), adapter));
+            LuaValue chunk = context.loadfile(raceFiles[i].getAbsolutePath());
+            LuaValue result = chunk.call();
+            if(!result.istable())
+            {
+                //report the logical error here
+            }
         }
     }
 

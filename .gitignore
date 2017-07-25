@@ -14,3 +14,4 @@ gen
 build
 modules.xml
 local.properties
+.idea
